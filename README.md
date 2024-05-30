@@ -1,3 +1,5 @@
+
+![alt text](Circulor_Logo.png)
 # sample
 Sample repository for the battery pass project
 
