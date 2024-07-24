@@ -1,0 +1,54 @@
+2024-07-24T09:14:36.993+02:00  INFO 102360 --- [main] org.eclipse.esmf.ame.Application         : Starting AOT-processed Application using Java 17.0.6 with PID 102360 (C:\Users\Nikolai D'Agostino\AppData\Local\ASPECT-MODEL-EDITOR\backend\signed_dir\ame-backend-5.6.0-win.exe started by Nikolai D'Agostino in C:\Users\Nikolai D'Agostino\aspect-model-editor\models\io.BatteryPass.CarbonFootprint\1.0.0)
+2024-07-24T09:14:36.998+02:00  INFO 102360 --- [main] org.eclipse.esmf.ame.Application         : No active profile set, falling back to 1 default profile: "default"
+2024-07-24T09:14:37.121+02:00  INFO 102360 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 30000 (http)
+2024-07-24T09:14:37.123+02:00  INFO 102360 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-24T09:14:37.123+02:00  INFO 102360 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2024-07-24T09:14:37.134+02:00  INFO 102360 --- [main] o.a.c.c.C.[.[localhost].[/ame/api]       : Initializing Spring embedded WebApplicationContext
+2024-07-24T09:14:37.134+02:00  INFO 102360 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 136 ms
+2024-07-24T09:14:37.304+02:00  WARN 102360 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 7f798fbb-c4b9-4a71-b520-57eb9ed4d121
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-07-24T09:14:37.322+02:00  INFO 102360 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@77f51f5a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@56606a09, org.springframework.security.web.context.SecurityContextHolderFilter@f99e798, org.springframework.security.web.header.HeaderWriterFilter@4c7e456e, org.springframework.security.web.authentication.logout.LogoutFilter@18abffef, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@23245ae1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@32cb1f75, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@68858783, org.springframework.security.web.access.ExceptionTranslationFilter@7f4233, org.springframework.security.web.access.intercept.AuthorizationFilter@76c7202a]
+2024-07-24T09:14:37.342+02:00  INFO 102360 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 30000 (http) with context path '/ame/api'
+2024-07-24T09:14:37.343+02:00  INFO 102360 --- [main] org.eclipse.esmf.ame.Application         : Started Application in 0.561 seconds (process running for 0.701)
+2024-07-24T09:14:38.261+02:00  INFO 102360 --- [http-nio-127.0.0.1-30000-exec-1] o.a.c.c.C.[.[localhost].[/ame/api]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-24T09:14:38.262+02:00  INFO 102360 --- [http-nio-127.0.0.1-30000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-24T09:14:38.262+02:00  INFO 102360 --- [http-nio-127.0.0.1-30000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-07-24T09:16:10.875+02:00  INFO 86096 --- [main] org.eclipse.esmf.ame.Application         : Starting AOT-processed Application using Java 17.0.6 with PID 86096 (C:\Users\Nikolai D'Agostino\AppData\Local\ASPECT-MODEL-EDITOR\backend\signed_dir\ame-backend-5.6.0-win.exe started by Nikolai D'Agostino in C:\Users\Nikolai D'Agostino\aspect-model-editor\models\io.BatteryPass.CarbonFootprint\1.0.0)
+2024-07-24T09:16:10.875+02:00  INFO 86096 --- [main] org.eclipse.esmf.ame.Application         : No active profile set, falling back to 1 default profile: "default"
+2024-07-24T09:16:10.950+02:00  INFO 86096 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 30002 (http)
+2024-07-24T09:16:10.950+02:00  INFO 86096 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-24T09:16:10.950+02:00  INFO 86096 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2024-07-24T09:16:10.954+02:00  INFO 86096 --- [main] o.a.c.c.C.[.[localhost].[/ame/api]       : Initializing Spring embedded WebApplicationContext
+2024-07-24T09:16:10.954+02:00  INFO 86096 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 79 ms
+2024-07-24T09:16:10.993+02:00  WARN 86096 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 7e5c3c70-046c-4a13-a57a-dc4585877a46
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-07-24T09:16:11.021+02:00  INFO 86096 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@492dd273, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@206569a1, org.springframework.security.web.context.SecurityContextHolderFilter@256f8888, org.springframework.security.web.header.HeaderWriterFilter@2e9cc335, org.springframework.security.web.authentication.logout.LogoutFilter@77e4f17d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5fcf2b7d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@54c48da8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@26fbcce5, org.springframework.security.web.access.ExceptionTranslationFilter@788bc53e, org.springframework.security.web.access.intercept.AuthorizationFilter@15c0fbf4]
+2024-07-24T09:16:11.032+02:00  INFO 86096 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 30002 (http) with context path '/ame/api'
+2024-07-24T09:16:11.033+02:00  INFO 86096 --- [main] org.eclipse.esmf.ame.Application         : Started Application in 0.19 seconds (process running for 0.194)
+2024-07-24T09:16:17.221+02:00  INFO 86096 --- [http-nio-127.0.0.1-30002-exec-1] o.a.c.c.C.[.[localhost].[/ame/api]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-24T09:16:17.221+02:00  INFO 86096 --- [http-nio-127.0.0.1-30002-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-24T09:16:17.221+02:00  INFO 86096 --- [http-nio-127.0.0.1-30002-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-07-24T09:16:35.236+02:00  INFO 93236 --- [main] org.eclipse.esmf.ame.Application         : Starting AOT-processed Application using Java 17.0.6 with PID 93236 (C:\Users\Nikolai D'Agostino\AppData\Local\ASPECT-MODEL-EDITOR\backend\signed_dir\ame-backend-5.6.0-win.exe started by Nikolai D'Agostino in C:\Users\Nikolai D'Agostino\aspect-model-editor\models\io.BatteryPass.CarbonFootprint\1.0.0)
+2024-07-24T09:16:35.236+02:00  INFO 93236 --- [main] org.eclipse.esmf.ame.Application         : No active profile set, falling back to 1 default profile: "default"
+2024-07-24T09:16:35.297+02:00  INFO 93236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 30003 (http)
+2024-07-24T09:16:35.297+02:00  INFO 93236 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-24T09:16:35.297+02:00  INFO 93236 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2024-07-24T09:16:35.301+02:00  INFO 93236 --- [main] o.a.c.c.C.[.[localhost].[/ame/api]       : Initializing Spring embedded WebApplicationContext
+2024-07-24T09:16:35.301+02:00  INFO 93236 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 65 ms
+2024-07-24T09:16:35.336+02:00  WARN 93236 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: d55fa2a6-9617-4940-bd2c-7ec23d8e6956
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-07-24T09:16:35.357+02:00  INFO 93236 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@587b1294, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@913cc86, org.springframework.security.web.context.SecurityContextHolderFilter@239ae6bf, org.springframework.security.web.header.HeaderWriterFilter@34432b1d, org.springframework.security.web.authentication.logout.LogoutFilter@7bcfb1b5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@23627eb4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@58b78096, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5e218c3f, org.springframework.security.web.access.ExceptionTranslationFilter@c91c5cd, org.springframework.security.web.access.intercept.AuthorizationFilter@6e3b2720]
+2024-07-24T09:16:35.366+02:00  INFO 93236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 30003 (http) with context path '/ame/api'
+2024-07-24T09:16:35.366+02:00  INFO 93236 --- [main] org.eclipse.esmf.ame.Application         : Started Application in 0.147 seconds (process running for 0.149)

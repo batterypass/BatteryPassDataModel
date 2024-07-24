@@ -1,0 +1,46 @@
+{
+  "renewableContent": 0,
+  "sourceForSpareParts": [
+    {
+      "nameOfSupplier": "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
+      "components": [
+        {
+          "partName": "Cell",
+          "partNumber": "JxkyvRnL"
+        }
+      ],
+      "supplierWebAddress": "ftp://ftp.is.co.za/rfc/rfc1808.txt",
+      "emailAddressOfSupplier": "TbdCGZhKQBMw-PAm5NG0Nqa-qa@xmPfauoZYeyoW1timGU8jEIkUKlM7njoOuNvMLupaDh4JbQQQDfANQCTZmyOu.JfRjlRoSSpzOUZAweQkcYucrkJzXIaorinIruGsqJeWbXhaJqvJpyyuCOHIEFhgiupjNeaeOHbajvDHoTJUVSMwo",
+      "addressOfSupplier": {
+        "addressCountry": "Germany",
+        "streetAddress": "Street 1",
+        "postalCode": "DE-10719"
+      }
+    }
+  ],
+  "dismantlingAndRemovalInformation": [
+    {
+      "documentType": "BillOfMaterial",
+      "mimeType": "eOMtThyhVNLWUZNRcBaQKxI",
+      "documentURL": "telnet://192.0.2.16:80/"
+    }
+  ],
+  "recycledContent": [
+    {
+      "preConsumerShare": 75.246895,
+      "recycledMaterial": "Cobalt",
+      "postConsumerShare": 95.9721
+    }
+  ],
+  "safetyRequirements": {
+    "safetyInstructions": "http://www.ietf.org/rfc/rfc2396.txt",
+    "extinguishingAgent": [
+      "RYtGKbgicZaHCBRQDSx"
+    ]
+  },
+  "endOfLifeInformation": {
+    "separateCollection": "ftp://ftp.is.co.za/rfc/rfc1808.txt",
+    "wastePrevention": "http://www.wikipedia.org",
+    "informationOnCollection": "telnet://192.0.2.16:80/"
+  }
+}

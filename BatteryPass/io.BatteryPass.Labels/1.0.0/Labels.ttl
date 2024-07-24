@@ -1,0 +1,85 @@
+######################################################################
+# Copyright (c) 2024 Circulor GmbH on behalf of the Battery Pass Consortium
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This work is made available under the terms of the
+# Creative Commons Attribution 4.0 International (CC-BY-4.0) license,
+# which is available at
+# https://creativecommons.org/licenses/by/4.0/legalcode.
+#
+# SPDX-License-Identifier: CC-BY-4.0
+#######################################################################
+
+@prefix samm: <urn:samm:org.eclipse.esmf.samm:meta-model:2.1.0#> .
+@prefix samm-c: <urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#> .
+@prefix samm-e: <urn:samm:org.eclipse.esmf.samm:entity:2.1.0#> .
+@prefix unit: <urn:samm:org.eclipse.esmf.samm:unit:2.1.0#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <urn:samm:io.BatteryPass.Labels:1.0.0#> .
+
+:Labels a samm:Aspect ;
+   samm:description "Data model for battery labels and conformity\n\nCopyright � 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution."@en ;
+   samm:properties ( :declarationOfConformity :resultOfTestReport :euDeclarationOfConformityId :separateCollection :materialSymbols ) ;
+   samm:operations ( ) ;
+   samm:events ( ) .
+
+:declarationOfConformity a samm:Property ;
+   samm:description "URL to EU declaration of conformity signed by responsible economic operators to declare compliance with the regulatory requirements in the context of the market conformity assessment procedure and assume full responsibility."@en ;
+   samm:characteristic samm-c:ResourcePath .
+
+:resultOfTestReport a samm:Property ;
+   samm:description "URL to a document that includes results of tests reports proving compliance in the market conformity assessment procedure with the requirements as per the technical documentation (Art. 7-10, Art. 12-14 and due diligence policies )."@en ;
+   samm:characteristic ext-digitaltwin:ResourcePath .
+
+:euDeclarationOfConformityId a samm:Property ;
+   samm:description "Identification number of the EU declaration of conformity of the battery, linked to the  Battery Carbon Footprint Declaration."@en ;
+   samm:characteristic :EuDeclarationOfConformityId .
+
+:separateCollection a samm:Property ;
+   samm:description "'Separate collection' or 'WEEE label' indicating that a product should not be discarded as unsorted waste but must be sent to separate collection facilities for recovery and recycling. To be printed on the physical label and displayed via the battery passport, suggested to be translated also to text to ensure machine readability."@en ;
+   samm:characteristic :SeperateCollection .
+
+:materialSymbols a samm:Property ;
+   samm:characteristic :MaterialSymbols .
+
+ext-digitaltwin:ResourcePath a samm:Characteristic ;
+   samm:preferredName "Resource Path"@en ;
+   samm:description "The path of a resource."@en ;
+   samm:dataType xsd:anyURI .
+
+:EuDeclarationOfConformityId a samm-c:Code ;
+   samm:dataType xsd:string .
+
+:SeperateCollection a samm-c:SingleEntity ;
+   samm:dataType :SeparateCollection .
+
+:MaterialSymbols a samm-c:Set ;
+   samm:description "Cadmium and lead symbols indicating the metal is contained in the battery above a defined threshold. To be printed on the physical label and displayed via the battery passport, suggested to be translated also to text to ensure machine readability."@en ;
+   samm:dataType :MaterialSymbol .
+
+:SeparateCollection a samm:Entity ;
+   samm:description "Explanation of the meaning of all symbols and labels (including separate collection; cadmium and lead; and carbon footprint and carbon footprint performance class symbols; and symbols and labels printed on batteries or their accompanying documents but not accessible via the battery passport)."@en ;
+   samm:properties ( :separateCollectionSymbol :separateCollectionDescription ) .
+
+:MaterialSymbol a samm:Entity ;
+   samm:properties ( :materialSymbol :materialText ) .
+
+:separateCollectionSymbol a samm:Property ;
+   samm:characteristic samm-c:ResourcePath .
+
+:separateCollectionDescription a samm:Property ;
+   samm:description "Explanation of the meaning of all symbols and labels (including separate collection; cadmium and lead; and carbon footprint and carbon footprint performance class symbols; and symbols and labels printed on batteries or their accompanying documents but not accessible via the battery passport)."@en ;
+   samm:characteristic samm-c:MultiLanguageText .
+
+:materialSymbol a samm:Property ;
+   samm:description "Battery containing more than 0.002% cadmium or 0.004% lead to be marked with the symbol(s) for the metal concerned: Cd or Pb (Art. 13(4))."@en ;
+   samm:characteristic samm-c:ResourcePath .
+
+:materialText a samm:Property ;
+   samm:description "Clear text information Battery containing more than 0.002% cadmium or 0.004% lead to be marked with the symbol(s) for the metal concerned: Cd or Pb (Art. 13(4))."@en ;
+   samm:characteristic samm-c:MultiLanguageText .
+

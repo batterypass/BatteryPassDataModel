@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#CarbonFootprint",
+  "description": "Data model for battery varbon footprint\nCopyright Â© 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is licensed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution.",
+  "type": "object",
+  "components": {
+    "schemas": {
+      "BatteryCarbonFootprint": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#BatteryCarbonFootprint",
+        "description": "The battery carbon footprint is an aggregation of the carbon footprint of the individual lifecycle stages"
+      },
+      "LifecycleStage": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#LifecycleStage",
+        "enum": [
+          "RawMaterialExtraction",
+          "MainProduction",
+          "Distribution",
+          "Recycling"
+        ]
+      },
+      "CarbonFootprintValue": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#CarbonFootprintValue"
+      },
+      "CarbonFootprintPerLifecycleStageEntity": {
+        "description": "The carbon footprint of the battery as share of total Battery Carbon Footprint, differentiated per life cycle stage",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#CarbonFootprintPerLifecycleStageEntity",
+        "type": "object",
+        "properties": {
+          "lifecycleStage": {
+            "description": "The description of the life cycle stage ",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#lifecycleStage",
+            "$ref": "#/components/schemas/LifecycleStage"
+          },
+          "carbonFootprint": {
+            "description": "Carbon footprint of the individual lifecycle stage",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#carbonFootprint",
+            "$ref": "#/components/schemas/CarbonFootprintValue"
+          }
+        },
+        "required": [
+          "lifecycleStage",
+          "carbonFootprint"
+        ]
+      },
+      "CarbonFootprints": {
+        "description": "CarbainFootprints per lifecycle stage",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#CarbonFootprints",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/CarbonFootprintPerLifecycleStageEntity"
+        }
+      },
+      "CarbonFootprintPerformanceClass": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#CarbonFootprintPerformanceClass",
+        "description": "EV, industrial and LMT batteries shall bear a conspicuous, clearly legible and indelible label indicating the carbon footprint of the battery and the carbon footprint performance class that the relevant battery model per manufacturing plant corresponds to. The carbon footprint performance class shall be accessible via the battery passport. A meaningful number of classes of performance will be developed (?) with category A being the best class with the lowest carbon footprint life cycle impact."
+      },
+      "ResourcePath": {
+        "type": "string",
+        "format": "uri",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#ResourcePath",
+        "description": "The path of a resource."
+      }
+    }
+  },
+  "properties": {
+    "batteryCarbonFootprint": {
+      "description": "The carbon footprint of the battery, calculated as kg of carbon dioxide equivalent per one kWh of the total energy provided by the battery over its expected service life, as declared in the Carbon Footprint Declaration.",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#batteryCarbonFootprint",
+      "$ref": "#/components/schemas/BatteryCarbonFootprint"
+    },
+    "carbonFootprintPerLifecycleStage": {
+      "description": "The carbon footprint of the battery as share of total Battery Carbon Footprint, differentiated per life cycle stages raw material extraction, battery production, distribution and recycling.",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#carbonFootprintPerLifecycleStage",
+      "$ref": "#/components/schemas/CarbonFootprints"
+    },
+    "carbonFootprintPerformanceClass": {
+      "description": "The carbon footprint performance class that the relevant battery model per manufacturing plant corresponds to.",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#carbonFootprintPerformanceClass",
+      "$ref": "#/components/schemas/CarbonFootprintPerformanceClass"
+    },
+    "carbonFootprintStudy": {
+      "description": "A web link to get access to a public version of the study supporting the carbon footprint values.",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#carbonFootprintStudy",
+      "$ref": "#/components/schemas/ResourcePath"
+    }
+  },
+  "required": [
+    "batteryCarbonFootprint",
+    "carbonFootprintPerLifecycleStage",
+    "carbonFootprintPerformanceClass",
+    "carbonFootprintStudy"
+  ]
+}

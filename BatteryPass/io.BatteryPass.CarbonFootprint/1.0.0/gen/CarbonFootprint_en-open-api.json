@@ -1,0 +1,286 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "CarbonFootprint",
+    "version": "v1.0.0",
+    "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#CarbonFootprint"
+  },
+  "servers": [
+    {
+      "url": "https://example.com/api/v1.0.0",
+      "variables": {
+        "api-version": {
+          "default": "v1.0.0"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/null": {
+      "get": {
+        "tags": [
+          "CarbonFootprint"
+        ],
+        "operationId": "getCarbonFootprint",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CarbonFootprint"
+          },
+          "401": {
+            "$ref": "#/components/responses/ClientError"
+          },
+          "402": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "post": {
+        "servers": [
+          {
+            "url": "https://example.com/query-api/v1.0.0",
+            "variables": {
+              "api-version": {
+                "default": "v1.0.0"
+              }
+            }
+          }
+        ],
+        "tags": [
+          "CarbonFootprint"
+        ],
+        "operationId": "postCarbonFootprint",
+        "parameters": [],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Filter"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CarbonFootprint"
+          },
+          "401": {
+            "$ref": "#/components/responses/ClientError"
+          },
+          "402": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "details": {
+            "type": "object",
+            "minLength": 1,
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Filter": {
+        "type": "object",
+        "required": [
+          "filter"
+        ],
+        "properties": {
+          "filter": {
+            "type": "string",
+            "description": "The filter to use.",
+            "example": "filter={filter expression}"
+          },
+          "option": {
+            "type": "string",
+            "description": "The option for the filter.",
+            "example": "option=limit({start},{count})"
+          }
+        }
+      },
+      "BatteryCarbonFootprint": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#BatteryCarbonFootprint",
+        "description": "The battery carbon footprint is an aggregation of the carbon footprint of the individual lifecycle stages"
+      },
+      "LifecycleStage": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#LifecycleStage",
+        "enum": [
+          "RawMaterialExtraction",
+          "MainProduction",
+          "Distribution",
+          "Recycling"
+        ]
+      },
+      "CarbonFootprintValue": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#CarbonFootprintValue"
+      },
+      "CarbonFootprintPerLifecycleStageEntity": {
+        "description": "The carbon footprint of the battery as share of total Battery Carbon Footprint, differentiated per life cycle stage",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#CarbonFootprintPerLifecycleStageEntity",
+        "type": "object",
+        "properties": {
+          "lifecycleStage": {
+            "description": "The description of the life cycle stage ",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#lifecycleStage",
+            "$ref": "#/components/schemas/LifecycleStage"
+          },
+          "carbonFootprint": {
+            "description": "Carbon footprint of the individual lifecycle stage",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#carbonFootprint",
+            "$ref": "#/components/schemas/CarbonFootprintValue"
+          }
+        },
+        "required": [
+          "lifecycleStage",
+          "carbonFootprint"
+        ]
+      },
+      "CarbonFootprints": {
+        "description": "CarbainFootprints per lifecycle stage",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#CarbonFootprints",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/CarbonFootprintPerLifecycleStageEntity"
+        }
+      },
+      "CarbonFootprintPerformanceClass": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#CarbonFootprintPerformanceClass",
+        "description": "EV, industrial and LMT batteries shall bear a conspicuous, clearly legible and indelible label indicating the carbon footprint of the battery and the carbon footprint performance class that the relevant battery model per manufacturing plant corresponds to. The carbon footprint performance class shall be accessible via the battery passport. A meaningful number of classes of performance will be developed (?) with category A being the best class with the lowest carbon footprint life cycle impact."
+      },
+      "ResourcePath": {
+        "type": "string",
+        "format": "uri",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#ResourcePath",
+        "description": "The path of a resource."
+      },
+      "CarbonFootprint": {
+        "description": "Data model for battery varbon footprint\nCopyright Â© 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is licensed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution.",
+        "type": "object",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#CarbonFootprint",
+        "properties": {
+          "batteryCarbonFootprint": {
+            "description": "The carbon footprint of the battery, calculated as kg of carbon dioxide equivalent per one kWh of the total energy provided by the battery over its expected service life, as declared in the Carbon Footprint Declaration.",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#batteryCarbonFootprint",
+            "$ref": "#/components/schemas/BatteryCarbonFootprint"
+          },
+          "carbonFootprintPerLifecycleStage": {
+            "description": "The carbon footprint of the battery as share of total Battery Carbon Footprint, differentiated per life cycle stages raw material extraction, battery production, distribution and recycling.",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#carbonFootprintPerLifecycleStage",
+            "$ref": "#/components/schemas/CarbonFootprints"
+          },
+          "carbonFootprintPerformanceClass": {
+            "description": "The carbon footprint performance class that the relevant battery model per manufacturing plant corresponds to.",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#carbonFootprintPerformanceClass",
+            "$ref": "#/components/schemas/CarbonFootprintPerformanceClass"
+          },
+          "carbonFootprintStudy": {
+            "description": "A web link to get access to a public version of the study supporting the carbon footprint values.",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#carbonFootprintStudy",
+            "$ref": "#/components/schemas/ResourcePath"
+          }
+        },
+        "required": [
+          "batteryCarbonFootprint",
+          "carbonFootprintPerLifecycleStage",
+          "carbonFootprintPerformanceClass",
+          "carbonFootprintStudy"
+        ]
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "The requesting user or client is not authenticated."
+      },
+      "Forbidden": {
+        "description": "The requesting user or client is not authorized to access resources for the given tenant."
+      },
+      "NotFoundError": {
+        "description": "The requested Twin has not been found."
+      },
+      "ClientError": {
+        "description": "Payload or user input is invalid. See error details in the payload for more.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "CarbonFootprint": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CarbonFootprint"
+            }
+          }
+        },
+        "description": "The request was successful."
+      }
+    },
+    "requestBodies": {
+      "CarbonFootprint": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CarbonFootprint"
+            }
+          }
+        }
+      },
+      "Filter": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Filter"
+            }
+          }
+        }
+      }
+    }
+  }
+}

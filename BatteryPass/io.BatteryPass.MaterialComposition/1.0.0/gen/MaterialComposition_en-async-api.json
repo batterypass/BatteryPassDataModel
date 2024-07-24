@@ -1,0 +1,28 @@
+{
+  "asyncapi": "3.0.0",
+  "id": "",
+  "info": {
+    "title": "MaterialComposition MQTT API",
+    "version": "v1.0.0",
+    "description": "Mandatory data: Battery chemistry; critical raw materials; materials used in the cathode, anode, and \nelectrolyte; hazardous substances; impact of substances on the environment and on human health or \nsafety\n\nCopyright © 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution.",
+    "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#MaterialComposition"
+  },
+  "defaultContentType": "application/json",
+  "channels": {
+    "MaterialComposition": {
+      "address": "/BatteryPass/1.0.0/MaterialComposition",
+      "description": "This channel for updating MaterialComposition Aspect.",
+      "parameters": {
+        "namespace": "BatteryPass",
+        "version": "1.0.0",
+        "aspect-name": "MaterialComposition"
+      },
+      "messages": {}
+    }
+  },
+  "operations": {},
+  "components": {
+    "messages": {},
+    "schemas": {}
+  }
+}

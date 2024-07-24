@@ -1,0 +1,489 @@
+######################################################################
+# Copyright (c) 2024 Circulor GmbH on behalf of the Battery Pass Consortium
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This work is made available under the terms of the
+# Creative Commons Attribution 4.0 International (CC-BY-4.0) license,
+# which is available at
+# https://creativecommons.org/licenses/by/4.0/legalcode.
+#
+# SPDX-License-Identifier: CC-BY-4.0
+#######################################################################
+
+@prefix samm: <urn:samm:org.eclipse.esmf.samm:meta-model:2.1.0#> .
+@prefix samm-c: <urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#> .
+@prefix samm-e: <urn:samm:org.eclipse.esmf.samm:entity:2.1.0#> .
+@prefix unit: <urn:samm:org.eclipse.esmf.samm:unit:2.1.0#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <urn:samm:io.BatteryPass.Performance:1.0.0#> .
+
+:PerformanceAndDurability a samm:Aspect ;
+   samm:description "Battery performance and durability data model\n\nCopyright ? 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution."@en ;
+   samm:properties ( :powerCapability :batteryLifetime :temperatureConditions :negativeEvents :technicalSpecification :internalResistance :roundtripEfficiency :dynamicAttribute ) ;
+   samm:operations ( ) ;
+   samm:events ( ) .
+
+:powerCapability a samm:Property ;
+   samm:description "This property covers all power capability related properties"@en ;
+   samm:characteristic :PowerCapability .
+
+:batteryLifetime a samm:Property ;
+   samm:description "'- Expected battery lifetime expressed in cycles, and reference test used.\n- Their expected life-time under the reference conditions for which they have been designed in terms of cycles, except for non-cycle applications, and calendar years."@en ;
+   samm:characteristic :BatteryLifetime .
+
+:temperatureConditions a samm:Property ;
+   samm:characteristic :TemperatureConditions .
+
+:negativeEvents a samm:Property ;
+   samm:characteristic :NegativeEvents .
+
+:technicalSpecification a samm:Property ;
+   samm:characteristic :TechnicalSpecification .
+
+:internalResistance a samm:Property ;
+   samm:characteristic :InternalResistance .
+
+:roundtripEfficiency a samm:Property ;
+   samm:characteristic :RoundtripEfficiency .
+
+:dynamicAttribute a samm:Property ;
+   samm:characteristic :DynamicAttribute .
+
+:PowerCapability a samm-c:SingleEntity ;
+   samm:dataType :PowerCapabilityEntity .
+
+:BatteryLifetime a samm-c:SingleEntity ;
+   samm:description "'- Expected battery lifetime expressed in cycles, and reference test used.\n- Their expected life-time under the reference conditions for which they have been designed in terms of cycles, except for non-cycle applications, and calendar years."@en ;
+   samm:dataType :BatteryLifetimeEntity .
+
+:TemperatureConditions a samm-c:SingleEntity ;
+   samm:dataType :TemperatureConditionsEntity .
+
+:NegativeEvents a samm-c:List ;
+   samm:dataType :NegativeEventEntity .
+
+:TechnicalSpecification a samm-c:SingleEntity ;
+   samm:dataType :TechnicalSpecifiationEntity .
+
+:InternalResistance a samm-c:SingleEntity ;
+   samm:dataType :InternalResistanceEntity .
+
+:RoundtripEfficiency a samm-c:SingleEntity ;
+   samm:dataType :RoundtripEfficiencyEntity .
+
+:DynamicAttribute a samm-c:SingleEntity ;
+   samm:dataType :DynamicAttributeEntity .
+
+:PowerCapabilityEntity a samm:Entity ;
+   samm:description "Covers all Capability related data attributes"@en ;
+   samm:properties ( :originalPowerCapability :remainingPowerCapability :powerCapabilityFade :maximumPermittedBatteryPower :powerCapabilityRatio ) .
+
+:BatteryLifetimeEntity a samm:Entity ;
+   samm:description "Covers all battery lifetime relevant properties"@en ;
+   samm:properties ( :lifetimeReferenceTest :energyThroughput :expectedNumberOfCycles :cRate :capacityThroughput :capacityThresholdExhaustion :soceThresholdForExhaustion :warrantyPeriod :putIntoService :ratedCapacity :numberOfFullCycles ) .
+
+:TemperatureConditionsEntity a samm:Entity ;
+   samm:properties ( :temperatureRangeIdleState :timeExtremeHighTemp :timeExtremeLowTemp ) .
+
+:NegativeEventEntity a samm:Entity ;
+   samm:properties ( :negativeEvent ) .
+
+:TechnicalSpecifiationEntity a samm:Entity ;
+   samm:properties ( :stateOfCertifiedEnergy :ubeCertified :ubeRemaining :initialSelfDischarge :remainingCapacity :capacityFade :stateOfCharge :nominalVoltage :minimumVoltage :maximumVoltage ) .
+
+:InternalResistanceEntity a samm:Entity ;
+   samm:properties ( :initialInternalResistancePack :currentInternalResistancePack ) .
+
+:RoundtripEfficiencyEntity a samm:Entity ;
+   samm:properties ( :initialSelfDischargingRate :currentSelfDischargingRate ) .
+
+:DynamicAttributeEntity a samm:Entity ;
+   samm:properties ( :lastUpdate ) .
+
+:originalPowerCapability a samm:Property ;
+   samm:description "Pre-use power capability: Definition of power capability as given in Battery Regulation. \nAnnex IV Part B, point 4 --> measurement at 80 % and 20 % SoC required. This requirement may not be implementable for remaining power capability and power fade(see below). It, thus, should be reviewed together with SoC definition."@en ;
+   samm:characteristic :OriginalPowerCapability .
+
+:remainingPowerCapability a samm:Property ;
+   samm:description "'- Original power capability (in Watts) and limits, with temperature range when relevant.\n- The amount of energy that a battery is capable to provide over a given period of time under reference conditions.\n- Power capability at 80% and 20% state of charge."@en ;
+   samm:characteristic :RemainingPowerCapability .
+
+:powerCapabilityFade a samm:Property ;
+   samm:description "'- Power fade? (in %) means the decrease over time and upon usage in the amount of power that a battery can deliver at the rated voltage.\n- Power capability at 80% and 20% state of charge."@en ;
+   samm:characteristic :PowerCapabilityFade .
+
+:maximumPermittedBatteryPower a samm:Property ;
+   samm:description "Maximum permitted power the battery is rated for, includes the data relevant for 'power limits'"@en ;
+   samm:characteristic :MaximumPermittedBatteryPower .
+
+:powerCapabilityRatio a samm:Property ;
+   samm:preferredName "PowerCapabilityRatio"@en ;
+   samm:description "Provides information on nominal/recommended charge rate (C-rate); equal to regulation definition."@en ;
+   samm:characteristic :PowerCapabilityRatio .
+
+:lifetimeReferenceTest a samm:Property ;
+   samm:description " Reference test that was used for investigation of number of full discharge cycles."@en ;
+   samm:characteristic samm-c:Text .
+
+:energyThroughput a samm:Property ;
+   samm:characteristic :EnergyThroughput .
+
+:expectedNumberOfCycles a samm:Property ;
+   samm:preferredName "ExpectedNumberOfCycles"@en ;
+   samm:description "Expected battery lifetime expressed in cycles.\nThe exception for non-cycle applications in Article 10 appears sensible, but is not included in the Annex XIII provision.\nThe data attribute is defined by measurement conditions of the cycle-life test such as the C-Rate (see below) and the depth of discharge in the cycle-life test"@en ;
+   samm:characteristic :ExpectedNumberOfCycles .
+
+:cRate a samm:Property ;
+   samm:characteristic :CRate .
+
+:capacityThroughput a samm:Property ;
+   samm:description "Overall sum of the capacity throughput over the battery lifetime.\nThe data attribute should be reported as measured for further potential processing. In addition, the normalisation by capacity could add a further useful value that ensures comparability among battery sizes."@en ;
+   samm:characteristic :CapacityThroughput .
+
+:capacityThresholdExhaustion a samm:Property ;
+   samm:description "Overall sum of the capacity throughput over the battery lifetime.\nThe data attribute should be reported as measured for further potential processing. In addition, the normalisation by capacity could add a further useful value that ensures comparability among battery sizes."@en ;
+   samm:characteristic :CapacityThresholdExhaustion .
+
+:soceThresholdForExhaustion a samm:Property ;
+   samm:description "Derived as analogue to, and potential future replacement of ?Capacity threshold for exhaustion?. Interpreted as minimum percentage of SOCE, above which the battery is still considered operational as EV battery in its current life. The value has to be provided by the economic operator. \nThe SOCE standard is only applicable to electric vehicle batteries.\nThis metric may serve as indicator for a necessary end of current life as EV and may be understood in the context of warranty. A clarified definition is required."@en ;
+   samm:characteristic :SOCEThresholdForExhaustion .
+
+:warrantyPeriod a samm:Property ;
+   samm:description "Warranty period of the battery.\nAlso includes the expected life-time under the reference conditions in calendar years.?"@en ;
+   samm:characteristic :WarrantyPeriod .
+
+:putIntoService a samm:Property ;
+   samm:description "Date of putting the battery into service."@en ;
+   samm:characteristic :Timestamp .
+
+:ratedCapacity a samm:Property ;
+   samm:description "Rated capacity means the total number of ampere-hours (Ah) that can be withdrawn from a fully charged battery under specific conditions; ?Capacity fade? means the decrease over time and upon usage in the amount of charge that a battery can deliver at the rated voltage, with respect to the original measured capacity."@en ;
+   samm:characteristic :RatedCapacity .
+
+:numberOfFullCycles a samm:Property ;
+   samm:description "Number of (full) charging and discharging cycles."@en ;
+   samm:characteristic :NumberOfFullCycles .
+
+:temperatureRangeIdleState a samm:Property ;
+   samm:description "Upper an lower boundary of the surrounding temperature range, which the battery can safely withstand. "@en ;
+   samm:characteristic :TemperatureRangeIdleStateTrait .
+
+:timeExtremeHighTemp a samm:Property ;
+   samm:description "Cumulated time spent above the given upper boundary of temperature."@en ;
+   samm:characteristic :TimeExtremeHighTemp .
+
+:timeExtremeLowTemp a samm:Property ;
+   samm:description "Cumulated time spent below the given lower boundary of temperature."@en ;
+   samm:characteristic :TimeExtremeLowTemp .
+
+:negativeEvent a samm:Property ;
+   samm:preferredName "Negative events, such as accidents. No further definition provided by regulation."@en ;
+   samm:characteristic :NegativeEventsList .
+
+:stateOfCertifiedEnergy a samm:Property ;
+   samm:preferredName "SOCE"@en ;
+   samm:description "Definition based on UNECE GTR 22: The measured or on-board UBE performance at a specific point in its lifetime, expressed as a percentage of the certified usable battery energy."@en ;
+   samm:characteristic :StateOfCertifiedEnergy .
+
+:ubeCertified a samm:Property ;
+   samm:description "Definition from UNECE GTR 22, applicable only to EVs.\nThe energy supplied by the battery from the beginning of the test procedure used for certification until the applicable break-off criterion of the test procedure used for certification is reached."@en ;
+   samm:characteristic :UBECertified .
+
+:ubeRemaining a samm:Property ;
+   samm:description "Definition from UNECE GTR 22, applicable only to EVs.\nThe energy supplied by the battery from the beginning of the test procedure used for certification until the applicable break-off criterion of the test procedure used for certification is reached."@en ;
+   samm:characteristic :UBERemaining .
+
+:initialSelfDischarge a samm:Property ;
+   samm:description "Initial self-discharge in % of capacity per unit of time in defined conditions (temperature range etc) as pre-use metric. "@en ;
+   samm:characteristic :InitialSelfDischarge .
+
+:remainingCapacity a samm:Property ;
+   samm:description "The in-use data attribute on capacity, corresponding with the definition of rated capacity."@en ;
+   samm:characteristic :RemainingCapacity .
+
+:capacityFade a samm:Property ;
+   samm:description "Capacity fade defined as per reulation: \"Decrease over time and upon usage in the amount of charge that a battery can deliver at the rated voltage, with respect to the original rated capacity declared by the manufacturer."@en ;
+   samm:characteristic :CapacityFade .
+
+:stateOfCharge a samm:Property ;
+   samm:preferredName "SoC"@en ;
+   samm:description "The Battery Pass consortium proposes to change the definition to: \"available capacity in a battery expressed as a percentage of remaining capacity\" to reflect use of SoC in practice.  "@en ;
+   samm:characteristic :StateOfCharge .
+
+:nominalVoltage a samm:Property ;
+   samm:description "Nominal voltage the battery is rated for."@en ;
+   samm:characteristic :NominalVoltage .
+
+:minimumVoltage a samm:Property ;
+   samm:description "Minimum voltage the battery is rated for."@en ;
+   samm:characteristic :MinimumVoltage .
+
+:maximumVoltage a samm:Property ;
+   samm:description "Maximum voltage the battery is rated for."@en ;
+   samm:characteristic :MaximumVoltage .
+
+:initialInternalResistancePack a samm:Property ;
+   samm:description "Initial (Pre-Use) internal resistance on battery pack level. \n\nDefinition of internal resistance should differ from regulation definition, as \"opposition\" is not an electrotechnical term and may be based on IEV 131-12-04: \"internal resistance means the absolute value of the quotient of the voltage drop between the terminals by the electric current increase in the battery circuit during a current pulse\""@en ;
+   samm:characteristic :InitialInternalResistance .
+
+:currentInternalResistancePack a samm:Property ;
+   samm:characteristic :CurrentInternalResistance .
+
+:initialSelfDischargingRate a samm:Property ;
+   samm:characteristic :InitialSelfDischargingRate .
+
+:currentSelfDischargingRate a samm:Property ;
+   samm:characteristic :CurrentSelfDischargingRate .
+
+:lastUpdate a samm:Property ;
+   samm:characteristic samm-c:Timestamp .
+
+:OriginalPowerCapability a samm-c:List ;
+   samm:dataType :PowerCapabilityAtEntity .
+
+:RemainingPowerCapability a samm-c:List ;
+   samm:dataType :RemainingPowerCapabilityEntity .
+
+:PowerCapabilityFade a samm-c:Measurement ;
+   samm:description "'- Original power capability (in Watts) and limits, with temperature range when relevant.\n- The amount of energy that a battery is capable to provide over a given period of time under reference conditions.\n- Power capability at 80% and 20% state of charge."@en ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:percent .
+
+:MaximumPermittedBatteryPower a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:kilowatt .
+
+:PowerCapabilityRatio a samm-c:Measurement ;
+   samm:description "Ratio between nominal allowed battery power (W) and battery energy (Wh)."@en ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:percent .
+
+:EnergyThroughput a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:kilowattHour .
+
+:ExpectedNumberOfCycles a samm-c:Quantifiable ;
+   samm:dataType xsd:long .
+
+:CRate a samm-c:Quantifiable ;
+   samm:dataType xsd:float .
+
+:CapacityThroughput a samm-c:Measurement ;
+   samm:description "Capacity throughput."@en ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:ampereHour .
+
+:CapacityThresholdExhaustion a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:percent .
+
+:SOCEThresholdForExhaustion a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:percent .
+
+:WarrantyPeriod a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:year .
+
+:Timestamp a samm:Characteristic ;
+   samm:preferredName "Timestamp"@en ;
+   samm:description "Describes a Property which contains the date and time with an optional timezone."@en ;
+   samm:dataType xsd:dateTime .
+
+:RatedCapacity a samm-c:Measurement ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:ampereHour .
+
+:NumberOfFullCycles a samm-c:Measurement ;
+   samm:description "- Information and data as a result of its use, including the number of charging and discharging cycles."@en ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:cycle .
+
+:TemperatureRangeIdleStateTrait a samm-c:Trait ;
+   samm-c:baseCharacteristic :TemperatureRangeIdleState ;
+   samm-c:constraint :TemperatureRange .
+
+:TimeExtremeHighTemp a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:minuteUnitOfTime .
+
+:TimeExtremeLowTemp a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:minuteUnitOfTime .
+
+:NegativeEventsList a samm-c:List ;
+   samm:dataType xsd:string .
+
+:StateOfCertifiedEnergy a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:percent .
+
+:UBECertified a samm-c:Measurement ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:kilowattHour .
+
+:UBERemaining a samm-c:SingleEntity ;
+   samm:dataType :UBERemainingEntity .
+
+:InitialSelfDischarge a samm-c:Measurement ;
+   samm:description "vcbvb"@en ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:percent .
+
+:RemainingCapacity a samm-c:SingleEntity ;
+   samm:dataType :RemainingCapacityEntity .
+
+:CapacityFade a samm-c:SingleEntity ;
+   samm:dataType :CapacityFadeEntity .
+
+:StateOfCharge a samm-c:SingleEntity ;
+   samm:dataType :StateOfChargeEntity .
+
+:NominalVoltage a samm-c:Measurement ;
+   samm:description "s"@en ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:volt .
+
+:MinimumVoltage a samm-c:Measurement ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:volt .
+
+:MaximumVoltage a samm-c:Measurement ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:volt .
+
+:InitialInternalResistance a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:ohm .
+
+:CurrentInternalResistance a samm-c:SingleEntity ;
+   samm:dataType :CurrentInternalResistanceEntity .
+
+:InitialSelfDischargingRate a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:percentPerMonth .
+
+:CurrentSelfDischargingRate a samm-c:SingleEntity ;
+   samm:dataType :CurrentSelfDischargingRateEntity .
+
+:PowerCapabilityAtEntity a samm:Entity ;
+   samm:properties ( :atSoC :powerCapabilityAt ) .
+
+:RemainingPowerCapabilityEntity a samm:Entity ;
+   samm:extends :DynamicAttributeEntity ;
+   samm:properties ( :remainingPowerCapabilityValue ) .
+
+:TemperatureRangeIdleState a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:degreeCelsius .
+
+:TemperatureRange a samm-c:RangeConstraint ;
+   samm-c:minValue "-20.0"^^xsd:double ;
+   samm-c:maxValue "+60.0"^^xsd:double ;
+   samm-c:lowerBoundDefinition samm-c:AT_LEAST ;
+   samm-c:upperBoundDefinition samm-c:AT_MOST .
+
+:UBERemainingEntity a samm:Entity ;
+   samm:extends :DynamicAttributeEntity ;
+   samm:preferredName "UBERemainingEntity"@en ;
+   samm:properties ( :uBERemainingValue ) .
+
+:RemainingCapacityEntity a samm:Entity ;
+   samm:extends :DynamicAttributeEntity ;
+   samm:properties ( :remainingCapacityValue ) .
+
+:CapacityFadeEntity a samm:Entity ;
+   samm:extends :DynamicAttributeEntity ;
+   samm:properties ( :capacityFadeValue ) .
+
+:StateOfChargeEntity a samm:Entity ;
+   samm:extends :DynamicAttributeEntity ;
+   samm:properties ( :stateOfChargeValue ) .
+
+:CurrentInternalResistanceEntity a samm:Entity ;
+   samm:extends :DynamicAttributeEntity ;
+   samm:properties ( :currentInternalResistanceValue ) .
+
+:CurrentSelfDischargingRateEntity a samm:Entity ;
+   samm:extends :DynamicAttributeEntity ;
+   samm:properties ( :currentSelfDischargingRateEntity ) .
+
+:atSoC a samm:Property ;
+   samm:characteristic :AtSoC .
+
+:powerCapabilityAt a samm:Property ;
+   samm:characteristic :PowerCapabilityAtSoc .
+
+:remainingPowerCapabilityValue a samm:Property ;
+   samm:characteristic :RemainingPowerCapabilityValue .
+
+:uBERemainingValue a samm:Property ;
+   samm:characteristic :UBERemainingValue .
+
+:remainingCapacityValue a samm:Property ;
+   samm:characteristic :RemainingCapacityValue .
+
+:capacityFadeValue a samm:Property ;
+   samm:characteristic :CapacityFadeValue .
+
+:stateOfChargeValue a samm:Property ;
+   samm:characteristic :StateOfChargeValue .
+
+:currentInternalResistanceValue a samm:Property ;
+   samm:preferredName "Value"@en ;
+   samm:characteristic :CurrentInternalResistanceValue .
+
+:currentSelfDischargingRateEntity a samm:Property ;
+   samm:characteristic :CurrentSelfDischargingRateValue .
+
+:AtSoC a samm-c:Measurement ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:percent .
+
+:PowerCapabilityAtSoc a samm-c:Measurement ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:percent .
+
+:RemainingPowerCapabilityValue a samm-c:SingleEntity ;
+   samm:preferredName "RemainingPowerCapabilityValue"@en ;
+   samm:dataType :RemainingPowerCapabilityDynamicAt .
+
+:UBERemainingValue a samm-c:Measurement ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:kilowattHour .
+
+:RemainingCapacityValue a samm-c:Measurement ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:kilowattHour .
+
+:CapacityFadeValue a samm-c:Measurement ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:percent .
+
+:StateOfChargeValue a samm-c:Measurement ;
+   samm:preferredName "Value"@en ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:percent .
+
+:CurrentInternalResistanceValue a samm-c:Measurement ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:ohm .
+
+:CurrentSelfDischargingRateValue a samm-c:Measurement ;
+   samm:dataType xsd:float ;
+   samm-c:unit unit:percent .
+
+:RemainingPowerCapabilityDynamicAt a samm:Entity ;
+   samm:extends :PowerCapabilityAtEntity ;
+   samm:properties ( :rPCLastUpdated ) .
+
+:rPCLastUpdated a samm:Property ;
+   samm:characteristic samm-c:Timestamp .
+
+:lastUpdated a samm:Property ;
+   samm:characteristic :Timestamp .
+

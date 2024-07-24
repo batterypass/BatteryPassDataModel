@@ -1,0 +1,15 @@
+{
+  "batteryCategory": "lmt",
+  "productIdentifier": "eOMtThyhVNLWUZNRcBaQKxI",
+  "productPassportIdentifier": "urn:bmwk:123456687678",
+  "manufacturerIdentification": "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
+  "batteryStatus": "Original",
+  "economicOperator": "JxkyvRnL",
+  "manufacturingDate": "2024-05-28T11:05:22.232+02:00",
+  "batteryWeight": 699,
+  "manufacturingPlace": {
+    "addressCountry": "Germany",
+    "streetAddress": "Hindenburgstr. 10",
+    "postalCode": "30890"
+  }
+}

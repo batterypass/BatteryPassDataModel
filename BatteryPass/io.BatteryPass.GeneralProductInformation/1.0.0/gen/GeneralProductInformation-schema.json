@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#GeneralProductInformation",
+  "description": "Mandatory data: Product identification; manufacturer?s identification; manufacturing place; manufac\u0002turing date; battery category; battery weight; battery status (Annex VI, Part A and Annex XIII)\nCopyright Â© 2023 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution.",
+  "type": "object",
+  "components": {
+    "schemas": {
+      "ProductIdentifierCode": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#ProductIdentifierCode",
+        "description": "A unique identifier is defined as \"a unique string of characters for the identification of batteries that also enables a web link to the battery passport\" (Art. 3(66)), to be attributed by the economic operator placing the battery on the market (Art. 77(3)). The unique identifier shall comply with the standard (?ISO/IEC?) 15459:2015 or equivalent (Art. 77(3)). A QR code shall provide access to the battery passport and be linked to the unique identifier (Art. 77(3)). Batteries shall ?bear a model identification and batch or serial number, or product number or another element allowing their identification? (Art. 38(6)). \n\nBattery Regulation Reference: Art. 77(3); Art. 3(66); Art. 38(6)"
+      },
+      "ProductPassportIdentifierTrait": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#ProductPassportIdentifierTrait",
+        "description": "Code constraint for URN",
+        "pattern": "^urn:[a-z0-9]+:[a-z0-9]+$"
+      },
+      "BatteryCategoryEnum": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#BatteryCategoryEnum",
+        "enum": [
+          "lmt",
+          "ev",
+          "industrial",
+          "stationary"
+        ]
+      },
+      "ManufacturerIdentificationCode": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#ManufacturerIdentificationCode",
+        "description": "Manufacturer's identification by stating the name; registered trade name or registered trademark; the postal address, indicating a single contact point; a web address, where one exists; an e-mail address, where one exists (Art. 38(7)). Manufacturer as ?any natural or legal person who manufactures a battery or has a battery designed or manufactured, and markets that battery under its own name or trademark or puts it into service for its own purposes? (Art. 3(33)). \n\nRegulation reference: Annex XIII (1a) ? Annex VI Part A (1); Art. 3(33); Art. 38(7); ESPR Art. 2(32)"
+      },
+      "ManufacturingDateTimeStamp": {
+        "type": "string",
+        "format": "date-time",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#ManufacturingDateTimeStamp",
+        "description": "Manufacturing date (month and year)\nRegulation Reference: Annex XIII (1a) ? Annex VI Part A (4); Annex VII Part B (1)"
+      },
+      "BatteryStatusEnumeration": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#BatteryStatusEnumeration",
+        "description": "Lifecycle status of the battery. Status defined from a list, with the options suggested as follows: 'original', 'repurposed', 'reused', 'remanufactured', 'waste'\n\nEUBR: Annex XIII (4c)",
+        "enum": [
+          "Original",
+          "Repurposed",
+          "Reused",
+          "Remanufactured",
+          "Waste"
+        ]
+      },
+      "BatteryWeightMeasurement": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#BatteryWeightMeasurement",
+        "description": "Weight of the battery\nEUBR: Annex XIII (1a) ? Annex VI Part A (5)"
+      },
+      "Text": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#Text",
+        "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+      },
+      "PostalAddress": {
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#PostalAddress",
+        "type": "object",
+        "properties": {
+          "addressCountry": {
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#addressCountry",
+            "$ref": "#/components/schemas/Text"
+          },
+          "postalCode": {
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#postalCode",
+            "$ref": "#/components/schemas/Text"
+          },
+          "streetAddress": {
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#streetAddress",
+            "$ref": "#/components/schemas/Text"
+          }
+        },
+        "required": [
+          "addressCountry",
+          "postalCode",
+          "streetAddress"
+        ]
+      },
+      "ManufacturingPlaceEntity": {
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#ManufacturingPlaceEntity",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PostalAddress"
+          }
+        ]
+      },
+      "EconomicOperatorCode": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#EconomicOperatorCode",
+        "description": "Not demanded by the EU Battery Regulation"
+      }
+    }
+  },
+  "properties": {
+    "productIdentifier": {
+      "description": "Unique identifier allowing for the unambiguous identification of each individual battery and hence each corresponding battery passport (exploration of a potential additional battery passport identifier (not requried per Battery Regulation) ongoing).",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#productIdentifier",
+      "$ref": "#/components/schemas/ProductIdentifierCode"
+    },
+    "productPassportIdentifier": {
+      "description": "Unique identifier allowing for the unambiguous identification of each individual battery and hence each corresponding battery passport (exploration of a potential additional battery passport identifier (not requried per Battery Regulation) ongoing).",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#productPassportIdentifier",
+      "$ref": "#/components/schemas/ProductPassportIdentifierTrait"
+    },
+    "batteryCategory": {
+      "description": "Categories relevant for the battery passport: ?LMT battery?, ?electric vehicle battery? or ?industrial battery?.",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#batteryCategory",
+      "$ref": "#/components/schemas/BatteryCategoryEnum"
+    },
+    "manufacturerIdentification": {
+      "description": "Unambiguous identification of the manufacturer of the battery, suggested via a unique operator identifier (as \"unique string of characters for the identification of actors involved in the value chain of products\", ESPR Art. 2(32)). ",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#manufacturerIdentification",
+      "$ref": "#/components/schemas/ManufacturerIdentificationCode"
+    },
+    "manufacturingDate": {
+      "description": "Manufacturing date (month and year), suggested in form of manufacturing date codes.",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#manufacturingDate",
+      "$ref": "#/components/schemas/ManufacturingDateTimeStamp"
+    },
+    "batteryStatus": {
+      "description": "Lifecycle status of the battery. Status defined from a list, with the options suggested as follows: 'original', 'repurposed', 'reused', 'remanufactured', 'waste'.",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#batteryStatus",
+      "$ref": "#/components/schemas/BatteryStatusEnumeration"
+    },
+    "batteryWeight": {
+      "description": "Mass of the entire battery in kilograms. Voluntary: if the battery is defined on pack or module level: also weight of the modules and/or cells.",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#batteryWeight",
+      "$ref": "#/components/schemas/BatteryWeightMeasurement"
+    },
+    "manufacturingPlace": {
+      "description": "Unambiguous identification of the manufacturing facility (e.g. country, city, street, building (if needed)), suggested via a unique facility identifier (as \"unique string of characters for the identification of locations or buildings involved in the value chain of a product or used by actors involved in the value chain of a product\", ESPR Art. 2(33)).",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#manufacturingPlace",
+      "$ref": "#/components/schemas/ManufacturingPlaceEntity"
+    },
+    "economicOperator": {
+      "description": "State the name, trade name or mark, postal address, web ad-dress, e-mail address. Suggested reporting via a unique operator identifier (see requirements of unique battery identifier).",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#economicOperator",
+      "$ref": "#/components/schemas/EconomicOperatorCode"
+    }
+  },
+  "required": [
+    "productIdentifier",
+    "productPassportIdentifier",
+    "batteryCategory",
+    "manufacturerIdentification",
+    "manufacturingDate",
+    "batteryStatus",
+    "batteryWeight",
+    "manufacturingPlace",
+    "economicOperator"
+  ]
+}

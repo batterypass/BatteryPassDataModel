@@ -1,0 +1,6 @@
+{
+  "supplyChainDueDiligenceReport": "telnet://192.0.2.16:80/",
+  "thirdPartyAussurances": "ftp://ftp.is.co.za/rfc/rfc1808.txt",
+  "sustainabilityReport": "http://www.wikipedia.org",
+  "euTaxonomyDisclosureStatement": "http://www.ietf.org/rfc/rfc2396.txt"
+}

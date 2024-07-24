@@ -1,0 +1,28 @@
+{
+  "asyncapi": "3.0.0",
+  "id": "",
+  "info": {
+    "title": "Circularity MQTT API",
+    "version": "v1.0.0",
+    "description": "Dismantling information (including at least: exploded diagrams of the battery system/pack showing the\nlocation of battery cells; disassembly sequences; type and number of fastening techniques to be un-\nlocked; tools required for disassembly; warnings if risk of damaging parts exists; amount of cells used\nand layout); part numbers for components and contact details of sources for replacement spares;\nsafety measures (Annex XIII (2b-d)); usable extinguishing agent (Annex VI, Part A(9)).\n\n2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is licensed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution.",
+    "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#Circularity"
+  },
+  "defaultContentType": "application/json",
+  "channels": {
+    "Circularity": {
+      "address": "/BatteryPass/1.0.0/Circularity",
+      "description": "This channel for updating Circularity Aspect.",
+      "parameters": {
+        "namespace": "BatteryPass",
+        "version": "1.0.0",
+        "aspect-name": "Circularity"
+      },
+      "messages": {}
+    }
+  },
+  "operations": {},
+  "components": {
+    "messages": {},
+    "schemas": {}
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Labels",
+    "version": "v1.0.0",
+    "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#Labels"
+  },
+  "servers": [
+    {
+      "url": "https://example.com/api/v1.0.0",
+      "variables": {
+        "api-version": {
+          "default": "v1.0.0"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/null": {
+      "get": {
+        "tags": [
+          "Labels"
+        ],
+        "operationId": "getLabels",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Labels"
+          },
+          "401": {
+            "$ref": "#/components/responses/ClientError"
+          },
+          "402": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "post": {
+        "servers": [
+          {
+            "url": "https://example.com/query-api/v1.0.0",
+            "variables": {
+              "api-version": {
+                "default": "v1.0.0"
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Labels"
+        ],
+        "operationId": "postLabels",
+        "parameters": [],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Filter"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Labels"
+          },
+          "401": {
+            "$ref": "#/components/responses/ClientError"
+          },
+          "402": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "details": {
+            "type": "object",
+            "minLength": 1,
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Filter": {
+        "type": "object",
+        "required": [
+          "filter"
+        ],
+        "properties": {
+          "filter": {
+            "type": "string",
+            "description": "The filter to use.",
+            "example": "filter={filter expression}"
+          },
+          "option": {
+            "type": "string",
+            "description": "The option for the filter.",
+            "example": "option=limit({start},{count})"
+          }
+        }
+      },
+      "ResourcePath": {
+        "type": "string",
+        "format": "uri",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#ResourcePath",
+        "description": "The path of a resource."
+      },
+      "ResourcePath0": {
+        "type": "string",
+        "format": "uri",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.digitaltwin:1.0.0#ResourcePath",
+        "description": "The path of a resource."
+      },
+      "EuDeclarationOfConformityId": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#EuDeclarationOfConformityId"
+      },
+      "MultiLanguageText": {
+        "type": "object",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#MultiLanguageText",
+        "description": "Describes a Property which contains plain text in multiple languages. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+      },
+      "SeparateCollection": {
+        "description": "Explanation of the meaning of all symbols and labels (including separate collection; cadmium and lead; and carbon footprint and carbon footprint performance class symbols; and symbols and labels printed on batteries or their accompanying documents but not accessible via the battery passport).",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#SeparateCollection",
+        "type": "object",
+        "properties": {
+          "separateCollectionSymbol": {
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#separateCollectionSymbol",
+            "$ref": "#/components/schemas/ResourcePath"
+          },
+          "separateCollectionDescription": {
+            "description": "Explanation of the meaning of all symbols and labels (including separate collection; cadmium and lead; and carbon footprint and carbon footprint performance class symbols; and symbols and labels printed on batteries or their accompanying documents but not accessible via the battery passport).",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#separateCollectionDescription",
+            "$ref": "#/components/schemas/MultiLanguageText"
+          }
+        },
+        "required": [
+          "separateCollectionSymbol",
+          "separateCollectionDescription"
+        ]
+      },
+      "SeperateCollection": {
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#SeperateCollection",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SeparateCollection"
+          }
+        ]
+      },
+      "MaterialSymbol": {
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#MaterialSymbol",
+        "type": "object",
+        "properties": {
+          "materialSymbol": {
+            "description": "Battery containing more than 0.002% cadmium or 0.004% lead to be marked with the symbol(s) for the metal concerned: Cd or Pb (Art. 13(4)).",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#materialSymbol",
+            "$ref": "#/components/schemas/ResourcePath"
+          },
+          "materialText": {
+            "description": "Clear text information Battery containing more than 0.002% cadmium or 0.004% lead to be marked with the symbol(s) for the metal concerned: Cd or Pb (Art. 13(4)).",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#materialText",
+            "$ref": "#/components/schemas/MultiLanguageText"
+          }
+        },
+        "required": [
+          "materialSymbol",
+          "materialText"
+        ]
+      },
+      "MaterialSymbols": {
+        "description": "Cadmium and lead symbols indicating the metal is contained in the battery above a defined threshold. To be printed on the physical label and displayed via the battery passport, suggested to be translated also to text to ensure machine readability.",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#MaterialSymbols",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/MaterialSymbol"
+        },
+        "uniqueItems": true
+      },
+      "Labels": {
+        "description": "Data model for battery labels and conformity\n\nCopyright Â© 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution.",
+        "type": "object",
+        "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#Labels",
+        "properties": {
+          "declarationOfConformity": {
+            "description": "URL to EU declaration of conformity signed by responsible economic operators to declare compliance with the regulatory requirements in the context of the market conformity assessment procedure and assume full responsibility.",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#declarationOfConformity",
+            "$ref": "#/components/schemas/ResourcePath"
+          },
+          "resultOfTestReport": {
+            "description": "URL to a document that includes results of tests reports proving compliance in the market conformity assessment procedure with the requirements as per the technical documentation (Art. 7-10, Art. 12-14 and due diligence policies ).",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#resultOfTestReport",
+            "$ref": "#/components/schemas/ResourcePath0"
+          },
+          "euDeclarationOfConformityId": {
+            "description": "Identification number of the EU declaration of conformity of the battery, linked to the  Battery Carbon Footprint Declaration.",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#euDeclarationOfConformityId",
+            "$ref": "#/components/schemas/EuDeclarationOfConformityId"
+          },
+          "separateCollection": {
+            "description": "'Separate collection' or 'WEEE label' indicating that a product should not be discarded as unsorted waste but must be sent to separate collection facilities for recovery and recycling. To be printed on the physical label and displayed via the battery passport, suggested to be translated also to text to ensure machine readability.",
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#separateCollection",
+            "$ref": "#/components/schemas/SeperateCollection"
+          },
+          "materialSymbols": {
+            "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#materialSymbols",
+            "$ref": "#/components/schemas/MaterialSymbols"
+          }
+        },
+        "required": [
+          "declarationOfConformity",
+          "resultOfTestReport",
+          "euDeclarationOfConformityId",
+          "separateCollection",
+          "materialSymbols"
+        ]
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "The requesting user or client is not authenticated."
+      },
+      "Forbidden": {
+        "description": "The requesting user or client is not authorized to access resources for the given tenant."
+      },
+      "NotFoundError": {
+        "description": "The requested Twin has not been found."
+      },
+      "ClientError": {
+        "description": "Payload or user input is invalid. See error details in the payload for more.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Labels": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Labels"
+            }
+          }
+        },
+        "description": "The request was successful."
+      }
+    },
+    "requestBodies": {
+      "Labels": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Labels"
+            }
+          }
+        }
+      },
+      "Filter": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Filter"
+            }
+          }
+        }
+      }
+    }
+  }
+}

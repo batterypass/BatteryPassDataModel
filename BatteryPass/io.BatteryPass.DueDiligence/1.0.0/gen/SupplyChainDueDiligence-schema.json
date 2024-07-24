@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#SupplyChainDueDiligence",
+  "description": "Data model for Battery due diligence\n\nCopyright Â© 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution.",
+  "type": "object",
+  "components": {
+    "schemas": {
+      "ResourcePath": {
+        "type": "string",
+        "format": "uri",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#ResourcePath",
+        "description": "The path of a resource."
+      }
+    }
+  },
+  "properties": {
+    "supplyChainDueDiligenceReport": {
+      "description": "Information on responsible sourcing as indicated in the report on its due diligence policies referred to in Article 45e(3) (...) That report shall contain, in a manner that is easily comprehensible for end-users and clearly identifies the batteries concerned, the data and information on steps taken by that economic operator to comply with the requirements set out in Articles 45b and 45c, including findings of significant adverse impacts in the risk categories listed in Annex X, point 2, and how they have been addressed, as well as a summary report of the third-party verifications carried out in accordance with Article 45d, including the name of the notified body, with due regard for business confidentiality and other competitive concerns. It shall also elaborate, where relevant, on access to information, public participation in decision-making and access to justice in environmental matters in relation the sourcing, processing and trading of the raw materials. ",
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#supplyChainDueDiligenceReport",
+      "$ref": "#/components/schemas/ResourcePath"
+    },
+    "thirdPartyAussurances": {
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#thirdPartyAussurances",
+      "$ref": "#/components/schemas/ResourcePath"
+    },
+    "euTaxonomyDisclosureStatement": {
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#euTaxonomyDisclosureStatement",
+      "$ref": "#/components/schemas/ResourcePath"
+    },
+    "sustainabilityReport": {
+      "x-samm-aspect-model-urn": "urn:samm:BatteryPass:1.0.0#sustainabilityReport",
+      "$ref": "#/components/schemas/ResourcePath"
+    }
+  },
+  "required": [
+    "supplyChainDueDiligenceReport",
+    "thirdPartyAussurances",
+    "euTaxonomyDisclosureStatement",
+    "sustainabilityReport"
+  ]
+}

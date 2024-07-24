@@ -1,0 +1,19 @@
+{
+  "euDeclarationOfConformityId": "eOMtThyhVNLWUZNRcBaQKxI",
+  "materialSymbols": [
+    {
+      "materialSymbol": "http://www.wikipedia.org",
+      "materialText": {
+        "en": "Example multi language string"
+      }
+    }
+  ],
+  "separateCollection": {
+    "separateCollectionSymbol": "http://www.ietf.org/rfc/rfc2396.txt",
+    "separateCollectionDescription": {
+      "en": "Example multi language string"
+    }
+  },
+  "resultOfTestReport": "ftp://ftp.is.co.za/rfc/rfc1808.txt",
+  "declarationOfConformity": "telnet://192.0.2.16:80/"
+}
