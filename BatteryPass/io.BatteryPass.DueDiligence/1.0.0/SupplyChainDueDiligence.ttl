@@ -1,16 +1,4 @@
-######################################################################
-# Copyright (c) 2024 Circulor GmbH on behalf of the Battery Pass Consortium
-#
-# See the NOTICE file(s) distributed with this work for additional
-# information regarding copyright ownership.
-#
-# This work is made available under the terms of the
-# Creative Commons Attribution 4.0 International (CC-BY-4.0) license,
-# which is available at
-# https://creativecommons.org/licenses/by/4.0/legalcode.
-#
-# SPDX-License-Identifier: CC-BY-4.0
-#######################################################################
+
 
 @prefix samm: <urn:samm:org.eclipse.esmf.samm:meta-model:2.1.0#> .
 @prefix samm-c: <urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#> .
@@ -22,7 +10,7 @@
 @prefix : <urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.0.0#> .
 
 :SupplyChainDueDiligence a samm:Aspect ;
-   samm:description "Data model for Battery due diligence\n\nCopyright � 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution."@en ;
+   samm:description "Data model for Battery due diligence\n\nCopyright ? 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution."@en ;
    samm:properties ( :supplyChainDueDiligenceReport :thirdPartyAussurances :euTaxonomyDisclosureStatement :sustainabilityReport ) ;
    samm:operations ( ) ;
    samm:events ( ) .

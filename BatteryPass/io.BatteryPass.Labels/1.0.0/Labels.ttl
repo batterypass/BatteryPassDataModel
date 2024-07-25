@@ -20,9 +20,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix : <urn:samm:io.BatteryPass.Labels:1.0.0#> .
+@prefix ext-digitaltwin: <urn:samm:org.eclipse.digitaltwin:1.0.0#> .
 
 :Labels a samm:Aspect ;
-   samm:description "Data model for battery labels and conformity\n\nCopyright � 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution."@en ;
+   samm:description "Data model for battery labels and conformity\n\nCopyright 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution."@en ;
    samm:properties ( :declarationOfConformity :resultOfTestReport :euDeclarationOfConformityId :separateCollection :materialSymbols ) ;
    samm:operations ( ) ;
    samm:events ( ) .

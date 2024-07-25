@@ -20,15 +20,16 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix : <urn:samm:io.BatteryPass.Circularity:1.0.0#> .
+@prefix ext-digitaltwin: <urn:samm:org.eclipse.digitaltwin:1.0.0#> .
 
 :Circularity a samm:Aspect ;
-   samm:description "Dismantling information (including at least: exploded diagrams of the battery system/pack showing the\nlocation of battery cells; disassembly sequences; type and number of fastening techniques to be un-\nlocked; tools required for disassembly; warnings if risk of damaging parts exists; amount of cells used\nand layout); part numbers for components and contact details of sources for replacement spares;\nsafety measures (Annex XIII (2b-d)); usable extinguishing agent (Annex VI, Part A(9)).\n\n2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is licensed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution."@en ;
+   samm:description "Dismantling information (including at least: exploded diagrams of the battery system/pack showing the location of battery cells; disassembly sequences; type and number of fastening techniques to be unlocked; tools required for disassembly; warnings if risk of damaging parts exists; amount of cells used and layout); part numbers for components and contact details of sources for replacement spares; safety measures (Annex XIII (2b-d)); usable extinguishing agent (Annex VI, Part A(9)). 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is licensed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold commercially and is given appropriate attribution."@en ;
    samm:properties ( :dismantlingAndRemovalInformation :sourceForSpareParts :recycledContent :safetyRequirements :endOfLifeInformation :renewableContent ) ;
    samm:operations ( ) ;
    samm:events ( ) .
 
 :dismantlingAndRemovalInformation a samm:Property ;
-   samm:description "Dismantling and Removal information, including at least:\n- Exploded diagrams of the battery system/pack showing the location of battery cells\n- Disassembly sequences\n- Type and number of fastening techniques to be unlocked\n- Tools required for disassembly\n- Warnings if risk of damaging parts exists\n- Amount of cells used and layout"@en ;
+   samm:description "Dismantling and Removal information, including at least:- Exploded diagrams of the battery system/pack showing the location of battery cells- Disassembly sequences- Type and number of fastening techniques to be unlocked- Tools required for disassembly- Warnings if risk of damaging parts exists- Amount of cells used and layout."@en ;
    samm:characteristic :SetOfDocumentation .
 
 :sourceForSpareParts a samm:Property ;
@@ -75,7 +76,7 @@
    samm-c:unit unit:percent .
 
 :DismantlingandRemovalDocumentation a samm:Entity ;
-   samm:description "Dismantling and Removal information, including at least:\n- Exploded diagrams of the battery system/pack showing the location of battery cells\n- Disassembly sequences\n- Type and number of fastening techniques to be unlocked\n- Tools required for disassembly\n- Warnings if risk of damaging parts exists\n- Amount of cells used and layout\n\nEUBR: Annex XIII (2c)"@en ;
+   samm:description "Dismantling and Removal information, including at least:- Exploded diagrams of the battery system/pack showing the location of battery cells- Disassembly sequences- Type and number of fastening techniques to be unlocked- Tools required for disassembly- Warnings if risk of damaging parts exists- Amount of cells used and layoutEUBR: Annex XIII (2c)"@en ;
    samm:properties ( :documentType :mimeType :documentURL ) .
 
 :SparePartSupplier a samm:Entity ;
@@ -91,7 +92,7 @@
    samm:properties ( :wastePrevention :separateCollection :informationOnCollection ) .
 
 :documentType a samm:Property ;
-   samm:description "Describes type for document e.g. \"Dismantling manual\""@en ;
+   samm:description "Describes type for document e.g. Dismantling manual"@en ;
    samm:characteristic :Documenttype .
 
 :mimeType a samm:Property ;
@@ -135,23 +136,23 @@
    samm:characteristic :PostConsumerShareTrait .
 
 :safetyInstructions a samm:Property ;
-   samm:description "- Safety measures. \n- Necessary safety instructions to handle waste batteries, including in relation to the risks associated with, and the handling of, batteries containing lithium."@en ;
+   samm:description "- Safety measures. - Necessary safety instructions to handle waste batteries, including in relation to the risks associated with, and the handling of, batteries containing lithium."@en ;
    samm:characteristic :ResourcePath .
 
 :extinguishingAgent a samm:Property ;
-   samm:description "Usable extinguishing agents refering to classes of extinguishers (A, B, C, D, K).\n\nEUBR: Annex XIII (1a) ? Annex VI Part A (9)"@en ;
+   samm:description "Usable extinguishing agents refering to classes of extinguishers (A, B, C, D, K).EUBR: Annex XIII (1a) ? Annex VI Part A (9)"@en ;
    samm:characteristic :ExtinguishingAgentsList .
 
 :wastePrevention a samm:Property ;
-   samm:description "Prevention and management of waste batteries: Point (a) of Article 60(1): Information on \"the role of end-users in contributing to waste prevention, including by information on good practices and recommendations concerning the use of batteries aiming at extending their use phase and the possibilities of re-use, preparing for re-use, preparing for repurpose, repurposing and remanufacturing\"."@en ;
+   samm:description "Prevention and management of waste batteries: Point (a) of Article 60(1): Information on the role of end-users in contributing to waste prevention, including by information on good practices and recommendations concerning the use of batteries aiming at extending their use phase and the possibilities of re-use, preparing for re-use, preparing for repurpose, repurposing and remanufacturing"@en ;
    samm:characteristic :ResourcePath .
 
 :separateCollection a samm:Property ;
-   samm:description "Prevention and management of waste batteries: Point (b) of Article 60(1): Information on \"the role of end-users in contributing to the separate collection of waste batteries in accordance with their obligations under Article 51 so as to allow their treatment\"."@en ;
+   samm:description "Prevention and management of waste batteries: Point (b) of Article 60(1): Information on the role of end-users in contributing to the separate collection of waste batteries in accordance with their obligations under Article 51 so as to allow their treatment"@en ;
    samm:characteristic :ResourcePath .
 
 :informationOnCollection a samm:Property ;
-   samm:description "Prevention and management of waste batteries: Point (c) of Article 60(1): information on \"the separate collection, the take back, the collection points and preparing for re-use, preparing for repurposing, and recycling operations available for waste batteries\". \n\n"@en ;
+   samm:description "Prevention and management of waste batteries: Point (c) of Article 60(1): information on the separate collection, the take back, the collection points and preparing for re-use, preparing for repurposing, and recycling operations available for waste batteries"@en ;
    samm:characteristic :ResourcePath .
 
 :Documenttype a samm-c:Enumeration ;
@@ -199,7 +200,7 @@ ext-digitaltwin:Text a samm:Characteristic ;
    samm:properties ( :addressCountry :postalCode :streetAddress ) .
 
 :ValidEmailAddress a samm-c:RegularExpressionConstraint ;
-   samm:value "^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$" .
+   samm:value "^[w.-]+@[w.-]+.[A-Za-z]{2,}$" .
 
 :Component a samm:Entity ;
    samm:properties ( :partName :partNumber ) .
@@ -248,4 +249,3 @@ ext-digitaltwin:Text a samm:Characteristic ;
 :PartNumber a samm-c:Code ;
    samm:dataType xsd:string .
 
-   
