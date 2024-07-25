@@ -248,3 +248,4 @@ ext-digitaltwin:Text a samm:Characteristic ;
 :PartNumber a samm-c:Code ;
    samm:dataType xsd:string .
 
+   

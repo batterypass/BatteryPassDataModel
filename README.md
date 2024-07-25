@@ -6,14 +6,16 @@
 Welcome to the Battery Pass Data Model repository! This project provides a comprehensive data model based on the Battery Pass Content Guidance, aimed at standardizing and streamlining the exchange of battery-related information across the value chain.
 
 ## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Data Model Structure](#data-model-structure)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- [Battery Pass Data Model](#battery-pass-data-model)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Data Model Structure](#data-model-structure)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Contact](#contact)
 
 ## Overview
 The Battery Pass Data Model is designed to facilitate the digital representation of battery-related data, ensuring compliance with industry standards and regulatory requirements. This model supports the efficient exchange of data between various stakeholders in the battery lifecycle, including manufacturers, suppliers, recyclers, and regulators.
@@ -47,15 +49,21 @@ To incorporate the data model into your application, follow these steps:
    Adapt the data model to fit your specific requirements. Ensure any modifications remain compliant with the Battery Pass Content Guidance.
 
 ## Data Model Structure
-The data model is organized into several key entities, each representing a different aspect of battery data. Below is a high-level overview:
+The data model is organized into several parameter categories, each representing a different aspect of battery data. Below is a high-level overview. You'll find a detailed list with descriptions of the individual data points in the `/doc` folder.
 
-- **General Battery Information:**
+- **General Product Information:**
   - Battery ID
   - Manufacturer
   - Model Number
   - Production Date
-  - Capacity
-  - Voltage
+
+- **Carbon Footprint:**
+  - Battery Carbon footprint
+  - Carbon footprint of different lifecycle stages of the battery
+
+- **Circularity:**
+  - End of live management
+  - 
 
 - **Material Composition:**
   - Cathode Material
@@ -63,23 +71,27 @@ The data model is organized into several key entities, each representing a diffe
   - Electrolyte
   - Casing Material
 
-- **Lifecycle Data:**
-  - Manufacturing Process
-  - Usage History
+- **Performance & Durability:**
+  - Static performance KPIs (Capacity, power capibility, etc. )
+  - Dynamic performance KPI (SoH, full charge cycles, )
   - Maintenance Records
   - Recycling Information
 
-- **Regulatory Compliance:**
+- **Labels and Certification:**
   - Safety Certifications
   - Environmental Compliance
   - Transport Regulations
 
-- **Regulatory Compliance:**
-  - Safety Certifications
-  - Environmental Compliance
-  - Transport Regulations
+- **Due Diligence :**
+  - Due diligence report
+  - Third party verifications
   
-Detailed schema definitions and relationships between entities are provided in the `/schema` directory.
+ 
+
+Detailed schema definitions and relationships between entities are provided in the `/schema` directory. 
+For the compilation of the data model schema, the [Eclipse Semantic Modeling Framework](https://eclipse-esmf.github.io/esmf-documentation/index.html) was used, that provides a meta model for data modelling for data exchange purpose based on RDF.
+
+
 
 ## Contributing
 We welcome contributions to the Battery Pass Data Model. To contribute:
