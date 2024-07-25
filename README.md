@@ -54,40 +54,41 @@ The data model is organized into several parameter categories, each representing
 - **General Product Information:**
   - Battery ID
   - Manufacturer
-  - Model Number
+  - Battery status
   - Production Date
+
 
 - **Carbon Footprint:**
   - Battery Carbon footprint
   - Carbon footprint of different lifecycle stages of the battery
+  - Carbon footprint study and perfromance class
 
 - **Circularity:**
   - End of live management
-  - 
+  - Safety requirements
+  - Recycled and renewable content
 
 - **Material Composition:**
-  - Cathode Material
-  - Anode Material
-  - Electrolyte
-  - Casing Material
+  - Battery chemistry
+  - Critical raw materials
+  - Hazardous substances
 
 - **Performance & Durability:**
   - Static performance KPIs (Capacity, power capibility, etc. )
   - Dynamic performance KPI (SoH, full charge cycles, )
-  - Maintenance Records
-  - Recycling Information
+  - Negative events
+
 
 - **Labels and Certification:**
-  - Safety Certifications
-  - Environmental Compliance
-  - Transport Regulations
+  - Declaration of conformity
+  - Labels (Separate collection, materials)
+  - Test reports
 
 - **Due Diligence :**
   - Due diligence report
   - Third party verifications
+  - Sustainability report
   
- 
-
 Detailed schema definitions and relationships between entities are provided in the `/schema` directory. 
 For the compilation of the data model schema, the [Eclipse Semantic Modeling Framework](https://eclipse-esmf.github.io/esmf-documentation/index.html) was used, that provides a meta model for data modelling for data exchange purpose based on RDF.
 
