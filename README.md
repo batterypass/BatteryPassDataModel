@@ -129,4 +129,4 @@ Thank you for using the Battery Pass Data Model! We look forward to your contrib
 
 This Battery Pass project receives funding from the German Federal Ministry for Economic Affairs and Climate Action by resolution of the German Bundestag under grant agreement No BZF335.
 
-![alt text](logo_BMWK_en.png)
+![alt text](logo_BMWK_EN.png)
