@@ -49,47 +49,46 @@ To incorporate the data model into your application, follow these steps:
    Adapt the data model to fit your specific requirements. Ensure any modifications remain compliant with the Battery Pass Content Guidance.
 
 ## Data Model Structure
-The data model is organized into several parameter categories, each representing a different dedicated aspect of battery data, that can be composed to a complete battery pass data model. Below is a high-level overview. You'll find a detailed list with descriptions of the individual data points in the `/doc` folder.
+The data model is organized into several parameter categories, each representing a different dedicated aspect of battery data, that can be composed to a complete battery pass data model. Below is a high-level overview. You'll find a detailed list with descriptions of the individual data points in the `/doc` folder. Follow the links for the different 
 
-- **General Product Information:**
+- [**General Product Information:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0/gen/GeneralProductInformation-documentation.html)
   - Battery ID
   - Manufacturer
   - Battery status
   - Production Date
 
-- **Carbon Footprint:**
+- [**Carbon Footprint:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.CarbonFootprint/1.0.0/gen/CarbonFootprint-documentation.html)
   - Battery Carbon footprint
   - Carbon footprint of different lifecycle stages of the battery
   - Carbon footprint study and perfromance class
 
-- **Circularity:**
+- [**Circularity:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Circularity/1.0.0/gen/Circularity-documentation.html)
   - End of live management
   - Safety requirements
   - Recycled and renewable content
 
-- **Material Composition:**
+- [**Material Composition:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.MaterialComposition/1.0.0/gen/MaterialComposition-documentation.html)
   - Battery chemistry
   - Critical raw materials
   - Hazardous substances
 
-- **Performance & Durability:**
+- [**Performance & Durability:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Performance/1.0.0/gen/Performance-documentation.html)
   - Static performance KPIs (Capacity, power capibility, etc. )
   - Dynamic performance KPI (SoH, full charge cycles, )
   - Negative events
 
-- **Labels and Certification:**
+- [**Labels and Certification:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Labels/1.0.0/gen/Labels-documentation.html)
   - Declaration of conformity
   - Labels (Separate collection, materials)
   - Test reports
 
-- **Due Diligence :**
+- [**Due Diligence :**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.DueDiligence/1.0.0/gen/SupplyChainDueDiligence-documentation.html)
   - Due diligence report
   - Third party verifications
   - Sustainability report
   
 Detailed schema definitions and relationships between entities are provided in the `/BatteryPassSchema` directory. 
 For the compilation of the data model schema, the [Eclipse Semantic Modeling Framework](https://eclipse-esmf.github.io/esmf-documentation/index.html) was used, that provides a meta model for data modelling for data exchange purpose based on RDF.
-
 
 
 ## Contributing
@@ -105,13 +104,13 @@ We welcome contributions to the Battery Pass Data Model. To contribute:
 Please ensure that your contributions adhere to the project's coding standards and guidelines.
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This work is made available under Creative Commons Attribution 4.0 International (CC-BY-4.0) license. See the [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode) file for more details.
 
 ## Contact
 For questions, feedback, or support, please contact:
-
-- **Project Maintainer:** [Your Name](mailto:your.email@example.com)
-- **GitHub Issues:** [Submit an Issue](https://github.com/yourusername/BatteryPassDataModel/issues)
+- **Project website:** [Battery Passport Project website](https://thebatterypass.eu/)
+- **Project Maintainer:** [Niko D'Agostino, WP4 lead Battery Pass project software demonstrator, Circulor GmbH](mailto:nd@circulor.com)
+- **GitHub Issues:** [Submit an Issue](https://github.com/batterypass/BatteryPassDataModel/issues)
 
 Thank you for using the Battery Pass Data Model! We look forward to your contributions and feedback.
 
