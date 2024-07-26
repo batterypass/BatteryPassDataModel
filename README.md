@@ -14,6 +14,7 @@ Welcome to the Battery Pass Data Model repository! This project provides a compr
   - [Usage](#usage)
   - [Data Model Structure](#data-model-structure)
   - [Contributing](#contributing)
+  - [Disclaimer](#disclaimer)
   - [License](#license)
   - [Contact](#contact)
 
@@ -111,15 +112,21 @@ We welcome contributions to the Battery Pass Data Model. To contribute:
 
 Please ensure that your contributions adhere to the project's coding standards and guidelines.
 
+## Disclaimer
+The battery pass data model is still in draft mode and not finished yet. The purpose of this publication is to initiate further technical alignment with other relevant stakeholders. The data model schemas are for demonstration purposes only. Therefore, none of the project partners can be held liable for any errors or omissions in the data model schemas provided, and no representation or warranty, express or implied, is made as to the accuracy, adequacy, completeness, legality, reliability or usefulness of the data model. The data model is subject to change without notice.
+
 ## License
 This work is made available under Creative Commons Attribution 4.0 International (CC-BY-4.0) license. See the [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode) file for more details.
 
 ## Contact
 For questions, feedback, or support, please contact:
 - **Project website:** [Battery Passport Project website](https://thebatterypass.eu/)
-- **Project Maintainer:** [Niko D'Agostino, WP4 lead Battery Pass project software demonstrator, Circulor GmbH](mailto:nd@circulor.com)
+- **Project work package maintainer:** [Niko D'Agostino, Circulor GmbH, WP4 lead Battery Pass project software demonstrator](mailto:nd@circulor.com)
 - **GitHub Issues:** [Submit an Issue](https://github.com/batterypass/BatteryPassDataModel/issues)
+- **Follow us on** [LinkedIn](https://www.linkedin.com/company/batterypass/)
 
 Thank you for using the Battery Pass Data Model! We look forward to your contributions and feedback.
 
+This Battery Pass project receives funding from the German Federal Ministry for Economic Affairs and Climate Action by resolution of the German Bundestag under grant agreement No BZF335.
 
+![alt text](logo_BMWK_en.png)
