@@ -30,8 +30,8 @@ The Battery Pass Data Model is designed to facilitate the digital representation
 To use the Battery Pass Data Model, you can clone the repository and integrate it into your project. Ensure you have [Git](https://git-scm.com/) installed.
 
 ```bash
-git clone https://github.com/batterypass/battery-pass-data-model.git
-cd battery-pass-data-model
+git clone https://github.com/batterypass/BatteryPassDataModel.git
+cd BatteryPassDataModel
 ```
 
 ## Usage
@@ -39,24 +39,23 @@ To incorporate the data model into your application, follow these steps:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/batterypass/battery-pass-data-model.git
+   git clone https://github.com/batterypass/BatteryPassDataModel.git
    ```
 
 2. **Import the Data Model:**
-   Integrate the provided data model definitions into your database or application schema. Refer to the documentation in the `/docs` directory for detailed integration instructions.
+   Integrate the provided data model definitions into your database or application schema. Refer to the documentation in the `/docs` directory for detailed description of the battery pass data attributes.
 
 3. **Customize as Needed:**
    Adapt the data model to fit your specific requirements. Ensure any modifications remain compliant with the Battery Pass Content Guidance.
 
 ## Data Model Structure
-The data model is organized into several parameter categories, each representing a different aspect of battery data. Below is a high-level overview. You'll find a detailed list with descriptions of the individual data points in the `/doc` folder.
+The data model is organized into several parameter categories, each representing a different dedicated aspect of battery data, that can be composed to a complete battery pass data model. Below is a high-level overview. You'll find a detailed list with descriptions of the individual data points in the `/doc` folder.
 
 - **General Product Information:**
   - Battery ID
   - Manufacturer
   - Battery status
   - Production Date
-
 
 - **Carbon Footprint:**
   - Battery Carbon footprint
@@ -78,7 +77,6 @@ The data model is organized into several parameter categories, each representing
   - Dynamic performance KPI (SoH, full charge cycles, )
   - Negative events
 
-
 - **Labels and Certification:**
   - Declaration of conformity
   - Labels (Separate collection, materials)
@@ -89,7 +87,7 @@ The data model is organized into several parameter categories, each representing
   - Third party verifications
   - Sustainability report
   
-Detailed schema definitions and relationships between entities are provided in the `/schema` directory. 
+Detailed schema definitions and relationships between entities are provided in the `/BatteryPassSchema` directory. 
 For the compilation of the data model schema, the [Eclipse Semantic Modeling Framework](https://eclipse-esmf.github.io/esmf-documentation/index.html) was used, that provides a meta model for data modelling for data exchange purpose based on RDF.
 
 
@@ -113,7 +111,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 For questions, feedback, or support, please contact:
 
 - **Project Maintainer:** [Your Name](mailto:your.email@example.com)
-- **GitHub Issues:** [Submit an Issue](https://github.com/yourusername/battery-pass-data-model/issues)
+- **GitHub Issues:** [Submit an Issue](https://github.com/yourusername/BatteryPassDataModel/issues)
 
 Thank you for using the Battery Pass Data Model! We look forward to your contributions and feedback.
 
