@@ -51,38 +51,38 @@ To incorporate the data model into your application, follow these steps:
 ## Data Model Structure
 The data model is organized into several parameter categories, each representing a different dedicated aspect of battery data, that can be composed to a complete battery pass data model. Below is a high-level overview. You'll find a detailed list with descriptions of the individual data points in the `/doc` folder. Follow the links for the different data attribute categories for further information on the individual sub-models. 
 
-- [**General Product Information:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0/gen/GeneralProductInformation-documentation.html)
+- [**General Product Information:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0/gen/GeneralProductInformation-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0)) 
   - Battery ID
   - Manufacturer
   - Battery status
   - Production Date
 
-- [**Carbon Footprint:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.CarbonFootprint/1.0.0/gen/CarbonFootprint-documentation.html)
+- [**Carbon Footprint:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.CarbonFootprint/1.0.0/gen/CarbonFootprint-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.CarbonFootprint/1.0.0)) 
   - Battery Carbon footprint
   - Carbon footprint of different lifecycle stages of the battery
   - Carbon footprint study and perfromance class
 
-- [**Circularity:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Circularity/1.0.0/gen/Circularity-documentation.html)
+- [**Circularity:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Circularity/1.0.0/gen/Circularity-documentation.html)([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.Circularity/1.0.0)) 
   - End of live management
   - Safety requirements
   - Recycled and renewable content
 
-- [**Material Composition:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.MaterialComposition/1.0.0/gen/MaterialComposition-documentation.html)
+- [**Material Composition:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.MaterialComposition/1.0.0/gen/MaterialComposition-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.MaterialComposition/1.0.0)) 
   - Battery chemistry
   - Critical raw materials
   - Hazardous substances
 
-- [**Performance & Durability:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Performance/1.0.0/gen/PerformanceAndDurability-documentation.html)
+- [**Performance & Durability:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Performance/1.0.0/gen/PerformanceAndDurability-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.Performance/1.0.0)) 
   - Static performance KPIs (Capacity, power capibility, etc. )
   - Dynamic performance KPI (SoH, full charge cycles, )
   - Negative events
 
-- [**Labels and Certification:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Labels/1.0.0/gen/Labels-documentation.html)
+- [**Labels and Certification:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Labels/1.0.0/gen/Labels-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.Labels/1.0.0)) 
   - Declaration of conformity
   - Labels (Separate collection, materials)
   - Test reports
 
-- [**Due Diligence :**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.DueDiligence/1.0.0/gen/SupplyChainDueDiligence-documentation.html)
+- [**Due Diligence :**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.DueDiligence/1.0.0/gen/SupplyChainDueDiligence-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.DueDilligence/1.0.0))  
   - Due diligence report
   - Third party verifications
   - Sustainability report
@@ -91,7 +91,6 @@ Detailed schema definitions and relationships between entities are provided in t
 For the compilation of the data model schema, the [Eclipse Semantic Modeling Framework](https://eclipse-esmf.github.io/esmf-documentation/index.html) was used, that provides a meta model for data modelling for data exchange purpose based on RDF.
 
 An example of the concrete implementation of a battery passport system based on that data model could be found here: https://thebatterypass.io/
-
 
 ## Contributing
 We welcome contributions to the Battery Pass Data Model. To contribute:
