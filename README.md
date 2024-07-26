@@ -87,10 +87,17 @@ The data model is organized into several parameter categories, each representing
   - Third party verifications
   - Sustainability report
   
-Detailed schema definitions and relationships between entities are provided in the `/BatteryPassSchema` directory. 
-For the compilation of the data model schema, the [Eclipse Semantic Modeling Framework](https://eclipse-esmf.github.io/esmf-documentation/index.html) was used, that provides a meta model for data modelling for data exchange purpose based on RDF.
+Detailed schema definitions and relationships between entities are provided in the `/BatteryPass` directory. 
+For the compilation of the data model schema, the [Eclipse Semantic Modeling Framework](https://eclipse-esmf.github.io/esmf-documentation/index.html) was used, that provides a meta model for data modelling for data exchange purpose that build upon the [Resource Description Framework](https://www.w3.org/TR/rdf11-concepts/) (RDF) and its compact textual syntax called [Turtle](https://www.w3.org/TR/turtle/) (*.ttl). In each sub model schema folder you'll find the corresponding Turtle file and a ./gen folder that includes several derivations of the data model in differnet formats:
+  - JSON-Schema (*-schema.json)
+  - JSON-Payload(*-sample.json)
+  - OpenAPI Specification (*-open-api.json)
+  - Asset Administration Shell XML (*.aasx.xml)
+  - Documentation (*-documentation.html)
 
 An example of the concrete implementation of a battery passport system based on that data model could be found here: https://thebatterypass.io/
+
+The architectural structure of the software demonstrator and the implementation concepts behind the implementation are published in the [Battery Passport Technical Guidance](https://thebatterypass.eu/assets/images/technical-guidance/pdf/2024_BatteryPassport_Technical_Guidance.pdf). The rationale for the usage of RDF 
 
 ## Contributing
 We welcome contributions to the Battery Pass Data Model. To contribute:
