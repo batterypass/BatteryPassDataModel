@@ -72,7 +72,7 @@ The data model is organized into several parameter categories, each representing
   - Critical raw materials
   - Hazardous substances
 
-- [**Performance & Durability:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Performance/1.0.0/gen/Performance-documentation.html)
+- [**Performance & Durability:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Performance/1.0.0/gen/PerformanceAndDurability-documentation.html)
   - Static performance KPIs (Capacity, power capibility, etc. )
   - Dynamic performance KPI (SoH, full charge cycles, )
   - Negative events
