@@ -97,7 +97,7 @@ For the compilation of the data model schema, the [Eclipse Semantic Modeling Fra
 
 An example of the concrete implementation of a battery passport system based on that data model could be found here: https://thebatterypass.io/
 
-The architectural structure of the software demonstrator and the implementation concepts behind the implementation are published in the [Battery Passport Technical Guidance](https://thebatterypass.eu/assets/images/technical-guidance/pdf/2024_BatteryPassport_Technical_Guidance.pdf). The rationale for the usage of RDF 
+The architectural structure of the software demonstrator and the implementation concepts behind the implementation are published in the [Battery Passport Technical Guidance](https://thebatterypass.eu/assets/images/technical-guidance/pdf/2024_BatteryPassport_Technical_Guidance.pdf). The rationale for the usage of RDF and the Semantic Modelling Framework can be found in chalter 4.9 of this document.
 
 ## Contributing
 We welcome contributions to the Battery Pass Data Model. To contribute:
