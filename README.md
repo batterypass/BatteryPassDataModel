@@ -1,11 +1,16 @@
-
-![alt text](logo_BatteryPass_Primary.png)
+<div align="center">
+  <img src="./logo_BatteryPass_Primary.png" alt="alt text" height="100px " align="center"/>
+</div>
 
 # Battery Pass Data Model
 
 Welcome to the Battery Pass Data Model repository! This project provides a comprehensive data model based on the Battery Pass Content Guidance, aimed at standardizing and streamlining the exchange of battery-related information across the value chain.
 
 ## Table of Contents
+
+<details>
+<summary><strong>Details</strong></summary>
+  
 - [Battery Pass Data Model](#battery-pass-data-model)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
@@ -17,6 +22,8 @@ Welcome to the Battery Pass Data Model repository! This project provides a compr
   - [Disclaimer](#disclaimer)
   - [License](#license)
   - [Contact](#contact)
+
+</details>
 
 ## Overview
 The Battery Pass Data Model is designed to facilitate the digital representation of battery-related data, ensuring compliance with industry standards and regulatory requirements. This model supports the efficient exchange of data between various stakeholders in the battery lifecycle, including manufacturers, suppliers, recyclers, and regulators. The content of the data model is derived from the [Battery Pass Project Data Point List](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fthebatterypass.eu%2Fassets%2Fimages%2Fcontent-guidance%2Fpdf%2F2023_Battery_Passport_Data_Attributes.xlsx&wdOrigin=BROWSELINK)
@@ -52,11 +59,15 @@ To incorporate the data model into your application, follow these steps:
 ## Data Model Structure
 The data model is organized into several parameter categories, each representing a different dedicated aspect of battery data, that can be composed to a complete battery pass data model. Below is a high-level overview. You'll find a detailed list with descriptions of the individual data points in the `/doc` folder. Follow the links for the different data attribute categories for further information on the individual sub-models. 
 
-- [**General Product Information:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0/gen/GeneralProductInformation-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0)) 
+
+- General Product Information
   - Battery ID
   - Manufacturer
   - Battery status
   - Production Date
+ 
+| [Class<br/>Diagram](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0/gen/GeneralProductInformation-documentation.html) |<img src="https://www.json.org/img/json160.gif" alt="json logo" align="center" border="0" height="20px" width="20px" /><br/> [JSON](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0/gen/GeneralProductInformation-sample.json) |
+| --- | --- |
 
 - [**Carbon Footprint:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.CarbonFootprint/1.0.0/gen/CarbonFootprint-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.CarbonFootprint/1.0.0)) 
   - Battery Carbon footprint
@@ -129,4 +140,4 @@ Thank you for using the Battery Pass Data Model! We look forward to your contrib
 
 This Battery Pass project receives funding from the German Federal Ministry for Economic Affairs and Climate Action by resolution of the German Bundestag under grant agreement No BZF335.
 
-![alt text](logo_BMWK_EN.png)
+<img src="./logo_BMWK_EN.png" alt="alt text" height="200px "/>
