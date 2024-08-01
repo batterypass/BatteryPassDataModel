@@ -1,11 +1,16 @@
-
-![alt text](logo_BatteryPass_Primary.png)
+<div align="center">
+  <img src="./logo_BatteryPass_Primary.png" alt="alt text" height="100px " align="center"/>
+</div>
 
 # Battery Pass Data Model
 
 Welcome to the Battery Pass Data Model repository! This project provides a comprehensive data model based on the Battery Pass Content Guidance, aimed at standardizing and streamlining the exchange of battery-related information across the value chain.
 
 ## Table of Contents
+
+<details>
+<summary><strong>Details</strong></summary>
+  
 - [Battery Pass Data Model](#battery-pass-data-model)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
@@ -17,6 +22,8 @@ Welcome to the Battery Pass Data Model repository! This project provides a compr
   - [Disclaimer](#disclaimer)
   - [License](#license)
   - [Contact](#contact)
+
+</details>
 
 ## Overview
 The Battery Pass Data Model is designed to facilitate the digital representation of battery-related data, ensuring compliance with industry standards and regulatory requirements. This model supports the efficient exchange of data between various stakeholders in the battery lifecycle, including manufacturers, suppliers, recyclers, and regulators. The content of the data model is derived from the [Battery Pass Project Data Point List](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fthebatterypass.eu%2Fassets%2Fimages%2Fcontent-guidance%2Fpdf%2F2023_Battery_Passport_Data_Attributes.xlsx&wdOrigin=BROWSELINK)
@@ -52,49 +59,70 @@ To incorporate the data model into your application, follow these steps:
 ## Data Model Structure
 The data model is organized into several parameter categories, each representing a different dedicated aspect of battery data, that can be composed to a complete battery pass data model. Below is a high-level overview. You'll find a detailed list with descriptions of the individual data points in the `/doc` folder. Follow the links for the different data attribute categories for further information on the individual sub-models. 
 
-- [**General Product Information:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0/gen/GeneralProductInformation-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0)) 
+
+- [**General Product Information:**](./BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0/gen)
   - Battery ID
   - Manufacturer
   - Battery status
   - Production Date
+ 
+| <img border="0" height="32px" width="32px" src="http://www.w3.org/RDF/icons/rdf_w3c_icon.48" align="center"/><br/> [Class<br/>Diagram](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0/gen/GeneralProductInformation-documentation.html) |<img src="https://www.json.org/img/json160.gif" alt="json logo" align="center" border="0" height="32px" width="32px" /><br/> [Sample<br/>JSON](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0/gen/GeneralProductInformation-sample.json) | <img src="https://avatars.githubusercontent.com/u/13019229" align="center" border="0" height="32px" width="32px" /><br/>[JSON<br/>Schema](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0/gen/GeneralProductInformation-schema.json) | <img src="https://static1.smartbear.co/swagger/media/assets/images/sw_ov_intro_band1_icon1.svg" align="center" border="0" height="48px" width="48px"/><br/>[OpenAPI<br/>Spec](https://editor.swagger.io/?url=https://batterypass.github.io/BatteryPassDataModel/BatteryPass/io.BatteryPass.GeneralProductInformation/1.0.0/gen/GeneralProductInformation_en-open-api.json)
+| --- | --- | --- | --- |
 
-- [**Carbon Footprint:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.CarbonFootprint/1.0.0/gen/CarbonFootprint-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.CarbonFootprint/1.0.0)) 
+- [**Carbon Footprint:**](./BatteryPass/io.BatteryPass.CarbonFootprint/1.0.0/gen)
   - Battery Carbon footprint
   - Carbon footprint of different lifecycle stages of the battery
   - Carbon footprint study and perfromance class
+ 
+| <img border="0" height="32px" width="32px" src="http://www.w3.org/RDF/icons/rdf_w3c_icon.48" align="center"/><br/> [Class<br/>Diagram](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.CarbonFootprint/1.0.0/gen/CarbonFootprint-documentation.html) |<img src="https://www.json.org/img/json160.gif" align="center" border="0" height="32px" width="32px" /><br/> [Sample<br/>JSON](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.CarbonFootprint/1.0.0/gen/CarbonFootprint-sample.json) | <img src="https://avatars.githubusercontent.com/u/13019229" align="center" border="0" height="32px" width="32px" /><br/>[JSON<br/>Schema](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.CarbonFootprint/1.0.0/gen/CarbonFootprint-schema.json) | <img src="https://static1.smartbear.co/swagger/media/assets/images/sw_ov_intro_band1_icon1.svg" align="center" border="0" height="48px" width="48px"/><br/>[OpenAPI<br/>Spec](https://editor.swagger.io/?url=https://batterypass.github.io/BatteryPassDataModel/BatteryPass/io.BatteryPass.CarbonFootprint/1.0.0/gen/CarbonFootprint_en-open-api.json)
+| --- | --- | --- | --- |
 
-- [**Circularity:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Circularity/1.0.0/gen/Circularity-documentation.html)([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.Circularity/1.0.0)) 
+- [**Circularity:**](./BatteryPass/io.BatteryPass.Circularity/1.0.0/gen)
   - End of live management
   - Safety requirements
   - Recycled and renewable content
+ 
+| <img border="0" height="32px" width="32px" src="http://www.w3.org/RDF/icons/rdf_w3c_icon.48" align="center"/><br/> [Class<br/>Diagram](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Circularity/1.0.0/gen/Circularity-documentation.html) |<img src="https://www.json.org/img/json160.gif" alt="json logo" align="center" border="0" height="32px" width="32px" /><br/> [Sample<br/>JSON](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Circularity/1.0.0/gen/Circularity-sample.json) | <img src="https://avatars.githubusercontent.com/u/13019229" align="center" border="0" height="32px" width="32px" /><br/>[JSON<br/>Schema](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Circularity/1.0.0/gen/Circularity-schema.json) | <img src="https://static1.smartbear.co/swagger/media/assets/images/sw_ov_intro_band1_icon1.svg" align="center" border="0" height="48px" width="48px"/><br/>[OpenAPI<br/>Spec](https://editor.swagger.io/?url=https://batterypass.github.io/BatteryPassDataModel/BatteryPass/io.BatteryPass.Circularity/1.0.0/gen/Circularity_en-open-api.json)
+| --- | --- | --- | --- |
 
-- [**Material Composition:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.MaterialComposition/1.0.0/gen/MaterialComposition-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.MaterialComposition/1.0.0)) 
+- [**Material Composition:**](./BatteryPass/io.BatteryPass.MaterialComposition/1.0.0/gen)
   - Battery chemistry
   - Critical raw materials
   - Hazardous substances
+ 
+| <img border="0" height="32px" width="32px" src="http://www.w3.org/RDF/icons/rdf_w3c_icon.48" align="center"/><br/> [Class<br/>Diagram](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.MaterialComposition/1.0.0/gen/MaterialComposition-documentation.html) |<img src="https://www.json.org/img/json160.gif" alt="json logo" align="center" border="0" height="32px" width="32px" /><br/> [Sample<br/>JSON](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.MaterialComposition/1.0.0/gen/MaterialComposition-sample.json) | <img src="https://avatars.githubusercontent.com/u/13019229" align="center" border="0" height="32px" width="32px" /><br/>[JSON<br/>Schema](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.MaterialComposition/1.0.0/gen/MaterialComposition-schema.json) | <img src="https://static1.smartbear.co/swagger/media/assets/images/sw_ov_intro_band1_icon1.svg" align="center" border="0" height="48px" width="48px"/><br/>[OpenAPI<br/>Spec](https://editor.swagger.io/?url=https://batterypass.github.io/BatteryPassDataModel/BatteryPass/io.BatteryPass.MaterialComposition/1.0.0/gen/MaterialComposition_en-open-api.json)
+| --- | --- | --- | --- |
 
-- [**Performance & Durability:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Performance/1.0.0/gen/PerformanceAndDurability-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.Performance/1.0.0)) 
+- [**Performance & Durability:**](./BatteryPass/io.BatteryPass.Performance/1.0.0/gen)
   - Static performance KPIs (Capacity, power capibility, etc. )
   - Dynamic performance KPI (SoH, full charge cycles, )
   - Negative events
 
-- [**Labels and Certification:**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Labels/1.0.0/gen/Labels-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.Labels/1.0.0)) 
+| <img border="0" height="32px" width="32px" src="http://www.w3.org/RDF/icons/rdf_w3c_icon.48" align="center"/><br/> [Class<br/>Diagram](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Performance/1.0.0/gen/Performance-documentation.html) |<img src="https://www.json.org/img/json160.gif" alt="json logo" align="center" border="0" height="32px" width="32px" /><br/> [Sample<br/>JSON](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Performance/1.0.0/gen/Performance-sample.json) | <img src="https://avatars.githubusercontent.com/u/13019229" align="center" border="0" height="32px" width="32px" /><br/>[JSON<br/>Schema](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Performance/1.0.0/gen/Performance-schema.json) | <img src="https://static1.smartbear.co/swagger/media/assets/images/sw_ov_intro_band1_icon1.svg" align="center" border="0" height="48px" width="48px"/><br/>[OpenAPI<br/>Spec](https://editor.swagger.io/?url=https://batterypass.github.io/BatteryPassDataModel/BatteryPass/io.BatteryPass.Performance/1.0.0/gen/Performance_en-open-api.json)
+| --- | --- | --- | --- |
+
+- [**Labels and Certification:**](./BatteryPass/io.BatteryPass.Labels/1.0.0/gen)
   - Declaration of conformity
   - Labels (Separate collection, materials)
   - Test reports
+ 
+| <img border="0" height="32px" width="32px" src="http://www.w3.org/RDF/icons/rdf_w3c_icon.48" align="center"/><br/> [Class<br/>Diagram](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Labels/1.0.0/gen/Labels-documentation.html) |<img src="https://www.json.org/img/json160.gif" alt="json logo" align="center" border="0" height="32px" width="32px" /><br/> [Sample<br/>JSON](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Labels/1.0.0/gen/Labels-sample.json) | <img src="https://avatars.githubusercontent.com/u/13019229" align="center" border="0" height="32px" width="32px" /><br/>[JSON<br/>Schema](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.Labels/1.0.0/gen/Labels-schema.json) | <img src="https://static1.smartbear.co/swagger/media/assets/images/sw_ov_intro_band1_icon1.svg" align="center" border="0" height="48px" width="48px"/><br/>[OpenAPI<br/>Spec](https://editor.swagger.io/?url=https://batterypass.github.io/BatteryPassDataModel/BatteryPass/io.BatteryPass.Labels/1.0.0/gen/Labels_en-open-api.json)
+| --- | --- | --- | --- |
 
-- [**Due Diligence :**](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.DueDiligence/1.0.0/gen/SupplyChainDueDiligence-documentation.html) ([Sub Model Schema](https://github.com/batterypass/BatteryPassDataModel/tree/main/BatteryPass/io.BatteryPass.DueDilligence/1.0.0))  
-  - Due diligence report
+- [Due Diligence](./BatteryPass/io.BatteryPass.DueDiligence/1.0.0/gen)
   - Third party verifications
   - Sustainability report
+ 
+| <img border="0" height="32px" width="32px" src="http://www.w3.org/RDF/icons/rdf_w3c_icon.48" align="center"/><br/> [Class<br/>Diagram](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.DueDiligence/1.0.0/gen/DueDiligence-documentation.html) |<img src="https://www.json.org/img/json160.gif" alt="json logo" align="center" border="0" height="32px" width="32px" /><br/> [Sample<br/>JSON](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.DueDiligence/1.0.0/gen/DueDiligence-sample.json) | <img src="https://avatars.githubusercontent.com/u/13019229" align="center" border="0" height="32px" width="32px" /><br/>[JSON<br/>Schema](https://batterypass.github.io/BatteryPassDataModel//BatteryPass/io.BatteryPass.DueDiligence/1.0.0/gen/DueDiligence-schema.json) | <img src="https://static1.smartbear.co/swagger/media/assets/images/sw_ov_intro_band1_icon1.svg" align="center" border="0" height="48px" width="48px"/><br/>[OpenAPI<br/>Spec](https://editor.swagger.io/?url=https://batterypass.github.io/BatteryPassDataModel/BatteryPass/io.BatteryPass.DueDiligence/1.0.0/gen/DueDiligence_en-open-api.json)
+| --- | --- | --- | --- |
   
 Detailed schema definitions and relationships between entities are provided in the `/BatteryPass` directory. 
-For the compilation of the data model schema, the [Eclipse Semantic Modeling Framework](https://eclipse-esmf.github.io/esmf-documentation/index.html) was used, that provides a meta model for data modelling for data exchange purpose that build upon the [Resource Description Framework](https://www.w3.org/TR/rdf11-concepts/) (RDF) and its compact textual syntax called [Turtle](https://www.w3.org/TR/turtle/) (*.ttl). In each sub model schema folder you'll find the corresponding Turtle file and a ./gen folder that includes several derivations of the data model in differnet formats:
-  - JSON-Schema (*-schema.json)
-  - JSON-Payload(*-sample.json)
-  - OpenAPI Specification (*-open-api.json)
-  - Asset Administration Shell XML (*.aasx.xml)
-  - Documentation (*-documentation.html)
+For the compilation of the data model schema, the [Eclipse Semantic Modeling Framework](https://eclipse-esmf.github.io/esmf-documentation/index.html) was used, that provides a meta model for data modelling for data exchange purpose that build upon the [Resource Description Framework](https://www.w3.org/TR/rdf11-concepts/) (RDF) and its compact textual syntax called [Turtle](https://www.w3.org/TR/turtle/) (`*.ttl`). In each sub model schema folder you'll find the corresponding Turtle file and a `./gen` folder that includes several derivations of the data model in differnet formats:
+  - JSON-Schema (`*-schema.json`)
+  - JSON-Payload(`*-sample.json`)
+  - OpenAPI Specification (`*_en-open-api.json`)
+  - Asset Administration Shell XML (`*.aasx.xml`)
+  - Documentation (`*-documentation.html`)
 
 An example of the concrete implementation of a battery passport system based on that data model could be found here: https://thebatterypass.io/
 
@@ -129,4 +157,4 @@ Thank you for using the Battery Pass Data Model! We look forward to your contrib
 
 This Battery Pass project receives funding from the German Federal Ministry for Economic Affairs and Climate Action by resolution of the German Bundestag under grant agreement No BZF335.
 
-![alt text](logo_BMWK_EN.png)
+<img src="./logo_BMWK_EN.png" alt="alt text" height="200px "/>
