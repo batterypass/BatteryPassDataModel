@@ -1,0 +1,67 @@
+######################################################################
+# Copyright (c) 2024 Circulor GmbH on behalf of the Battery Pass Consortium
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This work is made available under the terms of the
+# Creative Commons Attribution 4.0 International (CC BY-NC 4.0) license,
+# which is available at
+# https://creativecommons.org/licenses/by-nc/4.0/.
+#
+# SPDX-License-Identifier: CC-BY-NC-4.0
+#######################################################################
+
+@prefix samm: <urn:samm:org.eclipse.esmf.samm:meta-model:2.1.0#> .
+@prefix samm-c: <urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#> .
+@prefix samm-e: <urn:samm:org.eclipse.esmf.samm:entity:2.1.0#> .
+@prefix unit: <urn:samm:org.eclipse.esmf.samm:unit:2.1.0#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <urn:samm:io.BatteryPass.Labels:1.2.0#> .
+@prefix ext-digitaltwin: <urn:samm:org.eclipse.digitaltwin:1.0.0#> .
+@prefix ext-digitaltwin2: <urn:samm:org.eclipse.digitaltwin:1.2.0#> .
+
+:Labeling a samm:Aspect ;
+   samm:description "Data model for battery labels and conformity\n\nCopyright 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution."@en ;
+   samm:properties ( :declarationOfConformity :resultOfTestReport :labels ) ;
+   samm:operations ( ) ;
+   samm:events ( ) .
+
+:declarationOfConformity a samm:Property ;
+   samm:description "A battery passport must include the EU declaration of conformity.\n\nThe regulation specifies the following requirements regarding the EU declaration of conformity (see BattReg Annex XIII (1r) and BattReg Article 18 (2)):\n\n- The EU declaration of conformity has the model structure set out in Annex IX.\n- The EU declaration of conformity must contain the elements specified in the relevant modules set out in Annex VIII.\n- The EU declaration of conformity must be kept up to date.\n- It is translated into the language or languages required by the Member State in which the battery is placed or made available on the market or put into service.\n- It must be drawn up in electronic format and, where requested, it must be provided in paper format.\n\nDIN DKE Spec chapter reference: 6.2.7"@en ;
+   samm:characteristic samm-c:ResourcePath .
+
+:resultOfTestReport a samm:Property ;
+   samm:description "URL to a document that includes results of tests reports proving compliance in the market conformity assessment procedure with the requirements as per the technical documentation (Art. 7-10, Art. 12-14 and due diligence policies ).\n\nDIN DKE Spec chapter reference 6.2.8"@en ;
+   samm:characteristic samm-c:ResourcePath .
+
+:labels a samm:Property ;
+   samm:description "'Separate collection' or 'WEEE label' indicating that a product should not be discarded as unsorted waste but must be sent to separate collection facilities for recovery and recycling. To be printed on the physical label and displayed via the battery passport, suggested to be translated also to text to ensure machine readability.\n\nDIN DKE Spec chapter reference: \n\n6.2.2 Separate collection\n6.2.3 Material symbol for Cadmium and Lead\n6.2.4 Carbon Footprint perfromance class\n6.2.5 Extinguishing agent"@en ;
+   samm:characteristic :Labels .
+
+:Labels a samm-c:List ;
+   samm:description "List of labels"@en ;
+   samm:dataType :LabelingEntity .
+
+:LabelingEntity a samm:Entity ;
+   samm:description "Entity for the definition required battery labeling"@en ;
+   samm:properties ( :labelingSymbol :labelingMeaning :labelingSubject ) .
+
+:labelingSymbol a samm:Property ;
+   samm:characteristic samm-c:ResourcePath .
+
+:labelingMeaning a samm:Property ;
+   samm:description "Explanation of the meaning of all symbols and labels (including separate collection; cadmium and lead; and carbon footprint and carbon footprint performance class symbols; and symbols and labels printed on batteries or their accompanying documents but not accessible via the battery passport)."@en ;
+   samm:characteristic samm-c:MultiLanguageText ;
+   samm:exampleValue "Separate Collection"@en .
+
+:labelingSubject a samm:Property ;
+   samm:description "Short name of required labeling subjects"@en ;
+   samm:characteristic :LabelingSubject .
+
+:LabelingSubject a samm-c:Enumeration ;
+   samm:dataType xsd:string ;
+   samm-c:values ( "SeparateCollection" "HazardousMaterial" "CarbonFootPrint" "ExtinguishingAgent" ) .
+

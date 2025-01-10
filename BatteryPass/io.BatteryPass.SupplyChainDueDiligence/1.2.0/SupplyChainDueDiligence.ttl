@@ -1,0 +1,45 @@
+######################################################################
+# Copyright (c) 2024 Circulor GmbH on behalf of the Battery Pass Consortium
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This work is made available under the terms of the
+# Creative Commons Attribution 4.0 International (CC BY-NC 4.0) license,
+# which is available at
+# https://creativecommons.org/licenses/by-nc/4.0/.
+#
+# SPDX-License-Identifier: CC-BY-NC-4.0
+#######################################################################
+
+@prefix samm: <urn:samm:org.eclipse.esmf.samm:meta-model:2.1.0#> .
+@prefix samm-c: <urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#> .
+@prefix samm-e: <urn:samm:org.eclipse.esmf.samm:entity:2.1.0#> .
+@prefix unit: <urn:samm:org.eclipse.esmf.samm:unit:2.1.0#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.2.0#> .
+
+:SupplyChainDueDiligence a samm:Aspect ;
+   samm:description "Data model for Battery due diligence\n\nCopyright ? 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution."@en ;
+   samm:properties ( :supplyChainDueDiligenceReport [ samm:property :thirdPartyAussurances; samm:optional true ] [ samm:property :supplyChainIndicies; samm:optional true ] ) ;
+   samm:operations ( ) ;
+   samm:events ( ) .
+
+:supplyChainDueDiligenceReport a samm:Property ;
+   samm:description "The battery passport must include the �information on responsible sourcing as indicated in the report on its due diligence policy referred to in BattReg Article 52(3)�.\n\nThe due diligence report must be accessible free of charge to the public via the battery passport and also on the internet.\n\nThe report and hence also the information in the battery passport must provide data and information on four aspects:\n- Supply chain due diligence policy: steps taken by the economic operator to comply with the requirements of Article 49.\n- Risk management plan: steps taken by the economic operator to comply with the requirements of Article 50, including findings of significant adverse impacts.\n- Summary report of the third-party verification carried out (Article 51).\n- An elaboration on access to information, public participation in decision-making and access to justice.\n\nDIN DKE Spec 99100 chapter reference: 6.4.2"@en ;
+   samm:characteristic samm-c:ResourcePath .
+
+:thirdPartyAussurances a samm:Property ;
+   samm:description "As a non-mandatory data attribute the battery passport should contain information on third-party supply chain assurances such as certifications, of recognised supply chain schemes. Based on the provided guidance, explore which and how to best make third-party assurances available via the battery passport\n\nDIN DKE Spec 99100 chapter reference: 6.4.3"@en ;
+   samm:characteristic samm-c:ResourcePath .
+
+:supplyChainIndicies a samm:Property ;
+   samm:description "As a non-mandatory data attribute the battery passport should contain supply chain indices to allow easy assessment for consumers on level of responsible sourcing. ESGE+ indices under development by the GBA (Global Battery Alliance), scoring and benchmarking sustainability performance. Once developed, explore how to best make the indices available via the battery passport.\n\nDIN DKE Spec 99100 chapter reference: 6.4.4"@en ;
+   samm:characteristic :SupplyChainIndicies .
+
+:SupplyChainIndicies a samm-c:Quantifiable ;
+   samm:description "Value that defines supply chain due dilligence performance"@en ;
+   samm:dataType xsd:float .
+

@@ -1,0 +1,83 @@
+######################################################################
+# Copyright (c) 2024 Circulor GmbH on behalf of the Battery Pass Consortium
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This work is made available under the terms of the
+# Creative Commons Attribution 4.0 International (CC BY-NC 4.0) license,
+# which is available at
+# https://creativecommons.org/licenses/by-nc/4.0/.
+#
+# SPDX-License-Identifier: CC-BY-NC-4.0
+#######################################################################
+
+@prefix samm: <urn:samm:org.eclipse.esmf.samm:meta-model:2.1.0#> .
+@prefix samm-c: <urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#> .
+@prefix samm-e: <urn:samm:org.eclipse.esmf.samm:entity:2.1.0#> .
+@prefix unit: <urn:samm:org.eclipse.esmf.samm:unit:2.1.0#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <urn:samm:io.BatteryPass.CarbonFootprint:1.0.0#> .
+
+:CarbonFootprint a samm:Aspect ;
+   samm:description "The battery passport must contain carbon footprint per functional unit of the battery as declared in the battery carbon footprint declaration in accordance with the entry into force of the implementing acts on the format of declaration. Reference: REGULATION (EU) 2023/1542 aka EU Battery Regulation"@en ;
+   samm:see <https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32023R1542> ;
+   samm:properties ( :batteryCarbonFootprint :carbonFootprintPerLifecycleStage :carbonFootprintPerformanceClass :carbonFootprintStudy ) ;
+   samm:operations ( ) ;
+   samm:events ( ) .
+
+:batteryCarbonFootprint a samm:Property ;
+   samm:description "The carbon footprint of the battery, calculated as kg of carbon dioxide equivalent per one kWh of the total energy provided by the battery over its expected service life, as declared in the Carbon Footprint Declaration."@en ;
+   samm:characteristic :BatteryCarbonFootprint .
+
+:carbonFootprintPerLifecycleStage a samm:Property ;
+   samm:description "The carbon footprint of the battery as share of total Battery Carbon Footprint, differentiated per life cycle stages raw material extraction, battery production, distribution and recycling."@en ;
+   samm:characteristic :CarbonFootprints .
+
+:carbonFootprintPerformanceClass a samm:Property ;
+   samm:description "The carbon footprint performance class that the relevant battery model per manufacturing plant corresponds to."@en ;
+   samm:characteristic :CarbonFootprintPerformanceClass .
+
+:carbonFootprintStudy a samm:Property ;
+   samm:description "A web link to get access to a public version of the study supporting the carbon footprint values."@en ;
+   samm:characteristic samm-c:ResourcePath .
+
+:BatteryCarbonFootprint a samm-c:Measurement ;
+   samm:description "The battery carbon footprint is an aggregation of the carbon footprint of the individual lifecycle stages"@en ;
+   samm:dataType xsd:double ;
+   samm-c:unit :kilogramperkilowatthour .
+
+:CarbonFootprints a samm-c:List ;
+   samm:description "CarbainFootprints per lifecycle stage"@en ;
+   samm:dataType :CarbonFootprintPerLifecycleStageEntity .
+
+:CarbonFootprintPerformanceClass a samm-c:Code ;
+   samm:description "EV, industrial and LMT batteries shall bear a conspicuous, clearly legible and indelible label indicating the carbon footprint of the battery and the carbon footprint performance class that the relevant battery model per manufacturing plant corresponds to. The carbon footprint performance class shall be accessible via the battery passport. A meaningful number of classes of performance will be developed (?) with category A being the best class with the lowest carbon footprint life cycle impact."@en ;
+   samm:dataType xsd:string .
+
+:kilogramperkilowatthour a samm:Unit ;
+   samm:commonCode "kg CO2e/kWh" ;
+   samm:symbol "CO2e/kWh" .
+
+:CarbonFootprintPerLifecycleStageEntity a samm:Entity ;
+   samm:description "The carbon footprint of the battery as share of total Battery Carbon Footprint, differentiated per life cycle stage raw material extraction, main production, distribution and end of öife and recycling."@en ;
+   samm:properties ( :lifecycleStage :carbonFootprint ) .
+
+:lifecycleStage a samm:Property ;
+   samm:description "The description of the life cycle stage "@en ;
+   samm:characteristic :LifecycleStage .
+
+:carbonFootprint a samm:Property ;
+   samm:description "Carbon footprint of the individual lifecycle stage"@en ;
+   samm:characteristic :CarbonFootprintValue .
+
+:LifecycleStage a samm-c:Enumeration ;
+   samm:dataType xsd:string ;
+   samm-c:values ( "RawMaterialExtraction" "MainProduction" "Distribution" "Recycling" ) .
+
+:CarbonFootprintValue a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit :kilogramperkilowatthour .
+
