@@ -28,7 +28,7 @@ Welcome to the Battery Pass Data Model repository! This project provides a compr
 ## Overview
 The Battery Pass Data Model is designed to facilitate the digital representation of battery-related data, ensuring compliance with industry standards and regulatory requirements. This model supports the efficient exchange of data between various stakeholders in the battery lifecycle, including manufacturers, suppliers, recyclers, and regulators. The content of the data model is derived from the [Battery Pass Project Data Point List](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fthebatterypass.eu%2Fassets%2Fimages%2Fcontent-guidance%2Fpdf%2F2023_Battery_Passport_Data_Attributes.xlsx&wdOrigin=BROWSELINK).
 
-Meanwhile the Battery 
+Meanwhile the Battery Pass Consortium contributed to the DIN DKE Spec 99100:25-02 "Requirements for data attributes of the battery passport". This lead to some updates of the data points, which lead to corresponding changes in the data models for the different parameter categories. These changes are represented in the version v1.2.0.  
 
 ## Features
 - **Standardized Data Representation:** Ensures uniformity in the way battery data is recorded and shared.
