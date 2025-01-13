@@ -1,0 +1,177 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "SupplyChainDueDiligence",
+    "version": "v1",
+    "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.2.0#SupplyChainDueDiligence"
+  },
+  "servers": [
+    {
+      "url": "https:\\\\thebatterypass.io/api/v1",
+      "variables": {
+        "api-version": {
+          "default": "v1"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/{tenant-id}/supply-chain-due-diligence": {
+      "get": {
+        "tags": [
+          "SupplyChainDueDiligence"
+        ],
+        "operationId": "getSupplyChainDueDiligence",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "description": "The ID of the tenant owning the requested Twin.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SupplyChainDueDiligence"
+          },
+          "400": {
+            "$ref": "#/components/responses/ClientError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "details": {
+            "type": "object",
+            "minLength": 1,
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ResourcePath": {
+        "type": "string",
+        "format": "uri",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#ResourcePath",
+        "description": "The path of a resource."
+      },
+      "SupplyChainIndicies": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.2.0#SupplyChainIndicies",
+        "description": "Value that defines supply chain due dilligence performance"
+      },
+      "SupplyChainDueDiligence": {
+        "description": "Data model for Battery due diligence\n\nCopyright ? 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution.",
+        "type": "object",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.2.0#SupplyChainDueDiligence",
+        "properties": {
+          "supplyChainDueDiligenceReport": {
+            "description": "The battery passport must include the ´┐¢information on responsible sourcing as indicated in the report on its due diligence policy referred to in BattReg Article 52(3)´┐¢.\n\nThe due diligence report must be accessible free of charge to the public via the battery passport and also on the internet.\n\nThe report and hence also the information in the battery passport must provide data and information on four aspects:\n- Supply chain due diligence policy: steps taken by the economic operator to comply with the requirements of Article 49.\n- Risk management plan: steps taken by the economic operator to comply with the requirements of Article 50, including findings of significant adverse impacts.\n- Summary report of the third-party verification carried out (Article 51).\n- An elaboration on access to information, public participation in decision-making and access to justice.\n\nDIN DKE Spec 99100 chapter reference: 6.4.2",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.2.0#supplyChainDueDiligenceReport",
+            "$ref": "#/components/schemas/ResourcePath"
+          },
+          "thirdPartyAussurances": {
+            "description": "As a non-mandatory data attribute the battery passport should contain information on third-party supply chain assurances such as certifications, of recognised supply chain schemes. Based on the provided guidance, explore which and how to best make third-party assurances available via the battery passport\n\nDIN DKE Spec 99100 chapter reference: 6.4.3",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.2.0#thirdPartyAussurances",
+            "$ref": "#/components/schemas/ResourcePath"
+          },
+          "supplyChainIndicies": {
+            "description": "As a non-mandatory data attribute the battery passport should contain supply chain indices to allow easy assessment for consumers on level of responsible sourcing. ESGE+ indices under development by the GBA (Global Battery Alliance), scoring and benchmarking sustainability performance. Once developed, explore how to best make the indices available via the battery passport.\n\nDIN DKE Spec 99100 chapter reference: 6.4.4",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.SupplyChainDueDiligence:1.2.0#supplyChainIndicies",
+            "$ref": "#/components/schemas/SupplyChainIndicies"
+          }
+        },
+        "required": [
+          "supplyChainDueDiligenceReport"
+        ]
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "The requesting user or client is not authenticated."
+      },
+      "Forbidden": {
+        "description": "The requesting user or client is not authorized to access resources."
+      },
+      "NotFoundError": {
+        "description": "The requested resource has not been found."
+      },
+      "ClientError": {
+        "description": "Payload or user input is invalid. See error details in the payload for more information.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "SupplyChainDueDiligence": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SupplyChainDueDiligence"
+            }
+          }
+        },
+        "description": "The request was successful."
+      }
+    },
+    "requestBodies": {
+      "SupplyChainDueDiligence": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SupplyChainDueDiligence"
+            }
+          }
+        }
+      }
+    }
+  }
+}

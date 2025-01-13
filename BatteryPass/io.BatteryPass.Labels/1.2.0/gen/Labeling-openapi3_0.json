@@ -1,0 +1,273 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Labeling",
+    "version": "v1",
+    "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Labels:1.2.0#Labeling"
+  },
+  "servers": [
+    {
+      "url": "https:\\\\thebatterypass.io/api/v1",
+      "variables": {
+        "api-version": {
+          "default": "v1"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/{tenant-id}/labeling": {
+      "get": {
+        "tags": [
+          "Labeling"
+        ],
+        "operationId": "getLabeling",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "description": "The ID of the tenant owning the requested Twin.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Starting index which is starting by 0",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of items to return per call.",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "totalItemCount",
+            "in": "query",
+            "description": "Flag that indicates that the total counts should be returned.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Labeling"
+          },
+          "400": {
+            "$ref": "#/components/responses/ClientError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "details": {
+            "type": "object",
+            "minLength": 1,
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "PagingSchema": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Labeling"
+            }
+          },
+          "totalItems": {
+            "type": "number"
+          },
+          "totalPages": {
+            "type": "number"
+          },
+          "pageSize": {
+            "type": "number"
+          },
+          "currentPage": {
+            "type": "number"
+          }
+        }
+      },
+      "ResourcePath": {
+        "type": "string",
+        "format": "uri",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#ResourcePath",
+        "description": "The path of a resource."
+      },
+      "MultiLanguageText": {
+        "type": "object",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#MultiLanguageText",
+        "description": "Describes a Property which contains plain text in multiple languages. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+      },
+      "LabelingSubject": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Labels:1.2.0#LabelingSubject",
+        "enum": [
+          "SeparateCollection",
+          "HazardousMaterial",
+          "CarbonFootPrint",
+          "ExtinguishingAgent"
+        ]
+      },
+      "LabelingEntity": {
+        "description": "Entity for the definition required battery labeling",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Labels:1.2.0#LabelingEntity",
+        "type": "object",
+        "properties": {
+          "labelingSymbol": {
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Labels:1.2.0#labelingSymbol",
+            "$ref": "#/components/schemas/ResourcePath"
+          },
+          "labelingMeaning": {
+            "description": "Explanation of the meaning of all symbols and labels (including separate collection; cadmium and lead; and carbon footprint and carbon footprint performance class symbols; and symbols and labels printed on batteries or their accompanying documents but not accessible via the battery passport).",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Labels:1.2.0#labelingMeaning",
+            "$ref": "#/components/schemas/MultiLanguageText"
+          },
+          "labelingSubject": {
+            "description": "Short name of required labeling subjects",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Labels:1.2.0#labelingSubject",
+            "$ref": "#/components/schemas/LabelingSubject"
+          }
+        },
+        "required": [
+          "labelingSymbol",
+          "labelingMeaning",
+          "labelingSubject"
+        ]
+      },
+      "Labels": {
+        "description": "List of labels",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Labels:1.2.0#Labels",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/LabelingEntity"
+        }
+      },
+      "Labeling": {
+        "description": "Data model for battery labels and conformity\n\nCopyright 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution.",
+        "type": "object",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Labels:1.2.0#Labeling",
+        "properties": {
+          "declarationOfConformity": {
+            "description": "A battery passport must include the EU declaration of conformity.\n\nThe regulation specifies the following requirements regarding the EU declaration of conformity (see BattReg Annex XIII (1r) and BattReg Article 18 (2)):\n\n- The EU declaration of conformity has the model structure set out in Annex IX.\n- The EU declaration of conformity must contain the elements specified in the relevant modules set out in Annex VIII.\n- The EU declaration of conformity must be kept up to date.\n- It is translated into the language or languages required by the Member State in which the battery is placed or made available on the market or put into service.\n- It must be drawn up in electronic format and, where requested, it must be provided in paper format.\n\nDIN DKE Spec chapter reference: 6.2.7",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Labels:1.2.0#declarationOfConformity",
+            "$ref": "#/components/schemas/ResourcePath"
+          },
+          "resultOfTestReport": {
+            "description": "URL to a document that includes results of tests reports proving compliance in the market conformity assessment procedure with the requirements as per the technical documentation (Art. 7-10, Art. 12-14 and due diligence policies ).\n\nDIN DKE Spec chapter reference 6.2.8",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Labels:1.2.0#resultOfTestReport",
+            "$ref": "#/components/schemas/ResourcePath"
+          },
+          "labels": {
+            "description": "'Separate collection' or 'WEEE label' indicating that a product should not be discarded as unsorted waste but must be sent to separate collection facilities for recovery and recycling. To be printed on the physical label and displayed via the battery passport, suggested to be translated also to text to ensure machine readability.\n\nDIN DKE Spec chapter reference: \n\n6.2.2 Separate collection\n6.2.3 Material symbol for Cadmium and Lead\n6.2.4 Carbon Footprint perfromance class\n6.2.5 Extinguishing agent",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Labels:1.2.0#labels",
+            "$ref": "#/components/schemas/Labels"
+          }
+        },
+        "required": [
+          "declarationOfConformity",
+          "resultOfTestReport",
+          "labels"
+        ]
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "The requesting user or client is not authenticated."
+      },
+      "Forbidden": {
+        "description": "The requesting user or client is not authorized to access resources."
+      },
+      "NotFoundError": {
+        "description": "The requested resource has not been found."
+      },
+      "ClientError": {
+        "description": "Payload or user input is invalid. See error details in the payload for more information.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Labeling": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PagingSchema"
+            }
+          }
+        },
+        "description": "The request was successful."
+      }
+    },
+    "requestBodies": {
+      "Labeling": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Labeling"
+            }
+          }
+        }
+      }
+    }
+  }
+}

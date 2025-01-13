@@ -1,0 +1,424 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "MaterialComposition",
+    "version": "v1",
+    "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#MaterialComposition"
+  },
+  "servers": [
+    {
+      "url": "https:\\\\thebatterypass.io/api/v1",
+      "variables": {
+        "api-version": {
+          "default": "v1"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/{tenant-id}/material-composition": {
+      "get": {
+        "tags": [
+          "MaterialComposition"
+        ],
+        "operationId": "getMaterialComposition",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "description": "The ID of the tenant owning the requested Twin.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Starting index which is starting by 0",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of items to return per call.",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "totalItemCount",
+            "in": "query",
+            "description": "Flag that indicates that the total counts should be returned.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/MaterialComposition"
+          },
+          "400": {
+            "$ref": "#/components/responses/ClientError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "details": {
+            "type": "object",
+            "minLength": 1,
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "PagingSchema": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MaterialComposition"
+            }
+          },
+          "totalItems": {
+            "type": "number"
+          },
+          "totalPages": {
+            "type": "number"
+          },
+          "pageSize": {
+            "type": "number"
+          },
+          "currentPage": {
+            "type": "number"
+          }
+        }
+      },
+      "Text": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#Text",
+        "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+      },
+      "BatteryChemistryEntity": {
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#BatteryChemistryEntity",
+        "type": "object",
+        "properties": {
+          "shortName": {
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#shortName",
+            "$ref": "#/components/schemas/Text"
+          },
+          "clearName": {
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#clearName",
+            "$ref": "#/components/schemas/Text"
+          }
+        },
+        "required": [
+          "shortName",
+          "clearName"
+        ]
+      },
+      "BatteryChemistryEntityList": {
+        "description": "Detailed composition, including materials used in the cathode, anode, and electrolyte.\nAll common cells have two electrodes and an electrolyte. The specific combination of materials used to make these components is called \"chemistry.\" A cell's chemistry largely determines its properties, while most variations within it are caused by additives, purification, and design elements.\n\nEUBR: Annex XIII (1b) ? Annex VI Part A (7)",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#BatteryChemistryEntityList",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BatteryChemistryEntity"
+          }
+        ]
+      },
+      "BatteryLocationEntity": {
+        "description": "Battery component that includes the material",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#BatteryLocationEntity",
+        "type": "object",
+        "properties": {
+          "componentName": {
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#componentName",
+            "$ref": "#/components/schemas/Text"
+          },
+          "componentId": {
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#componentId",
+            "$ref": "#/components/schemas/Text"
+          }
+        },
+        "required": [
+          "componentName"
+        ]
+      },
+      "BatteryMaterialLocation": {
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#BatteryMaterialLocation",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BatteryLocationEntity"
+          }
+        ]
+      },
+      "MaterialIdentifierTrait": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#MaterialIdentifierTrait",
+        "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc.",
+        "pattern": "^\\d{2,7}-\\d{2}-\\d{1}$"
+      },
+      "Weight": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#Weight"
+      },
+      "Boolean": {
+        "type": "boolean",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#Boolean",
+        "description": "Represents a boolean value (i.e. a \"flag\")."
+      },
+      "BatteryMaterialEntity": {
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#BatteryMaterialEntity",
+        "type": "object",
+        "properties": {
+          "batteryMaterialLocation": {
+            "description": "Battery component that relates to the material",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#batteryMaterialLocation",
+            "$ref": "#/components/schemas/BatteryMaterialLocation"
+          },
+          "batteryMaterialIdentifier": {
+            "description": "CAS Number ",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#batteryMaterialIdentifier",
+            "$ref": "#/components/schemas/MaterialIdentifierTrait"
+          },
+          "batteryMaterialName": {
+            "description": "Clear name of Material",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#batteryMaterialName",
+            "$ref": "#/components/schemas/Text"
+          },
+          "batteryMaterialMass": {
+            "description": "Weight of component material",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#batteryMaterialMass",
+            "$ref": "#/components/schemas/Weight"
+          },
+          "isCriticalRawMaterial": {
+            "description": "The battery passport must contain information on the critical raw materials present in the battery.\n\nThe information on the critical raw materials must also be provided on the battery label.\nPer Annex VI, Part A(10), critical raw materials must be reported if present in the battery in a concentration of more than 0,1 % weight by weight. ",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#isCriticalRawMaterial",
+            "$ref": "#/components/schemas/Boolean"
+          }
+        },
+        "required": [
+          "batteryMaterialLocation",
+          "batteryMaterialIdentifier",
+          "batteryMaterialName",
+          "batteryMaterialMass",
+          "isCriticalRawMaterial"
+        ]
+      },
+      "BatteryMaterialList": {
+        "description": "Detailed composition, including materials used in the cathode, anode, and electrolyte\n\nEUBR: Annex XIII (2a)",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#BatteryMaterialList",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BatteryMaterialEntity"
+        }
+      },
+      "HazardousSubstanceClassChrateristicEnum": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#HazardousSubstanceClassChrateristicEnum",
+        "enum": [
+          "AcuteToxicity",
+          "SkinCorrosionOrIrritation",
+          "EyeDamageOrIrritation"
+        ]
+      },
+      "HazardousSubstanceConcentrationCharacteristic": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#HazardousSubstanceConcentrationCharacteristic"
+      },
+      "ImpactList": {
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#ImpactList",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#Text",
+          "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+        }
+      },
+      "HubstanceSubstanceLocationEntity": {
+        "description": "\"The impact of substances, in particular, hazardous substances, contained in batteries on the environment and on human health or safety of persons, including impact due to inappropriate discarding of waste batteries such as littering or discarding as unsorted municipal waste?.",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#HubstanceSubstanceLocationEntity",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BatteryLocationEntity"
+          }
+        ]
+      },
+      "HazardousSubstanceEntity": {
+        "description": "Hazardous substances (No. 19-23): Name (agreed substance nomenclature, e.g. IUPAC or chemical name) all hazardous substance (as ?any substance that poses a threat to human health and the environment?). Suggested above 0.1 % weight by weight within each (sub-)component.",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#HazardousSubstanceEntity",
+        "type": "object",
+        "properties": {
+          "hazardousSubstanceClass": {
+            "description": "Battery Regulation narrows reporting to substances falling under defined hazard classes and categories of the CLP regulation.",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#hazardousSubstanceClass",
+            "$ref": "#/components/schemas/HazardousSubstanceClassChrateristicEnum"
+          },
+          "hazardousSubstanceName": {
+            "description": "Clear name of hazardous substance",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#hazardousSubstanceName",
+            "$ref": "#/components/schemas/Text"
+          },
+          "hazardousSubstanceConcentration": {
+            "description": "Concentration of hazardous substance",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#hazardousSubstanceConcentration",
+            "$ref": "#/components/schemas/HazardousSubstanceConcentrationCharacteristic"
+          },
+          "hazardousSubstanceImpact": {
+            "description": "Impact statements based on, e.g., REACH or GHS for all hazard classes applicable to substances in the battery.",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#hazardousSubstanceImpact",
+            "$ref": "#/components/schemas/ImpactList"
+          },
+          "hazardousSubstanceLocation": {
+            "description": "Hazardous substances (No. 19-23): Location on a (sub-)component-level of all hazardous substances (as ?any substance that poses a threat to human health and the environment?). Suggested via a unique identifier or nomenclature.",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#hazardousSubstanceLocation",
+            "$ref": "#/components/schemas/HubstanceSubstanceLocationEntity"
+          },
+          "hazardousSubstanceIdentifier": {
+            "description": "CAS identifier of hazardous substance",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#hazardousSubstanceIdentifier",
+            "$ref": "#/components/schemas/MaterialIdentifierTrait"
+          }
+        },
+        "required": [
+          "hazardousSubstanceClass",
+          "hazardousSubstanceName",
+          "hazardousSubstanceConcentration",
+          "hazardousSubstanceImpact",
+          "hazardousSubstanceLocation",
+          "hazardousSubstanceIdentifier"
+        ]
+      },
+      "HazardousSubstancesList": {
+        "description": "Hazardous substances contained in the battery other than mercury, cadmium or lead. Substance as a chemical element and its compounds in the natural state or the result of a manufacturing process (ECHA). Battery Regulation narrows reporting to substances falling under defined hazard classes and categories of the CLP regulation.\n\nEUBR: Annex XIII (1b) ? Annex VI Part A (8)",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#HazardousSubstancesList",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/HazardousSubstanceEntity"
+        }
+      },
+      "MaterialComposition": {
+        "description": "Mandatory data: Battery chemistry; critical raw materials; materials used in the cathode, anode, and \nelectrolyte; hazardous substances; impact of substances on the environment and on human health or \nsafety\n\nCopyright ? 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution.",
+        "type": "object",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#MaterialComposition",
+        "properties": {
+          "batteryChemistry": {
+            "description": "Composition of a product in general terms by specifying the cathode and anode active material as well as electrolyte.\n\nDIN DKE Spec 99100 chapter reference: 6.5.2",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#batteryChemistry",
+            "$ref": "#/components/schemas/BatteryChemistryEntityList"
+          },
+          "batteryMaterials": {
+            "description": "\"Component materials used\" (No. 17.a-c): Naming the materials (as a composition of substances) in cathode, anode, electrolyte according to public standards, including specification of the corresponding component (i.e., cathode, anode, or electrolyte). We suggest a reporting threshold of 0.1 % weight by weight.\n\nDIN DKE Spec 99100 chapter reference: 6.5.3-6.5.4",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#batteryMaterials",
+            "$ref": "#/components/schemas/BatteryMaterialList"
+          },
+          "hazardousSubstances": {
+            "description": "\"Hazardous substances\" (No 20.a-e): Name (agreed substance nomenclature, e.g. IUPAC or chemical name) all hazardous substance (as ?any substance that poses a threat to human health and the environment?). Suggested above 0.1 % weight by weight within each (sub-)component.\n\nDIN DKE Spec 99100 chapter reference: 6.5.4 - 6.5.6",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.MaterialComposition:1.2.0#hazardousSubstances",
+            "$ref": "#/components/schemas/HazardousSubstancesList"
+          }
+        },
+        "required": [
+          "batteryChemistry",
+          "batteryMaterials",
+          "hazardousSubstances"
+        ]
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "The requesting user or client is not authenticated."
+      },
+      "Forbidden": {
+        "description": "The requesting user or client is not authorized to access resources."
+      },
+      "NotFoundError": {
+        "description": "The requested resource has not been found."
+      },
+      "ClientError": {
+        "description": "Payload or user input is invalid. See error details in the payload for more information.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "MaterialComposition": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PagingSchema"
+            }
+          }
+        },
+        "description": "The request was successful."
+      }
+    },
+    "requestBodies": {
+      "MaterialComposition": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/MaterialComposition"
+            }
+          }
+        }
+      }
+    }
+  }
+}

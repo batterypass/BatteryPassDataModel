@@ -1,0 +1,292 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "CarbonFootprintForBatteries",
+    "version": "v1",
+    "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#CarbonFootprintForBatteries"
+  },
+  "servers": [
+    {
+      "url": "https:\\\\thebatterypass.io/api/v1",
+      "variables": {
+        "api-version": {
+          "default": "v1"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/{tenant-id}/carbon-footprint-for-batteries": {
+      "get": {
+        "tags": [
+          "CarbonFootprintForBatteries"
+        ],
+        "operationId": "getCarbonFootprintForBatteries",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "description": "The ID of the tenant owning the requested Twin.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Starting index which is starting by 0",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of items to return per call.",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "totalItemCount",
+            "in": "query",
+            "description": "Flag that indicates that the total counts should be returned.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CarbonFootprintForBatteries"
+          },
+          "400": {
+            "$ref": "#/components/responses/ClientError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "details": {
+            "type": "object",
+            "minLength": 1,
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "PagingSchema": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarbonFootprintForBatteries"
+            }
+          },
+          "totalItems": {
+            "type": "number"
+          },
+          "totalPages": {
+            "type": "number"
+          },
+          "pageSize": {
+            "type": "number"
+          },
+          "currentPage": {
+            "type": "number"
+          }
+        }
+      },
+      "BatteryCarbonFootprint": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#BatteryCarbonFootprint",
+        "description": "The battery carbon footprint is an aggregation of the carbon footprint of the individual lifecycle stages"
+      },
+      "LifecycleStage": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#LifecycleStage",
+        "enum": [
+          "RawMaterialExtraction",
+          "MainProduction",
+          "Distribution",
+          "Recycling"
+        ]
+      },
+      "CarbonFootprintValue": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#CarbonFootprintValue"
+      },
+      "CarbonFootprintPerLifecycleStageEntity": {
+        "description": "The carbon footprint of the battery as share of total Battery Carbon Footprint, differentiated per life cycle stage raw material extraction, main production, distribution and end of ´┐¢ife and recycling.",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#CarbonFootprintPerLifecycleStageEntity",
+        "type": "object",
+        "properties": {
+          "lifecycleStage": {
+            "description": "The description of the life cycle stage ",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#lifecycleStage",
+            "$ref": "#/components/schemas/LifecycleStage"
+          },
+          "carbonFootprint": {
+            "description": "Carbon footprint of the individual lifecycle stage",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#carbonFootprint",
+            "$ref": "#/components/schemas/CarbonFootprintValue"
+          }
+        },
+        "required": [
+          "lifecycleStage",
+          "carbonFootprint"
+        ]
+      },
+      "CarbonFootprints": {
+        "description": "CarbainFootprints per lifecycle stage",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#CarbonFootprints",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/CarbonFootprintPerLifecycleStageEntity"
+        }
+      },
+      "CarbonFootprintPerformanceClass": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#CarbonFootprintPerformanceClass",
+        "description": "EV, industrial and LMT batteries shall bear a conspicuous, clearly legible and indelible label indicating the carbon footprint of the battery and the carbon footprint performance class that the relevant battery model per manufacturing plant corresponds to. The carbon footprint performance class shall be accessible via the battery passport. A meaningful number of classes of performance will be developed (?) with category A being the best class with the lowest carbon footprint life cycle impact."
+      },
+      "ResourcePath": {
+        "type": "string",
+        "format": "uri",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#ResourcePath",
+        "description": "The path of a resource."
+      },
+      "AbsoluteCarbonFootprint": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#AbsoluteCarbonFootprint"
+      },
+      "CarbonFootprintForBatteries": {
+        "description": "The battery passport must contain carbon footprint per functional unit of the battery as declared in the battery carbon footprint declaration in accordance with the entry into force of the implementing acts on the format of declaration. Reference: REGULATION (EU) 2023/1542 aka EU Battery Regulation",
+        "type": "object",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#CarbonFootprintForBatteries",
+        "properties": {
+          "batteryCarbonFootprint": {
+            "description": "The carbon footprint of the battery, calculated as kg of carbon dioxide equivalent per one kWh of the total energy provided by the battery over its expected service life, as declared in the Carbon Footprint Declaration.\nDIN DKE Spec 99100 chapter reference: 6.3.2",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#batteryCarbonFootprint",
+            "$ref": "#/components/schemas/BatteryCarbonFootprint"
+          },
+          "carbonFootprintPerLifecycleStage": {
+            "description": "The carbon footprint of the battery as share of total Battery Carbon Footprint, differentiated per life cycle stages raw material extraction, battery production, distribution and recycling.\n\nDIN DKE Spec 99100 chapter reference: \n6.3.3: Raw material extraction\n6.3.4: Main production\n6.3.5: Distrinution\n6.3.6: EoL/Recycling",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#carbonFootprintPerLifecycleStage",
+            "$ref": "#/components/schemas/CarbonFootprints"
+          },
+          "carbonFootprintPerformanceClass": {
+            "description": "The carbon footprint performance class that the relevant battery model per manufacturing plant corresponds to.\n\nDIN DKE Spec 99100 chapter reference:  6.3.7",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#carbonFootprintPerformanceClass",
+            "$ref": "#/components/schemas/CarbonFootprintPerformanceClass"
+          },
+          "carbonFootprintStudy": {
+            "description": "A web link to get access to a public version of the study supporting the carbon footprint values.\n\nDIN DKE Spec 99100 chapter reference:  6.3.8",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#carbonFootprintStudy",
+            "$ref": "#/components/schemas/ResourcePath"
+          },
+          "absoluteCarbonFootprint": {
+            "description": "As a non-mandatory data attribute, the battery passport should include the battery carbon footprint in absolute terms.\n\nThe absolute battery carbon footprint should be calculated as kilograms of carbon dioxide equivalent, without reference to the functional unit as prescribed by the battery regulation.\n\nDIN DKE Spec 99100 chapter reference: 6.3.10",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.CarbonFootprint:1.2.0#absoluteCarbonFootprint",
+            "$ref": "#/components/schemas/AbsoluteCarbonFootprint"
+          }
+        },
+        "required": [
+          "batteryCarbonFootprint",
+          "carbonFootprintPerLifecycleStage",
+          "carbonFootprintPerformanceClass",
+          "carbonFootprintStudy"
+        ]
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "The requesting user or client is not authenticated."
+      },
+      "Forbidden": {
+        "description": "The requesting user or client is not authorized to access resources."
+      },
+      "NotFoundError": {
+        "description": "The requested resource has not been found."
+      },
+      "ClientError": {
+        "description": "Payload or user input is invalid. See error details in the payload for more information.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "CarbonFootprintForBatteries": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PagingSchema"
+            }
+          }
+        },
+        "description": "The request was successful."
+      }
+    },
+    "requestBodies": {
+      "CarbonFootprintForBatteries": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CarbonFootprintForBatteries"
+            }
+          }
+        }
+      }
+    }
+  }
+}

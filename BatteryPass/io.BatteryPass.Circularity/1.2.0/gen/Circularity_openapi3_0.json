@@ -1,0 +1,564 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Circularity",
+    "version": "v1",
+    "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#Circularity"
+  },
+  "servers": [
+    {
+      "url": "https:\\\\thebatterypass.io/api/v1",
+      "variables": {
+        "api-version": {
+          "default": "v1"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/{tenant-id}/circularity": {
+      "get": {
+        "tags": [
+          "Circularity"
+        ],
+        "operationId": "getCircularity",
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "description": "The ID of the tenant owning the requested Twin.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Starting index which is starting by 0",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of items to return per call.",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "totalItemCount",
+            "in": "query",
+            "description": "Flag that indicates that the total counts should be returned.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Circularity"
+          },
+          "400": {
+            "$ref": "#/components/responses/ClientError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/Error"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "details": {
+            "type": "object",
+            "minLength": 1,
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "PagingSchema": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Circularity"
+            }
+          },
+          "totalItems": {
+            "type": "number"
+          },
+          "totalPages": {
+            "type": "number"
+          },
+          "pageSize": {
+            "type": "number"
+          },
+          "currentPage": {
+            "type": "number"
+          }
+        }
+      },
+      "Documenttype": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#Documenttype",
+        "enum": [
+          "BillOfMaterial",
+          "Model3D",
+          "DismantlingManual",
+          "RemovalManual",
+          "OtherManual",
+          "Drawing"
+        ]
+      },
+      "MimeType": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#MimeType",
+        "description": "A MIME type as defined in RFC 2046, for example \"application/pdf\"."
+      },
+      "ResourcePath": {
+        "type": "string",
+        "format": "uri",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#ResourcePath",
+        "description": "The path of a resource."
+      },
+      "DismantlingandRemovalDocumentation": {
+        "description": "Dismantling and Removal information, including at least:- Exploded diagrams of the battery system/pack showing the location of battery cells- Disassembly sequences- Type and number of fastening techniques to be unlocked- Tools required for disassembly- Warnings if risk of damaging parts exists- Amount of cells used and layoutEUBR: Annex XIII (2c)",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#DismantlingandRemovalDocumentation",
+        "type": "object",
+        "properties": {
+          "documentType": {
+            "description": "Describes type for document e.g. Dismantling manual",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#documentType",
+            "$ref": "#/components/schemas/Documenttype"
+          },
+          "mimeType": {
+            "description": "Defines internet media typ to determin how to interpret the documentURL",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#mimeType",
+            "$ref": "#/components/schemas/MimeType"
+          },
+          "documentURL": {
+            "description": "Link to document",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#documentURL",
+            "$ref": "#/components/schemas/ResourcePath"
+          }
+        },
+        "required": [
+          "documentType",
+          "mimeType",
+          "documentURL"
+        ]
+      },
+      "DocumentationList": {
+        "description": "A collection of required documentation to support EoL actions",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#DocumentationList",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/DismantlingandRemovalDocumentation"
+        }
+      },
+      "Text": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.digitaltwin:1.2.0#Text",
+        "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+      },
+      "Text0": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#Text",
+        "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."
+      },
+      "PostalAddress": {
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#PostalAddress",
+        "type": "object",
+        "properties": {
+          "addressCountry": {
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#addressCountry",
+            "$ref": "#/components/schemas/Text0"
+          },
+          "postalCode": {
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#postalCode",
+            "$ref": "#/components/schemas/Text0"
+          },
+          "streetAddress": {
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#streetAddress",
+            "$ref": "#/components/schemas/Text0"
+          }
+        },
+        "required": [
+          "addressCountry",
+          "postalCode",
+          "streetAddress"
+        ]
+      },
+      "AddressOfSupplier": {
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#AddressOfSupplier",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PostalAddress"
+          }
+        ]
+      },
+      "EmailAddressOfSupplierTrait": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#EmailAddressOfSupplierTrait",
+        "description": "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc.",
+        "pattern": "^[w.-]+@[w.-]+.[A-Za-z]{2,}$"
+      },
+      "PartNumber": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#PartNumber"
+      },
+      "ComponentEntity": {
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#ComponentEntity",
+        "type": "object",
+        "properties": {
+          "partName": {
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#partName",
+            "$ref": "#/components/schemas/Text0"
+          },
+          "partNumber": {
+            "description": "Part Number of Component",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#partNumber",
+            "$ref": "#/components/schemas/PartNumber"
+          }
+        },
+        "required": [
+          "partName",
+          "partNumber"
+        ]
+      },
+      "ComponentList": {
+        "description": "List of components available at supplier",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#ComponentList",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ComponentEntity"
+        }
+      },
+      "SparePartSupplierEntity": {
+        "description": "The part numbers for components should be provided together with the postal address, e-mail address and web address of the sources for spare parts.",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#SparePartSupplierEntity",
+        "type": "object",
+        "properties": {
+          "nameOfSupplier": {
+            "description": "Name of Supplier",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#nameOfSupplier",
+            "$ref": "#/components/schemas/Text"
+          },
+          "addressOfSupplier": {
+            "description": "Postal address of supplier for spare parts.",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#addressOfSupplier",
+            "$ref": "#/components/schemas/AddressOfSupplier"
+          },
+          "emailAddressOfSupplier": {
+            "description": "E-mail address of supplier for spare parts.",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#emailAddressOfSupplier",
+            "$ref": "#/components/schemas/EmailAddressOfSupplierTrait"
+          },
+          "supplierWebAddress": {
+            "description": "Web address of supplier for spare parts.",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#supplierWebAddress",
+            "$ref": "#/components/schemas/ResourcePath"
+          },
+          "components": {
+            "description": "Components available at supplier",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#components",
+            "$ref": "#/components/schemas/ComponentList"
+          }
+        },
+        "required": [
+          "nameOfSupplier",
+          "addressOfSupplier",
+          "emailAddressOfSupplier",
+          "supplierWebAddress",
+          "components"
+        ]
+      },
+      "SparePartSourcesList": {
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#SparePartSourcesList",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/SparePartSupplierEntity"
+        }
+      },
+      "PreConsumerShareTrait": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#PreConsumerShareTrait",
+        "maximum": 100,
+        "exclusiveMaximum": false,
+        "minimum": 0,
+        "exclusiveMinimum": false
+      },
+      "RecycledMaterial": {
+        "type": "string",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#RecycledMaterial",
+        "enum": [
+          "Cobalt",
+          "Nickel",
+          "Lithium",
+          "Lead",
+          "Cobalt",
+          "Nickel",
+          "Lithium",
+          "Lead"
+        ]
+      },
+      "PostConsumerShareTrait": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#PostConsumerShareTrait",
+        "maximum": 100,
+        "exclusiveMaximum": false,
+        "minimum": 0,
+        "exclusiveMinimum": false
+      },
+      "RecycledContentEntity": {
+        "description": "A battery passport must include recycled content information.\n\nThe content information must include the percentage share of nickel that is present in active materials and that has been recovered from battery manufacturing waste, for each battery model per year and per manufacturing plant.",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#RecycledContentEntity",
+        "type": "object",
+        "properties": {
+          "preConsumerShare": {
+            "description": "Recycled material share from pre-consumer waste (manufacturing waste, excluding run-around scrap) of the active material.",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#preConsumerShare",
+            "$ref": "#/components/schemas/PreConsumerShareTrait"
+          },
+          "recycledMaterial": {
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#recycledMaterial",
+            "$ref": "#/components/schemas/RecycledMaterial"
+          },
+          "postConsumerShare": {
+            "description": "Recycled material share from post-consumer waste (end-of-life scrap) of the active material.",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#postConsumerShare",
+            "$ref": "#/components/schemas/PostConsumerShareTrait"
+          }
+        },
+        "required": [
+          "preConsumerShare",
+          "recycledMaterial",
+          "postConsumerShare"
+        ]
+      },
+      "RecycledContentList": {
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#RecycledContentList",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RecycledContentEntity"
+        }
+      },
+      "ResourcePath0": {
+        "type": "string",
+        "format": "uri",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#ResourcePath",
+        "description": "The path of a resource."
+      },
+      "ExtinguishingAgentsList": {
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#ExtinguishingAgentsList",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "SafetyMeasuresEntity": {
+        "description": "The safety measures should be provided via the instruction manual as URL linking to PDF.",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#SafetyMeasuresEntity",
+        "type": "object",
+        "properties": {
+          "safetyInstructions": {
+            "description": "- Safety measures. - Necessary safety instructions to handle waste batteries, including in relation to the risks associated with, and the handling of, batteries containing lithium.",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#safetyInstructions",
+            "$ref": "#/components/schemas/ResourcePath0"
+          },
+          "extinguishingAgent": {
+            "description": "Usable extinguishing agents refering to classes of extinguishers (A, B, C, D, K).EUBR: Annex XIII (1a) ? Annex VI Part A (9)",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#extinguishingAgent",
+            "$ref": "#/components/schemas/ExtinguishingAgentsList"
+          }
+        },
+        "required": [
+          "safetyInstructions",
+          "extinguishingAgent"
+        ]
+      },
+      "SafetyMeasures": {
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#SafetyMeasures",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SafetyMeasuresEntity"
+          }
+        ]
+      },
+      "EndOfLifeInformationEnity": {
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#EndOfLifeInformationEnity",
+        "type": "object",
+        "properties": {
+          "wastePrevention": {
+            "description": "Prevention and management of waste batteries: Point (a) of Article 60(1): Information on the role of end-users in contributing to waste prevention, including by information on good practices and recommendations concerning the use of batteries aiming at extending their use phase and the possibilities of re-use, preparing for re-use, preparing for repurpose, repurposing and remanufacturing",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#wastePrevention",
+            "$ref": "#/components/schemas/ResourcePath0"
+          },
+          "separateCollection": {
+            "description": "Prevention and management of waste batteries: Point (b) of Article 60(1): Information on the role of end-users in contributing to the separate collection of waste batteries in accordance with their obligations under Article 51 so as to allow their treatment",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#separateCollection",
+            "$ref": "#/components/schemas/ResourcePath0"
+          },
+          "informationOnCollection": {
+            "description": "Prevention and management of waste batteries: Point (c) of Article 60(1): information on the separate collection, the take back, the collection points and preparing for re-use, preparing for repurposing, and recycling operations available for waste batteries",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#informationOnCollection",
+            "$ref": "#/components/schemas/ResourcePath0"
+          }
+        },
+        "required": [
+          "wastePrevention",
+          "separateCollection",
+          "informationOnCollection"
+        ]
+      },
+      "EndOfLifeInformation": {
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#EndOfLifeInformation",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EndOfLifeInformationEnity"
+          }
+        ]
+      },
+      "RenewableContent": {
+        "type": "number",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#RenewableContent"
+      },
+      "Circularity": {
+        "description": "Dismantling information (including at least: exploded diagrams of the battery system/pack showing the location of battery cells; disassembly sequences; type and number of fastening techniques to be unlocked; tools required for disassembly; warnings if risk of damaging parts exists; amount of cells used and layout); part numbers for components and contact details of sources for replacement spares; safety measures (Annex XIII (2b-d)); usable extinguishing agent (Annex VI, Part A(9)). 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is licensed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold commercially and is given appropriate attribution.",
+        "type": "object",
+        "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#Circularity",
+        "properties": {
+          "dismantlingAndRemovalInformation": {
+            "description": "Dismantling and Removal information, including at least:- Exploded diagrams of the battery system/pack showing the location of battery cells- Disassembly sequences- Type and number of fastening techniques to be unlocked- Tools required for disassembly- Warnings if risk of damaging parts exists- Amount of cells used and layout. BR Annex XIII (2c)\n\nDIN DKE Spec 99100 chapter reference: 6.6.1.2",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#dismantlingAndRemovalInformation",
+            "$ref": "#/components/schemas/DocumentationList"
+          },
+          "sparePartSources": {
+            "description": "Contact details of sources for replacement spares. Postal address, including name and brand names, postal code and place, street and number, country, telephone, if any. BR Annex XIII (2b)\n\nDIN DKE Spec 99100 chapter reference: 6.6.1.3",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#sparePartSources",
+            "$ref": "#/components/schemas/SparePartSourcesList"
+          },
+          "recycledContent": {
+            "description": "Share of material recovered from waste present in active materials for each battery model per year and per manufacturing plant.\n\nDIN DKE Spec 99100 chapter reference:  6.6.2.3 - 6.6.2.10",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#recycledContent",
+            "$ref": "#/components/schemas/RecycledContentList"
+          },
+          "safetyMeasures": {
+            "description": "Safety measures and instructions should also take past negative and extreme events as well as the separate data attributes ?battery status? and ?battery composition/chemistry? into account.\n\nDIN DKE Spec 99100 chapter reference: 6.6.1.5",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#safetyMeasures",
+            "$ref": "#/components/schemas/SafetyMeasures"
+          },
+          "endOfLifeInformation": {
+            "description": "Producer or producer responsibility organisations shall make information available to distributors and end-users on: the role of end-users in contributing to waste prevention, including by information on good practices and recommendations concerning the use of batteries aiming at extending their use phase and the possibilities of re-use, preparing for re-use, preparing for repurpose, repurposing and remanufacturing.\n\nDIN DKE Spec 99100 chapter reference: 6.6.3.2 - 6.6.3.4",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#endOfLifeInformation",
+            "$ref": "#/components/schemas/EndOfLifeInformation"
+          },
+          "renewableContent": {
+            "description": "Share of renewable material content. A renewable material is a material made of natural resources that can be replenished. \n\nDIN DKE Spec 99100 chapter reference: 6.6.2.11",
+            "x-samm-aspect-model-urn": "urn:samm:io.BatteryPass.Circularity:1.2.0#renewableContent",
+            "$ref": "#/components/schemas/RenewableContent"
+          }
+        },
+        "required": [
+          "dismantlingAndRemovalInformation",
+          "sparePartSources",
+          "recycledContent",
+          "safetyMeasures",
+          "endOfLifeInformation",
+          "renewableContent"
+        ]
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "The requesting user or client is not authenticated."
+      },
+      "Forbidden": {
+        "description": "The requesting user or client is not authorized to access resources."
+      },
+      "NotFoundError": {
+        "description": "The requested resource has not been found."
+      },
+      "ClientError": {
+        "description": "Payload or user input is invalid. See error details in the payload for more information.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Circularity": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PagingSchema"
+            }
+          }
+        },
+        "description": "The request was successful."
+      }
+    },
+    "requestBodies": {
+      "Circularity": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Circularity"
+            }
+          }
+        }
+      }
+    }
+  }
+}
