@@ -4,7 +4,7 @@
 
 # Battery Pass Data Model v1.2.0
 
-Welcome to the Battery Pass Data Model repository! This project provides a comprehensive data model based on the [DIN DKE SPEC 99100:2025-02](https://www.dinmedia.de/en/technical-rule/din-dke-spec-99100/385692321), aimed at standardizing and streamlining the exchange of battery-related information across the value chain to allow informed stakeholder decisions for sustainable circular economy. The defined data requirements are fully aligned with the [EU Battery Regulation](https://eur-lex.europa.eu/eli/reg/2023/1542/oj) and the [Eco-Design Directive for Sustainable Products (ESPR)](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1781&qid=1719580391746). 
+Welcome to the Battery Pass Data Model repository! This project provides a comprehensive data model based on the [DIN DKE SPEC 99100:2025-02 "Requirements	for	data	attributes	of	the	battery	passport"](https://www.dinmedia.de/en/technical-rule/din-dke-spec-99100/385692321), aimed at standardizing and streamlining the exchange of battery-related information across the value chain to allow informed stakeholder decisions for sustainable circular economy. The defined data requirements are fully aligned with the [EU Battery Regulation](https://eur-lex.europa.eu/eli/reg/2023/1542/oj) and the [Eco-Design Directive for Sustainable Products (ESPR)](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1781&qid=1719580391746). 
 
 The provided data modelling approach is a proposal for a sector specific DPP (Battery Passport). 
 
@@ -34,7 +34,7 @@ Meanwhile the Battery Pass Consortium contributed to the DIN DKE Spec 99100:25-0
 
 ## Features
 - **Standardized Data Representation:** Ensures uniformity in the way battery data is recorded and shared.
-- **Comprehensive Coverage:** Includes all critical aspects of battery data as specified in the [DIN DKE SPEC 99100:2025-02](https://www.dinmedia.de/en/technical-rule/din-dke-spec-99100/385692321).
+- **Comprehensive Coverage:** Includes all critical aspects of battery data as specified in the [DIN DKE SPEC 99100:2025-02 "Requirements	for	data	attributes	of	the	battery	passport"](https://www.dinmedia.de/en/technical-rule/din-dke-spec-99100/385692321).
 - **Scalability:** Suitable for use in projects of varying scales, from small businesses to large enterprises.
 - **Interoperability:** Facilitates seamless data exchange between different systems and platforms.
 
