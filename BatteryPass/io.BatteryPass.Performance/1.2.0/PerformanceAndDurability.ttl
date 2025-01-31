@@ -157,6 +157,7 @@
    samm:characteristic :NegativeEvents .
 
 :temperatureInformation a samm:Property ;
+   samm:description "The battery passport must include periodically recorded information on the operating environmental conditions, including temperature.\n\nDIN DKE Spec 99100 chapter reference: 6.7.7.5 - 8"@en ;
    samm:characteristic :TemperatureInformation .
 
 :remainingPowerCapability a samm:Property ;
@@ -333,7 +334,6 @@
    samm:properties ( :ohmicResistance :batteryComponent ) .
 
 :C a samm:Unit ;
-   unit:conversionFactor "1x W/Wh" ;
    samm:symbol "C" .
 
 :TemperatureRangeIdleState a samm-c:Measurement ;
@@ -368,7 +368,7 @@
    samm:properties ( :negativeEvent :lastUpdate ) .
 
 :TemperatureConditionsEntity a samm:Entity ;
-   samm:properties ( :timeExtremeHighTemp :timeExtremeLowTemp ) .
+   samm:properties ( :timeExtremeHighTemp :timeExtremeLowTemp :timeExtremeHighTempCharging :timeExtremeLowTempCharging :lastUpdate ) .
 
 :RemainingPowerCapabilityEntity a samm:Entity ;
    samm:properties ( :remainingPowerCapabilityValue :lastUpdate ) .
@@ -435,6 +435,14 @@
    samm:description "Cumulated time spent below the given lower boundary of temperature."@en ;
    samm:characteristic :TimeExtremeLowTemp .
 
+:timeExtremeHighTempCharging a samm:Property ;
+   samm:description "Cumulated time spent above the given upper boundary of temperature during Charging."@en ;
+   samm:characteristic :TimeExtremeHighTempCharging .
+
+:timeExtremeLowTempCharging a samm:Property ;
+   samm:description "Cumulated time spent below the given lower boundary of temperature during charging."@en ;
+   samm:characteristic :TimeExtremeLowTempCharging .
+
 :remainingPowerCapabilityValue a samm:Property ;
    samm:characteristic :RemainingPowerCapabilityValue .
 
@@ -498,6 +506,14 @@
    samm-c:unit unit:minuteUnitOfTime .
 
 :TimeExtremeLowTemp a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:minuteUnitOfTime .
+
+:TimeExtremeHighTempCharging a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:minuteUnitOfTime .
+
+:TimeExtremeLowTempCharging a samm-c:Measurement ;
    samm:dataType xsd:double ;
    samm-c:unit unit:minuteUnitOfTime .
 

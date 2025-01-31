@@ -1,0 +1,16 @@
+2025-01-31T14:00:49.269+01:00  INFO 5572 --- [main] org.eclipse.esmf.ame.Application         : Starting AOT-processed Application using Java 17.0.6 with PID 5572 (C:\Users\Nikolai D'Agostino\AppData\Local\ASPECT-MODEL-EDITOR\backend\signed_dir\ame-backend-5.6.1-win.exe started by Nikolai D'Agostino in C:\Users\Nikolai D'Agostino\git-repository\BatteryPassDataModel\BatteryPass\io.BatteryPass.Performance\1.2.0)
+2025-01-31T14:00:49.269+01:00  INFO 5572 --- [main] org.eclipse.esmf.ame.Application         : No active profile set, falling back to 1 default profile: "default"
+2025-01-31T14:00:49.393+01:00  INFO 5572 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 30001 (http)
+2025-01-31T14:00:49.394+01:00  INFO 5572 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-31T14:00:49.394+01:00  INFO 5572 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2025-01-31T14:00:49.399+01:00  INFO 5572 --- [main] o.a.c.c.C.[.[localhost].[/ame/api]       : Initializing Spring embedded WebApplicationContext
+2025-01-31T14:00:49.399+01:00  INFO 5572 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 130 ms
+2025-01-31T14:00:49.458+01:00  WARN 5572 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: f5f88da0-7775-4abf-905a-5375e3fb0564
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-01-31T14:00:49.467+01:00  INFO 5572 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@453bd64b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@52d0f9f8, org.springframework.security.web.context.SecurityContextHolderFilter@111e094d, org.springframework.security.web.header.HeaderWriterFilter@730cf27b, org.springframework.security.web.authentication.logout.LogoutFilter@178a7797, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@23a429d8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@56df236b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1732a88b, org.springframework.security.web.access.ExceptionTranslationFilter@375643c2, org.springframework.security.web.access.intercept.AuthorizationFilter@e87801]
+2025-01-31T14:00:49.484+01:00  INFO 5572 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 30001 (http) with context path '/ame/api'
+2025-01-31T14:00:49.484+01:00  INFO 5572 --- [main] org.eclipse.esmf.ame.Application         : Started Application in 0.241 seconds (process running for 0.244)

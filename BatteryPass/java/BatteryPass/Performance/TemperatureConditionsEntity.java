@@ -30,14 +30,29 @@ public class TemperatureConditionsEntity {
 	@NotNull
 	private Double timeExtremeLowTemp;
 
+	@NotNull
+	private Double timeExtremeHighTempCharging;
+
+	@NotNull
+	private Double timeExtremeLowTempCharging;
+
+	@NotNull
+	private XMLGregorianCalendar lastUpdate;
+
 	@JsonCreator
 	public TemperatureConditionsEntity(@JsonProperty(value = "timeExtremeHighTemp") Double timeExtremeHighTemp,
-			@JsonProperty(value = "timeExtremeLowTemp") Double timeExtremeLowTemp) {
+			@JsonProperty(value = "timeExtremeLowTemp") Double timeExtremeLowTemp,
+			@JsonProperty(value = "timeExtremeHighTempCharging") Double timeExtremeHighTempCharging,
+			@JsonProperty(value = "timeExtremeLowTempCharging") Double timeExtremeLowTempCharging,
+			@JsonProperty(value = "lastUpdate") XMLGregorianCalendar lastUpdate) {
 		super(
 
 		);
 		this.timeExtremeHighTemp = timeExtremeHighTemp;
 		this.timeExtremeLowTemp = timeExtremeLowTemp;
+		this.timeExtremeHighTempCharging = timeExtremeHighTempCharging;
+		this.timeExtremeLowTempCharging = timeExtremeLowTempCharging;
+		this.lastUpdate = lastUpdate;
 	}
 
 	/**
@@ -58,6 +73,33 @@ public class TemperatureConditionsEntity {
 		return this.timeExtremeLowTemp;
 	}
 
+	/**
+	 * Returns timeExtremeHighTempCharging
+	 *
+	 * @return {@link #timeExtremeHighTempCharging}
+	 */
+	public Double getTimeExtremeHighTempCharging() {
+		return this.timeExtremeHighTempCharging;
+	}
+
+	/**
+	 * Returns timeExtremeLowTempCharging
+	 *
+	 * @return {@link #timeExtremeLowTempCharging}
+	 */
+	public Double getTimeExtremeLowTempCharging() {
+		return this.timeExtremeLowTempCharging;
+	}
+
+	/**
+	 * Returns lastUpdate
+	 *
+	 * @return {@link #lastUpdate}
+	 */
+	public XMLGregorianCalendar getLastUpdate() {
+		return this.lastUpdate;
+	}
+
 	@Override
 	public boolean equals(final Object o) {
 		if (this == o) {
@@ -69,11 +111,15 @@ public class TemperatureConditionsEntity {
 
 		final TemperatureConditionsEntity that = (TemperatureConditionsEntity) o;
 		return Objects.equals(timeExtremeHighTemp, that.timeExtremeHighTemp)
-				&& Objects.equals(timeExtremeLowTemp, that.timeExtremeLowTemp);
+				&& Objects.equals(timeExtremeLowTemp, that.timeExtremeLowTemp)
+				&& Objects.equals(timeExtremeHighTempCharging, that.timeExtremeHighTempCharging)
+				&& Objects.equals(timeExtremeLowTempCharging, that.timeExtremeLowTempCharging)
+				&& Objects.equals(lastUpdate, that.lastUpdate);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(timeExtremeHighTemp, timeExtremeLowTemp);
+		return Objects.hash(timeExtremeHighTemp, timeExtremeLowTemp, timeExtremeHighTempCharging,
+				timeExtremeLowTempCharging, lastUpdate);
 	}
 }
