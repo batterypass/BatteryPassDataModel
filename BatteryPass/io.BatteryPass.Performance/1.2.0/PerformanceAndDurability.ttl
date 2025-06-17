@@ -1,16 +1,4 @@
-######################################################################
-# Copyright (c) 2025 Circulor GmbH on behalf of the Battery Pass Consortium
-#
-# See the NOTICE file(s) distributed with this work for additional
-# information regarding copyright ownership.
-#
-# This work is made available under the terms of the
-# Creative Commons Attribution 4.0 International (CC BY-NC 4.0) license,
-# which is available at
-# https://creativecommons.org/licenses/by-nc/4.0/.
-#
-# SPDX-License-Identifier: CC-BY-NC-4.0
-#######################################################################
+
 
 @prefix samm: <urn:samm:org.eclipse.esmf.samm:meta-model:2.1.0#> .
 @prefix samm-c: <urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#> .
@@ -19,7 +7,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix : <urn:samm:io.BatteryPass.Performance:1.2.0#> .
+@prefix : <urn:samm:io.BatteryPass.Performance:1.2.1#> .
 
 :PerformanceAndDurability a samm:Aspect ;
    samm:description "Battery performance and durability data model\n\nCopyright ? 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution."@en ;
@@ -122,7 +110,7 @@
 
 :temperatureRangeIdleState a samm:Property ;
    samm:description "Upper an lower boundary of the surrounding temperature range, which the battery can safely withstand. \n\nDIN DKE Spec 99100 chapter reference: 6.7.6.3-4"@en ;
-   samm:characteristic :TemperatureRangeIdleStateTrait .
+   samm:characteristic :TemperatureRangeIdleState .
 
 :energyThroughput a samm:Property ;
    samm:description "The data attribute should be reported as measured for further potential processing. In addition, the normalisation by capacity may add a further useful value that ensures comparability among battery sizes.\n\nDIN DKE Spec 99100 chapter reference: 6.7.6.7"@en ;
@@ -261,9 +249,8 @@
    samm:dataType xsd:float ;
    samm-c:unit :C .
 
-:TemperatureRangeIdleStateTrait a samm-c:Trait ;
-   samm-c:baseCharacteristic :TemperatureRangeIdleState ;
-   samm-c:constraint :TemperatureRange .
+:TemperatureRangeIdleState a samm:Characteristic ;
+   samm:dataType :TemperatureRangeType .
 
 :EnergyThroughput a samm-c:Measurement ;
    samm:dataType xsd:double ;
@@ -336,15 +323,8 @@
 :C a samm:Unit ;
    samm:symbol "C" .
 
-:TemperatureRangeIdleState a samm-c:Measurement ;
-   samm:dataType xsd:double ;
-   samm-c:unit unit:degreeCelsius .
-
-:TemperatureRange a samm-c:RangeConstraint ;
-   samm-c:minValue "-20.0"^^xsd:double ;
-   samm-c:maxValue "+60.0"^^xsd:double ;
-   samm-c:lowerBoundDefinition samm-c:AT_LEAST ;
-   samm-c:upperBoundDefinition samm-c:AT_MOST .
+:TemperatureRangeType a samm:Entity ;
+   samm:properties ( :minimum :maximum ) .
 
 :CapacityThroughputEntity a samm:Entity ;
    samm:properties ( :capacityThroughputValue :lastUpdate ) .
@@ -400,6 +380,16 @@
 
 :batteryComponent a samm:Property ;
    samm:characteristic :BatteryComponent .
+
+:minimum a samm:Property ;
+   samm:description "lower temperature range."@en ;
+   samm:characteristic :MinimumTrait ;
+   samm:exampleValue "-100.0"^^xsd:double .
+
+:maximum a samm:Property ;
+   samm:description "upper temperature range."@en ;
+   samm:characteristic :MaximumTrait ;
+   samm:exampleValue "200.0"^^xsd:double .
 
 :capacityThroughputValue a samm:Property ;
    samm:characteristic :CapacityThroughputValue .
@@ -477,6 +467,14 @@
    samm:dataType xsd:string ;
    samm-c:values ( "pack" "module" "cell" ) .
 
+:MinimumTrait a samm-c:Trait ;
+   samm-c:baseCharacteristic :LowerBoundaryTemp ;
+   samm-c:constraint :MinMaxBoundaryContraint .
+
+:MaximumTrait a samm-c:Trait ;
+   samm-c:baseCharacteristic :UpperBoundaryTemp ;
+   samm-c:constraint :MinMaxBoundaryContraint .
+
 :CapacityThroughputValue a samm-c:Measurement ;
    samm:dataType xsd:float ;
    samm-c:unit unit:ampereHour .
@@ -542,6 +540,19 @@
    samm:dataType xsd:float ;
    samm-c:unit unit:percent .
 
+:LowerBoundaryTemp a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:degreeCelsius .
+
+:MinMaxBoundaryContraint a samm-c:RangeConstraint ;
+   samm-c:minValue "-100.0"^^xsd:double ;
+   samm-c:maxValue "200.0"^^xsd:double ;
+   samm-c:lowerBoundDefinition samm-c:AT_LEAST ;
+   samm-c:upperBoundDefinition samm-c:AT_MOST .
+
+:UpperBoundaryTemp a samm-c:Measurement ;
+   samm:dataType xsd:double ;
+   samm-c:unit unit:degreeCelsius .
 :RemainingPowerCapabilityDynamicAt a samm:Entity ;
    samm:extends :PowerCapabilityAtEntity ;
    samm:properties ( :rPCLastUpdated ) .
