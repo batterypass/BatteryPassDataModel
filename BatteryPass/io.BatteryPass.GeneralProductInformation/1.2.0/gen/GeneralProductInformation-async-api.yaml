@@ -1,0 +1,23 @@
+---
+asyncapi: 3.0.0
+info:
+  title: GeneralProductInformation MQTT API
+  version: v1
+  description: |-
+    Mandatory data: Product identification; manufacturer?s identification; manufacturing place; manufacturing date; battery category; battery weight; battery status (Annex VI, Part A and Annex XIII)
+    Copyright ? 2023 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution.
+  x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#GeneralProductInformation
+defaultContentType: application/json
+channels:
+  GeneralProductInformation:
+    address: /io.BatteryPass.GeneralProductInformation/1.2.0/GeneralProductInformation
+    description: This channel for updating GeneralProductInformation Aspect.
+    parameters:
+      namespace: io.BatteryPass.GeneralProductInformation
+      version: 1.2.0
+      aspect-name: GeneralProductInformation
+    messages: {}
+operations: {}
+components:
+  messages: {}
+  schemas: {}

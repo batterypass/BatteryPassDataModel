@@ -1,0 +1,333 @@
+---
+openapi: 3.0.3
+info:
+  title: GeneralProductInformation
+  version: v1
+  x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#GeneralProductInformation
+servers:
+- url: https://example.com/api/v1
+  variables:
+    api-version:
+      default: v1
+paths:
+  /:
+    get:
+      tags:
+      - GeneralProductInformation
+      operationId: getGeneralProductInformation
+      parameters:
+      - name: tenant-id
+        in: path
+        description: The ID of the tenant owning the requested Twin.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          $ref: '#/components/responses/GeneralProductInformation'
+        "401":
+          $ref: '#/components/responses/ClientError'
+        "402":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFoundError'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      required:
+      - details
+      properties:
+        message:
+          type: string
+          minLength: 1
+        path:
+          type: string
+          minLength: 1
+        details:
+          type: object
+          minLength: 1
+          additionalProperties:
+            type: object
+        code:
+          type: string
+          nullable: true
+    ProductIdentifierCode:
+      type: string
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#ProductIdentifierCode
+      description: "A unique identifier is defined as \"a unique string of characters\
+        \ for the identification of batteries that also enables a web link to the\
+        \ battery passport\" (Art. 3(66)), to be attributed by the economic operator\
+        \ placing the battery on the market (Art. 77(3)). The unique identifier shall\
+        \ comply with the standard (?ISO/IEC?) 15459:2015 or equivalent (Art. 77(3)).\
+        \ A QR code shall provide access to the battery passport and be linked to\
+        \ the unique identifier (Art. 77(3)). Batteries shall ?bear a model identification\
+        \ and batch or serial number, or product number or another element allowing\
+        \ their identification? (Art. 38(6)). \n\nBattery Regulation Reference: Art.\
+        \ 77(3); Art. 3(66); Art. 38(6)"
+    ProductPassportIdentifierTrait:
+      type: string
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#ProductPassportIdentifierTrait
+      description: Code constraint for URN
+      pattern: "^urn:[a-z0-9]+:[a-z0-9]+$"
+    BatteryCategoryEnum:
+      type: string
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#BatteryCategoryEnum
+      enum:
+      - lmt
+      - ev
+      - industrial
+      - stationary
+    Text:
+      type: string
+      x-samm-aspect-model-urn: urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#Text
+      description: "Describes a Property which contains plain text. This is intended\
+        \ exclusively for human readable strings, not for identifiers, measurement\
+        \ values, etc."
+    PostalAddressEntity:
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#PostalAddressEntity
+      type: object
+      properties:
+        addressCountry:
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#addressCountry
+          $ref: '#/components/schemas/Text'
+        postalCode:
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#postalCode
+          $ref: '#/components/schemas/Text'
+        streetAddress:
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#streetAddress
+          $ref: '#/components/schemas/Text'
+      required:
+      - addressCountry
+      - postalCode
+      - streetAddress
+    PostalAddress:
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#PostalAddress
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/PostalAddressEntity'
+    Identifier:
+      type: string
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#Identifier
+      description: Not demanded by the EU Battery Regulation
+    EmailAddressTrait:
+      type: string
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#EmailAddressTrait
+      description: "Describes a Property which contains plain text. This is intended\
+        \ exclusively for human readable strings, not for identifiers, measurement\
+        \ values, etc."
+      pattern: "^[w.-]+@[w.-]+.[A-Za-z]{2,}$"
+    ResourcePath:
+      type: string
+      format: uri
+      x-samm-aspect-model-urn: urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#ResourcePath
+      description: The path of a resource.
+    ContactInformationEntity:
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#ContactInformationEntity
+      type: object
+      properties:
+        contactName:
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#contactName
+          $ref: '#/components/schemas/Text'
+        postalAddress:
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#postalAddress
+          $ref: '#/components/schemas/PostalAddress'
+        identifier:
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#identifier
+          $ref: '#/components/schemas/Identifier'
+        emailAddress:
+          description: email address
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#emailAddress
+          $ref: '#/components/schemas/EmailAddressTrait'
+        webAddress:
+          description: Web address.
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#webAddress
+          $ref: '#/components/schemas/ResourcePath'
+      required:
+      - contactName
+      - postalAddress
+      - identifier
+    ManufacturerInformation:
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#ManufacturerInformation
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ContactInformationEntity'
+    ManufacturingDateTimeStamp:
+      type: string
+      format: date-time
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#ManufacturingDateTimeStamp
+      description: |-
+        Manufacturing date (month and year)
+        Regulation Reference: Annex XIII (1a) ? Annex VI Part A (4); Annex VII Part B (1)
+    BatteryStatusEnumeration:
+      type: string
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#BatteryStatusEnumeration
+      description: |-
+        Lifecycle status of the battery. Status defined from a list, with the options suggested as follows: 'original', 'repurposed', 'reused', 'remanufactured', 'waste'
+
+        EUBR: Annex XIII (4c)
+      enum:
+      - Original
+      - Repurposed
+      - Reused
+      - Remanufactured
+      - Waste
+    BatteryMassMeasurable:
+      type: number
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#BatteryMassMeasurable
+      description: |-
+        Weight of the battery
+        EUBR: Annex XIII (1a) ? Annex VI Part A (5)
+    ManufacturingPlace:
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#ManufacturingPlace
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/PostalAddressEntity'
+    OperatorInformation:
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#OperatorInformation
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ContactInformationEntity'
+    PuttingIntoServiceDateTime:
+      type: string
+      pattern: "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\\
+        .[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?"
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#PuttingIntoServiceDateTime
+    WarrentyPeriod:
+      type: string
+      pattern: "--(0[1-9]|1[0-2])(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?"
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#WarrentyPeriod
+    GeneralProductInformation:
+      description: |-
+        Mandatory data: Product identification; manufacturer?s identification; manufacturing place; manufacturing date; battery category; battery weight; battery status (Annex VI, Part A and Annex XIII)
+        Copyright ? 2023 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution.
+      type: object
+      x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#GeneralProductInformation
+      properties:
+        productIdentifier:
+          description: |-
+            Unique identifier allowing for the unambiguous identification of each individual battery and hence each corresponding battery passport (exploration of a potential additional battery passport identifier (not requried per Battery Regulation) ongoing).
+            DIN DKE Spec chapter reference: 6.1.2.2
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#productIdentifier
+          $ref: '#/components/schemas/ProductIdentifierCode'
+        batteryPassportIdentifier:
+          description: Unique identifier allowing for the unambiguous identification
+            of each individual battery and hence each corresponding battery passport
+            (exploration of a potential additional battery passport identifier (not
+            requried per Battery Regulation) ongoing).
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#batteryPassportIdentifier
+          $ref: '#/components/schemas/ProductPassportIdentifierTrait'
+        batteryCategory:
+          description: |-
+            Categories relevant for the battery passport: LMT battery, ?electric vehicle battery, stationary or other industrial battery >2kWh.
+
+            DIN DKE Spec chapter reference: 6.1.3.5
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#batteryCategory
+          $ref: '#/components/schemas/BatteryCategoryEnum'
+        manufacturerInformation:
+          description: "Unambiguous identification of the manufacturer of the battery,\
+            \ suggested via a unique operator identifier (as \"unique string of characters\
+            \ for the identification of actors involved in the value chain of products\"\
+            , ESPR Art. 2(32)). \n\nDIN DKE Spec chapter reference: 6.1.2.4"
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#manufacturerInformation
+          $ref: '#/components/schemas/ManufacturerInformation'
+        manufacturingDate:
+          description: |-
+            The manufacturing date should not only relate to the battery model, but to the battery item.
+
+            The date code should comply with DIN ISO 8601 1:2020 12 and ISO 8601 2:2019.
+
+            DIN DKE Spec chapter reference: 6.1.3.2
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#manufacturingDate
+          $ref: '#/components/schemas/ManufacturingDateTimeStamp'
+        batteryStatus:
+          description: |-
+            Lifecycle status of the battery. Status defined from a list, with the options suggested as follows: 'original', 'repurposed', 'reused', 'remanufactured', 'waste'.
+
+            DIN DKE Spec chapter reference: 6.1.3.7
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#batteryStatus
+          $ref: '#/components/schemas/BatteryStatusEnumeration'
+        batteryMass:
+          description: |-
+            Mass of the entire battery in kilograms. Voluntary: if the battery is defined on pack or module level: also weight of the modules and/or cells.
+
+            DIN DKE Spec chapter reference: 6.1.3.6
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#batteryMass
+          $ref: '#/components/schemas/BatteryMassMeasurable'
+        manufacturingPlace:
+          description: |-
+            Unambiguous identification of the manufacturing facility (e.g. country, city, street, building (if needed)), suggested via a unique facility identifier (as "unique string of characters for the identification of locations or buildings involved in the value chain of a product or used by actors involved in the value chain of a product", ESPR Art. 2(33)).
+
+            DIN DKE Spec chapter reference: 6.1.3.1
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#manufacturingPlace
+          $ref: '#/components/schemas/ManufacturingPlace'
+        operatorInformation:
+          description: |-
+            State the name, trade name or mark, postal address, web ad-dress, e-mail address. Suggested reporting via a unique operator identifier (see requirements of unique battery identifier).
+
+            DIN DKE Spec chapter reference: 6.1.2.3
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#operatorInformation
+          $ref: '#/components/schemas/OperatorInformation'
+        puttingIntoService:
+          description: |-
+            Where appropriate, the battery passport must include information on the date of putting the battery into service. BR Annex VI Part A (1); Art. 3(33); Art. 38(7); ESPR Art. 2(32)
+
+            DIN DKE Spec chapter reference: 6.1.3.3
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#puttingIntoService
+          $ref: '#/components/schemas/PuttingIntoServiceDateTime'
+        warrentyPeriod:
+          description: |-
+            The battery passport must include information about the period for which the commercial warranty applies.
+
+            DIN DKE Spec chapter reference: 6.1.3.4
+          x-samm-aspect-model-urn: urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#warrentyPeriod
+          $ref: '#/components/schemas/WarrentyPeriod'
+      required:
+      - productIdentifier
+      - batteryPassportIdentifier
+      - batteryCategory
+      - manufacturerInformation
+      - manufacturingDate
+      - batteryStatus
+      - batteryMass
+      - manufacturingPlace
+      - operatorInformation
+      - puttingIntoService
+      - warrentyPeriod
+  responses:
+    Unauthorized:
+      description: The requesting user or client is not authenticated.
+    Forbidden:
+      description: The requesting user or client is not authorized to access resources
+        for the given tenant.
+    NotFoundError:
+      description: The requested Twin has not been found.
+    ClientError:
+      description: Payload or user input is invalid. See error details in the payload
+        for more.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    GeneralProductInformation:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GeneralProductInformation'
+      description: The request was successful.
+  requestBodies:
+    GeneralProductInformation:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GeneralProductInformation'

@@ -12,6 +12,11 @@
 # SPDX-License-Identifier: CC-BY-NC-4.0
 #######################################################################
 
+#######################################################################
+# Added emailAdress, webAddress
+#######################################################################
+
+
 @prefix samm: <urn:samm:org.eclipse.esmf.samm:meta-model:2.1.0#> .
 @prefix samm-c: <urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#> .
 @prefix samm-e: <urn:samm:org.eclipse.esmf.samm:entity:2.1.0#> .
@@ -19,7 +24,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix : <urn:samm:io.BatteryPass.GeneralProductInformation:1.0.0#> .
+@prefix : <urn:samm:io.BatteryPass.GeneralProductInformation:1.2.0#> .
 
 :GeneralProductInformation a samm:Aspect ;
    samm:description "Mandatory data: Product identification; manufacturer?s identification; manufacturing place; manufacturing date; battery category; battery weight; battery status (Annex VI, Part A and Annex XIII)\nCopyright ? 2023 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution."@en ;
@@ -137,7 +142,7 @@
    samm:value "^urn:[a-z0-9]+:[a-z0-9]+$" .
 
 :ContactInformationEntity a samm:Entity ;
-   samm:properties ( :contactName :postalAddress :identifier ) .
+   samm:properties ( :contactName :postalAddress :identifier [ samm:property :emailAddress; samm:optional true ] [ samm:property :webAddress; samm:optional true ] ) .
 
 :PostalAddressEntity a samm:Entity ;
    samm:see <https://schema.org/PostalAddress> ;
@@ -151,6 +156,14 @@
 
 :identifier a samm:Property ;
    samm:characteristic :Identifier .
+
+:emailAddress a samm:Property ;
+   samm:description "email address"@en ;
+   samm:characteristic :EmailAddressTrait .
+
+:webAddress a samm:Property ;
+   samm:description "Web address."@en ;
+   samm:characteristic samm-c:ResourcePath .
 
 :addressCountry a samm:Property ;
    samm:see <https://schema.org/addressCountry> ;
@@ -174,6 +187,13 @@
    samm:preferredName "EconomicOperatorCode"@en ;
    samm:description "Not demanded by the EU Battery Regulation"@en ;
    samm:dataType xsd:string .
+
+:EmailAddressTrait a samm-c:Trait ;
+   samm-c:baseCharacteristic samm-c:Text ;
+   samm-c:constraint :ValidEmailAddress .
+
+:ValidEmailAddress a samm-c:RegularExpressionConstraint ;
+   samm:value "^[w.-]+@[w.-]+.[A-Za-z]{2,}$" .
 
 :Characteristic4 a samm:Characteristic ;
    samm:dataType :ContactInformationEntity .
