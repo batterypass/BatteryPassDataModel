@@ -20,8 +20,6 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix : <urn:samm:io.BatteryPass.Circularity:1.2.0#> .
-@prefix ext-digitaltwin: <urn:samm:org.eclipse.digitaltwin:1.0.0#> .
-@prefix ext-digitaltwin2: <urn:samm:org.eclipse.digitaltwin:1.2.0#> .
 
 :Circularity a samm:Aspect ;
    samm:description "Dismantling information (including at least: exploded diagrams of the battery system/pack showing the location of battery cells; disassembly sequences; type and number of fastening techniques to be unlocked; tools required for disassembly; warnings if risk of damaging parts exists; amount of cells used and layout); part numbers for components and contact details of sources for replacement spares; safety measures (Annex XIII (2b-d)); usable extinguishing agent (Annex VI, Part A(9)). 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is licensed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold commercially and is given appropriate attribution."@en ;
@@ -109,7 +107,7 @@
 
 :nameOfSupplier a samm:Property ;
    samm:description "Name of Supplier"@en ;
-   samm:characteristic ext-digitaltwin2:Text .
+   samm:characteristic samm-c:Text .
 
 :addressOfSupplier a samm:Property ;
    samm:description "Postal address of supplier for spare parts."@en ;
@@ -162,11 +160,6 @@
 :Documenttype a samm-c:Enumeration ;
    samm:dataType xsd:string ;
    samm-c:values ( "BillOfMaterial" "Model3D" "DismantlingManual" "RemovalManual" "OtherManual" "Drawing" ) .
-
-ext-digitaltwin2:Text a samm:Characteristic ;
-   samm:preferredName "Text"@en ;
-   samm:description "Describes a Property which contains plain text. This is intended exclusively for human readable strings, not for identifiers, measurement values, etc."@en ;
-   samm:dataType xsd:string .
 
 :AddressOfSupplier a samm-c:SingleEntity ;
    samm:see <https://schema.org/address> ;
