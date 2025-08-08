@@ -65,7 +65,7 @@
    samm:dataType xsd:double ;
    samm-c:unit :kilogramm .
 
-:kilogramperkilowatthour a samm:Unit ;
+:KilogramPerKilowattHour a samm:Unit ;
    samm:commonCode "kg CO2e/kWh" ;
    samm:symbol "CO2e/kWh" .
 
