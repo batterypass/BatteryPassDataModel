@@ -87,7 +87,7 @@
    samm:preferredName "Identifier"@en ;
    samm:description "CAS Number "@en ;
    samm:characteristic :MaterialIdentifierTrait ;
-   samm:exampleValue "7439-93-2 " .
+   samm:exampleValue "7439-93-2" .
 
 :batteryMaterialName a samm:Property ;
    samm:preferredName "Name"@en ;
