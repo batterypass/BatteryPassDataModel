@@ -11,11 +11,11 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * Generated class for EndOfLifeInformationEnity.
+ * Generated class for EndOfLifeInformationEntity.
  *
  */
 
-public class EndOfLifeInformationEnity {
+public class EndOfLifeInformationEntity {
 
 	@NotNull
 	private URI wastePrevention;
@@ -27,7 +27,7 @@ public class EndOfLifeInformationEnity {
 	private URI informationOnCollection;
 
 	@JsonCreator
-	public EndOfLifeInformationEnity(@JsonProperty(value = "wastePrevention") URI wastePrevention,
+	public EndOfLifeInformationEntity(@JsonProperty(value = "wastePrevention") URI wastePrevention,
 			@JsonProperty(value = "separateCollection") URI separateCollection,
 			@JsonProperty(value = "informationOnCollection") URI informationOnCollection) {
 		super(
@@ -74,7 +74,7 @@ public class EndOfLifeInformationEnity {
 			return false;
 		}
 
-		final EndOfLifeInformationEnity that = (EndOfLifeInformationEnity) o;
+		final EndOfLifeInformationEntity that = (EndOfLifeInformationEntity) o;
 		return Objects.equals(wastePrevention, that.wastePrevention)
 				&& Objects.equals(separateCollection, that.separateCollection)
 				&& Objects.equals(informationOnCollection, that.informationOnCollection);

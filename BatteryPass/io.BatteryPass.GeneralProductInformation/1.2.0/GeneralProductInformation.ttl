@@ -168,7 +168,7 @@
 :addressCountry a samm:Property ;
    samm:see <https://schema.org/addressCountry> ;
    samm:characteristic samm-c:Text ;
-   samm:exampleValue "Germany" .
+   samm:exampleValue "DE" .
 
 :postalCode a samm:Property ;
    samm:see <https://schema.org/postalCode> ;

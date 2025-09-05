@@ -5,11 +5,11 @@
 # information regarding copyright ownership.
 #
 # This work is made available under the terms of the
-# Creative Commons Attribution 4.0 International (CC BY-NC 4.0) license,
+# Creative Commons Attribution 4.0 International (CC BY 4.0) license,
 # which is available at
-# https://creativecommons.org/licenses/by-nc/4.0/.
+# https://creativecommons.org/licenses/by/4.0/.
 #
-# SPDX-License-Identifier: CC-BY-NC-4.0
+# SPDX-License-Identifier: CC-BY-4.0
 #######################################################################
 
 @prefix samm: <urn:samm:org.eclipse.esmf.samm:meta-model:2.1.0#> .
@@ -68,7 +68,7 @@
    samm:dataType :SafetyMeasuresEntity .
 
 :EndOfLifeInformation a samm-c:SingleEntity ;
-   samm:dataType :EndOfLifeInformationEnity .
+   samm:dataType :EndOfLifeInformationEntity .
 
 :RenewableContent a samm-c:Measurement ;
    samm:dataType xsd:float ;
@@ -90,7 +90,7 @@
    samm:description "The safety measures should be provided via the instruction manual as URL linking to PDF."@en ;
    samm:properties ( :safetyInstructions :extinguishingAgent ) .
 
-:EndOfLifeInformationEnity a samm:Entity ;
+:EndOfLifeInformationEntity a samm:Entity ;
    samm:properties ( :wastePrevention :separateCollection :informationOnCollection ) .
 
 :documentType a samm:Property ;
@@ -131,6 +131,7 @@
 
 :recycledMaterial a samm:Property ;
    samm:preferredName "RecycledMaterial"@en ;
+   samm:description "Name of recycled material"@en ;
    samm:characteristic :RecycledMaterial .
 
 :postConsumerShare a samm:Property ;
@@ -198,7 +199,7 @@
    samm:properties ( :addressCountry :postalCode :streetAddress ) .
 
 :ValidEmailAddress a samm-c:RegularExpressionConstraint ;
-   samm:value "^[w.-]+@[w.-]+.[A-Za-z]{2,}$" .
+   samm:value "^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$" .
 
 :ComponentEntity a samm:Entity ;
    samm:properties ( :partName :partNumber ) .
