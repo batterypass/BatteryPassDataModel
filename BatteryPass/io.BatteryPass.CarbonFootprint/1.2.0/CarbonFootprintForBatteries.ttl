@@ -70,7 +70,7 @@
    samm:symbol "CO2e/kWh" .
 
 :CarbonFootprintPerLifecycleStageEntity a samm:Entity ;
-   samm:description "The carbon footprint of the battery as share of total Battery Carbon Footprint, differentiated per life cycle stage raw material extraction, main production, distribution and end of �ife and recycling."@en ;
+   samm:description "The carbon footprint of the battery as share of total Battery Carbon Footprint, differentiated per life cycle stage raw material extraction, main production, distribution and end of life and recycling."@en ;
    samm:properties ( :lifecycleStage :carbonFootprint ) .
 
 :kilogramm a samm:Unit ;

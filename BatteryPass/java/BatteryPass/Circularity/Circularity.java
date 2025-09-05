@@ -37,7 +37,7 @@ public class Circularity {
 	private SafetyMeasuresEntity safetyMeasures;
 
 	@NotNull
-	private EndOfLifeInformationEnity endOfLifeInformation;
+	private EndOfLifeInformationEntity endOfLifeInformation;
 
 	@NotNull
 	private Float renewableContent;
@@ -48,7 +48,7 @@ public class Circularity {
 			@JsonProperty(value = "sparePartSources") List<SparePartSupplierEntity> sparePartSources,
 			@JsonProperty(value = "recycledContent") List<RecycledContentEntity> recycledContent,
 			@JsonProperty(value = "safetyMeasures") SafetyMeasuresEntity safetyMeasures,
-			@JsonProperty(value = "endOfLifeInformation") EndOfLifeInformationEnity endOfLifeInformation,
+			@JsonProperty(value = "endOfLifeInformation") EndOfLifeInformationEntity endOfLifeInformation,
 			@JsonProperty(value = "renewableContent") Float renewableContent) {
 		super(
 
@@ -102,7 +102,7 @@ public class Circularity {
 	 *
 	 * @return {@link #endOfLifeInformation}
 	 */
-	public EndOfLifeInformationEnity getEndOfLifeInformation() {
+	public EndOfLifeInformationEntity getEndOfLifeInformation() {
 		return this.endOfLifeInformation;
 	}
 

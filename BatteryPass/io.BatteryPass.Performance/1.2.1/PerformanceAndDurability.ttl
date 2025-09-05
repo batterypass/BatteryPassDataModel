@@ -81,7 +81,7 @@
    samm:characteristic :RoundtripEfficiency .
 
 :ratedCapacity a samm:Property ;
-   samm:description "�Rated capacity� is the total number of ampere-hours (Ah) that can be withdrawn from a fully charged battery under reference conditions (see BattReg Annex IV (1)).\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.2"@en ;
+   samm:description "Rated capacity is the total number of ampere-hours (Ah) that can be withdrawn from a fully charged battery under reference conditions (see BattReg Annex IV (1)).\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.2"@en ;
    samm:characteristic :RatedCapacity .
 
 :initialInternalResistance a samm:Property ;
@@ -125,15 +125,15 @@
    samm:characteristic :TemperatureRangeIdleState .
 
 :roundTripEfficiencyat50PerCentCycleLife a samm:Property ;
-   samm:description "Initial round trip energy efficiency shall be measured at reference conditions that include the specification of �50 % of cycle-life�.\n\nTest methods and reference conditions should separately consider non-cycle applications and batteries with very long cycle-life.\n\nDIN DKE Spec 99100 chapter reference: 6.7.4.3\n"@en ;
+   samm:description "Initial round trip energy efficiency shall be measured at reference conditions that include the specification of 50 % of cycle-life.\n\nTest methods and reference conditions should separately consider non-cycle applications and batteries with very long cycle-life.\n\nDIN DKE Spec 99100 chapter reference: 6.7.4.3\n"@en ;
    samm:characteristic :RoundTripEfficiencyat50PerCentCycleLife .
 
 :roundTripEfficiencyFade a samm:Property ;
-   samm:description "Energy round trip efficiency fade should be calculated using the initial round trip energy efficiency and remaining round trip energy efficiency following the formula below:\n\nRTEfade (x) = (1-RTE(x)) / RTEBOL  �100\" %\" \nwhere\nx \tis the aging parameter (e.g. storage time, number of cycles, etc.);\nRTE(x) \tis the round trip energy efficiency at aging parameter x;\nRTEBOL \tis the round trip energy efficiency at begin of life.\n\nDIN DKE Spec 99100 chapter reference: 6.7.4.5"@en ;
+   samm:description "Energy round trip efficiency fade should be calculated using the initial round trip energy efficiency and remaining round trip energy efficiency following the formula below:\n\nRTEfade (x) = (1-RTE(x)) / RTEBOL  100\" %\" \nwhere\nx \tis the aging parameter (e.g. storage time, number of cycles, etc.);\nRTE(x) \tis the round trip energy efficiency at aging parameter x;\nRTEBOL \tis the round trip energy efficiency at begin of life.\n\nDIN DKE Spec 99100 chapter reference: 6.7.4.5"@en ;
    samm:characteristic :RoundTripEfficienyFade .
 
 :powerFade a samm:Property ;
-   samm:description "�Power fade (in %) means the decrease over time and upon usage in the amount of power that a battery can deliver at the rated voltage.� (see BattReg Annex IV (4)).\n\nPower fade should be calculated using original and remaining power capability following the formula below:\nPfade(x) = (1-P(x)) / PBOL\" �100\" %\" \nwhere\nx \tis the aging parameter (e.g. storage time, number of cycles, etc.);\nP(x) \tis the power capability at aging parameter x;\nPBOL \tis the power capability at begin of life.\n\nDIN DKE Spec 99100 chapter reference: 6.7.3.4"@en ;
+   samm:description "Power fade (in %) means the decrease over time and upon usage in the amount of power that a battery can deliver at the rated voltage. (see BattReg Annex IV (4)).\n\nPower fade should be calculated using original and remaining power capability following the formula below:\nPfade(x) = (1-P(x)) / PBOL\" 100\" %\" \nwhere\nx \tis the aging parameter (e.g. storage time, number of cycles, etc.);\nP(x) \tis the power capability at aging parameter x;\nPBOL \tis the power capability at begin of life.\n\nDIN DKE Spec 99100 chapter reference: 6.7.3.4"@en ;
    samm:characteristic :PowerFade .
 
 :energyThroughput a samm:Property ;
@@ -145,7 +145,7 @@
    samm:characteristic :CapacityThroughput .
 
 :numberOfFullCycles a samm:Property ;
-   samm:description "Number of (full) charging and discharging cycles.\n\nDIN DKE Spec 99100 chapter reference: 6.7.6.3"@en ;
+   samm:description "Number of (full) charging and discharging cycles.\n\nDIN DKE Spec 99100 chapter reference: 6.7.6.4"@en ;
    samm:characteristic :NumberOfFullCycles .
 
 :stateOfCertifiedEnergy a samm:Property ;
@@ -154,7 +154,7 @@
    samm:characteristic :StateOfCertifiedEnergy .
 
 :capacityFade a samm:Property ;
-   samm:description "The capacity fade is the �Decrease over time and upon usage in the amount of charge that a battery can deliver at the rated voltage, with respect to the original rated capacity� (see BattReg Annex IV (2)) as declared by the manufacturer.\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.4"@en ;
+   samm:description "The capacity fade is the Decrease over time and upon usage in the amount of charge that a battery can deliver at the rated voltage, with respect to the original rated capacity (see BattReg Annex IV (2)) as declared by the manufacturer.\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.4"@en ;
    samm:characteristic :CapacityFade .
 
 :remainingEnergy a samm:Property ;
@@ -166,6 +166,7 @@
    samm:characteristic :RemainingCapacity .
 
 :negativeEvents a samm:Property ;
+   samm:description "The battery passport must contain information and data resulting from its use such as accidents. \n\nDIN DKE Spec 99100 chapter reference: 6.7.8.4"@en ;
    samm:characteristic :NegativeEvents .
 
 :temperatureInformation a samm:Property ;
@@ -177,7 +178,7 @@
    samm:characteristic :RemainingPowerCapability .
 
 :evolutionOfSelfDischarge a samm:Property ;
-   samm:description "�Evolution of self-discharge rates� is the change of self-discharge over time and usage, as percentage calculated from the initial and current self-discharge rate.\n\nDIN DKE Spec 99100 chapter reference: 6.7.4.8"@en ;
+   samm:description "Evolution of self-discharge rates is the change of self-discharge over time and usage, as percentage calculated from the initial and current self-discharge rate.\n\nDIN DKE Spec 99100 chapter reference: 6.7.4.8"@en ;
    samm:characteristic :EvolutionOfSelfDischarge .
 
 :currentSelfDischargingRate a samm:Property ;
@@ -185,7 +186,7 @@
    samm:characteristic :CurrentSelfDischargingRate .
 
 :internalResistanceIncrease a samm:Property ;
-   samm:description "The internal resistance increase over time and upon usage should be defined based on the ratio of current and initial values as follows:\nRincrease(x) = (R(x)  - RBOL) / RBOL � 100 %\nwhere\nx \tis the aging parameter (e.g. storage time, number of cycles, etc.;);\nR(x)\tis the internal resistance at the aging parameter x; and\nRBOL\tis the internal resistance at begin of life.\n\nThe battery passport can include additional information about the internal resistance increase on battery cell and battery module level, if available. It should be defined and calculated analogously to the requirements on battery pack level above.\n\nDIN DKE Spec 99100 chapter reference: 6.7.5.3"@en ;
+   samm:description "The internal resistance increase over time and upon usage should be defined based on the ratio of current and initial values as follows:\nRincrease(x) = (R(x)  - RBOL) / RBOL  100 %\nwhere\nx \tis the aging parameter (e.g. storage time, number of cycles, etc.;);\nR(x)\tis the internal resistance at the aging parameter x; and\nRBOL\tis the internal resistance at begin of life.\n\nThe battery passport can include additional information about the internal resistance increase on battery cell and battery module level, if available. It should be defined and calculated analogously to the requirements on battery pack level above.\n\nDIN DKE Spec 99100 chapter reference: 6.7.5.3"@en ;
    samm:characteristic :CurrentInternalResistanceValue .
 
 :remainingRoundTripEnergyEfficiency a samm:Property ;
@@ -328,7 +329,7 @@
    samm:properties ( :atSoC :powerCapabilityAt ) .
 
 :InternalResistanceEntity a samm:Entity ;
-   samm:description "The internal resistance is �a quotient of change of voltage of a battery by the corresponding change in discharge current under specified conditions� (IEV 482 03 36)."@en ;
+   samm:description "The internal resistance is a quotient of change of voltage of a battery by the corresponding change in discharge current under specified conditions (IEV 482 03 36)."@en ;
    samm:properties ( :ohmicResistance :batteryComponent ) .
 
 :C a samm:Unit ;

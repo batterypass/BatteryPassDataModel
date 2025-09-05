@@ -29,7 +29,7 @@ public class SparePartSupplierEntity {
 	private PostalAddress addressOfSupplier;
 
 	@NotNull
-	@Pattern(regexp = "^[w.-]+@[w.-]+.[A-Za-z]{2,}$")
+	@Pattern(regexp = "^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$")
 
 	private String emailAddressOfSupplier;
 
