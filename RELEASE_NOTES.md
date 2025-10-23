@@ -1,5 +1,7 @@
 # Changelog
 All notable changes to the battery passport data model will be documented in this file.
+## [1.2.0] - 2025-10-23
+ - Lincense consistently updated to Creative Commons Attribution 4.0 International (CC-BY-4.0) license. See the [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode) file for more details. 
 
 ## [1.2.0] - 2025-01-14
 ### Updated
