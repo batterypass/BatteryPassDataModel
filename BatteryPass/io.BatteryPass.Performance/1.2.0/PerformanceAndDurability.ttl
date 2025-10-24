@@ -22,7 +22,7 @@
 @prefix : <urn:samm:io.BatteryPass.Performance:1.2.0#> .
 
 :PerformanceAndDurability a samm:Aspect ;
-   samm:description "Battery performance and durability data model\n\nCopyright ? 2024 Circulor (for and on behalf of the Battery Pass Consortium). This work is li-censed under a Creative Commons License Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Readers may reproduce material for their own publications, as long as it is not sold com-mercially and is given appropriate attribution."@en ;
+   samm:description "Battery performance and durability data model"@en ;
    samm:properties ( :batteryTechicalProperties :batteryCondition ) ;
    samm:operations ( ) ;
    samm:events ( ) .
