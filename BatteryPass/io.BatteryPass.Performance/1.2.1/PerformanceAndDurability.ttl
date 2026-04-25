@@ -194,7 +194,7 @@
 
 :temperatureInformation a samm:Property ;
    samm:preferredName "temperature information"@en ;
-   samm:description "The battery passport must include periodically recorded information on the operating environmental conditions, including temperature.\n\nDIN DKE Spec 99100 chapter reference: 6.7.7.5 - 8"@en ;
+   samm:description "The battery passport must include periodically recorded information on operating environmental conditions, including temperature. Temperature reporting should additionally use histograms that divide the full temperature range into intervals (including above and below extreme-temperature thresholds) and aggregate the time spent in each interval, including time spent charging. Any in-use temperature measurement should be specified with sufficient detail on sensor location, as sensor placement determines representativeness and applicability of the reported values to the full battery where gradients may exist.\n\nDIN DKE Spec 99100 chapter reference: 6.7.7.5 - 8"@en ;
    samm:characteristic :TemperatureInformation .
 
 :remainingPowerCapability a samm:Property ;
@@ -224,7 +224,7 @@
 
 :stateOfCharge a samm:Property ;
    samm:preferredName "SoC"@en ;
-   samm:description "The Battery Pass consortium proposes to change the definition to: \"available capacity in a battery expressed as a percentage of remaining capacity\" to reflect use of SoC in practice.  \n\nDIN DKE Spec 99100 chapter reference: 6.7.2.8"@en ;
+   samm:description "The Battery Pass consortium proposes to define SoC as \"available capacity in a battery expressed as a percentage of remaining capacity\" to reflect use in practice. In addition, SoC should be reported using a histogram that covers the full SoC range with defined intervals and aggregates the time spent in each interval from BMS operational data.\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.8"@en ;
    samm:characteristic :StateOfCharge .
 
 :OriginalPowerCapabilityAtSoC a samm-c:List ;
