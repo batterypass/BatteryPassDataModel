@@ -2,6 +2,12 @@
   <img src="./logo_BatteryPass_Primary.png" alt="alt text" height="100px " align="center"/>
 </div>
 
+> ***The project BatteryPass concluded successfully in April 2025. This repository is no longer actively maintained and is provided for reference purposes only for now. It contains the BatteryPass data model as of 2025.*** 
+> 
+> ***For ongoing developments and the latest information on regulatory and standardization requirements, please visit the follow-up project [BatteryPass-Ready](https://thebatterypass.eu).***
+>
+>***The new Battery Pass Ready Data Model is located here: [Battery Pass Ready Repository](https://git.gefeg.com/bp/BatteryPassDataModel)***
+
 # Battery Pass Data Model v1.2.0
 
 Welcome to the Battery Pass Data Model repository! This project provides a comprehensive data model based on the [DIN DKE SPEC 99100:2025-02 "Requirements	for	data	attributes	of	the	battery	passport"](https://www.dinmedia.de/en/technical-rule/din-dke-spec-99100/385692321), aimed at standardizing and streamlining the exchange of battery-related information across the value chain to allow informed stakeholder decisions for sustainable circular economy. The defined data requirements are fully aligned with the [EU Battery Regulation](https://eur-lex.europa.eu/eli/reg/2023/1542/oj) and the [Eco-Design Directive for Sustainable Products (ESPR)](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1781&qid=1719580391746). 
