@@ -193,7 +193,7 @@
    samm-c:constraint :ValidEmailAddress .
 
 :ValidEmailAddress a samm-c:RegularExpressionConstraint ;
-   samm:value "^[w.-]+@[w.-]+.[A-Za-z]{2,}$" .
+   samm:value "^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$" .
 
 :Characteristic4 a samm:Characteristic ;
    samm:dataType :ContactInformationEntity .
