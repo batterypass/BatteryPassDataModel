@@ -175,7 +175,7 @@
 :capacityFade a samm:Property ;
    samm:preferredName "capacity fade"@en ;
    samm:description "The capacity fade is the Decrease over time and upon usage in the amount of charge that a battery can deliver at the rated voltage, with respect to the original rated capacity (see BattReg Annex IV (2)) as declared by the manufacturer.\n\nDIN DKE Spec 99100 chapter reference: 6.7.2.4"@en ;
-   samm:characteristic :CapacityFade .
+   samm:characteristic :CapacityFadeValue .
 
 :remainingEnergy a samm:Property ;
    samm:preferredName "remaining energy"@en ;
@@ -321,8 +321,6 @@
 :StateOfCertifiedEnergy a samm-c:SingleEntity ;
    samm:dataType :StateOfCertifiedEnergyEntity .
 
-:CapacityFade a samm-c:SingleEntity ;
-   samm:dataType :CapacityFadeEntity .
 
 :RemainingEnergy a samm-c:SingleEntity ;
    samm:dataType :RemainingEnergyEntity .
@@ -388,9 +386,6 @@
    samm:preferredName "state of certified energy"@en ;
    samm:properties ( :stateOfCertifiedEnergyValue :lastUpdate ) .
 
-:CapacityFadeEntity a samm:Entity ;
-   samm:preferredName "capacity fade"@en ;
-   samm:properties ( :capacityFadeValue :lastUpdate ) .
 
 :RemainingEnergyEntity a samm:Entity ;
    samm:preferredName "remaining energy"@en ;
@@ -480,10 +475,6 @@
    samm:preferredName "state of certified energy"@en ;
    samm:characteristic :StateOfCertifiedEnergyValue .
 
-:capacityFadeValue a samm:Property ;
-   samm:preferredName "capacity fade"@en ;
-   samm:characteristic :CapacityFadeValue .
-
 :remainingEnergyValue a samm:Property ;
    samm:preferredName "reamining energy"@en ;
    samm:characteristic :UBERemainingValue .
@@ -494,7 +485,7 @@
 
 :negativeEvent a samm:Property ;
    samm:preferredName "negative event"@en ;
-   samm:description "Negative event, such as an accident. No further definition provided by regulation."@en ;
+   samm:description "Negative event, such as an accidents. No further definition provided by regulation."@en ;
    samm:characteristic samm-c:Text .
 
 :timeExtremeHighTemp a samm:Property ;
@@ -610,8 +601,7 @@
    samm-c:unit unit:minuteUnitOfTime .
 
 :RemainingPowerCapabilityValue a samm-c:SingleEntity ;
-   samm:preferredName "remaining power capability value"@en ;
-   samm:preferredName "RemainingPowerCapabilityValue"@en ;
+   samm:preferredName "remaining power capability"@en ;
    samm:dataType :RemainingPowerCapabilityDynamicAt .
 
 :EvolutionOfSelfDischargeEntityValue a samm-c:Measurement ;
